@@ -1,5 +1,5 @@
 // Wait for A-Frame scene to load
-// 等待 A-Frame 场景加载完成
+// 等待 A-Frame 场景加载完成 interface
 
 AFRAME.registerComponent('controller-updater', {
   init: function () {
