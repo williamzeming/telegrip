@@ -452,10 +452,17 @@ class RobotInterface:
                 self.is_connected = False
                 logger.error("❌ Robot interface disconnected due to repeated errors")
             return False
-    
+
     def set_gripper(self, arm: str, closed: bool):
         """Set gripper state for specified arm."""
-        angle = GRIPPER_CLOSED_ANGLE if closed else GRIPPER_OPEN_ANGLE
+        # The PyBullet SO100 visual gripper uses the opposite convention from
+        # the hardware command semantics. Keep hardware behavior unchanged, but
+        # invert the mapping in simulation-only mode so "pressed = close" feels
+        # correct in VR.
+        if not self.config.enable_robot:
+            angle = GRIPPER_OPEN_ANGLE if closed else GRIPPER_CLOSED_ANGLE
+        else:
+            angle = GRIPPER_CLOSED_ANGLE if closed else GRIPPER_OPEN_ANGLE
         
         if arm == "left":
             self.left_arm_angles[5] = angle
@@ -589,6 +596,11 @@ class RobotInterface:
     
     def get_arm_connection_status(self, arm: str) -> bool:
         """Get connection status for specific arm based on device file existence."""
+        # In simulation-only mode, allow both arms to be treated as available so
+        # the control loop can still drive IK and visualization updates.
+        if not self.config.enable_robot:
+            return True
+
         # Only check device file existence - ignore overall robot connection status
         if arm == "left":
             device_path = self.config.follower_ports["left"]

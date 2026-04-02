@@ -61,6 +61,7 @@ class PyBulletVisualizer:
         self.urdf_path = urdf_path
         self.use_gui = use_gui
         self.log_level = log_level
+        self.enable_debug_frames = False
         
         # PyBullet state
         self.physics_client = None
@@ -95,22 +96,25 @@ class PyBulletVisualizer:
             if result.returncode != 0:
                 return False
 
-            # Also check if GLX (OpenGL) is available - this fails over SSH X11 forwarding
-            result = subprocess.run(
-                ['glxinfo'],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                timeout=5
-            )
-            if result.returncode != 0:
-                logger.debug("glxinfo failed - OpenGL not available")
-                return False
-
-            # Check for common failure indicators in glxinfo output
-            output = result.stdout.decode('utf-8', errors='ignore') + result.stderr.decode('utf-8', errors='ignore')
-            if 'Error' in output or 'failed' in output.lower():
-                logger.debug("glxinfo reported errors - OpenGL context may not work")
-                return False
+            # If glxinfo is available, use it as an extra confidence check.
+            # But do not require it: many desktop installs can still launch
+            # PyBullet GUI successfully without mesa-utils installed.
+            try:
+                result = subprocess.run(
+                    ['glxinfo'],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    timeout=5
+                )
+                if result.returncode != 0:
+                    logger.debug("glxinfo failed - will still try PyBullet GUI")
+                else:
+                    # Check for common failure indicators in glxinfo output
+                    output = result.stdout.decode('utf-8', errors='ignore') + result.stderr.decode('utf-8', errors='ignore')
+                    if 'Error' in output or 'failed' in output.lower():
+                        logger.debug("glxinfo reported errors - will still try PyBullet GUI")
+            except FileNotFoundError:
+                logger.debug("glxinfo not installed - skipping GLX preflight check")
 
             return True
         except (subprocess.TimeoutExpired, FileNotFoundError, Exception) as e:
@@ -321,14 +325,15 @@ class PyBulletVisualizer:
         self.viz_markers['right_target_frame'] = []
         self.viz_markers['left_goal_frame'] = []
         self.viz_markers['right_goal_frame'] = []
-        
-        axis_colors = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]  # RGB for XYZ
-        for marker_name in ['left_target_frame', 'right_target_frame', 'left_goal_frame', 'right_goal_frame']:
-            frame_lines = []
-            for i in range(3):
-                line_id = p.addUserDebugLine([0, 0, -1], [0, 0, -1], lineColorRGB=axis_colors[i], lineWidth=3)
-                frame_lines.append(line_id)
-            self.viz_markers[marker_name] = frame_lines
+
+        if self.enable_debug_frames:
+            axis_colors = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]  # RGB for XYZ
+            for marker_name in ['left_target_frame', 'right_target_frame', 'left_goal_frame', 'right_goal_frame']:
+                frame_lines = []
+                for i in range(3):
+                    line_id = p.addUserDebugLine([0, 0, -1], [0, 0, -1], lineColorRGB=axis_colors[i], lineWidth=3)
+                    frame_lines.append(line_id)
+                self.viz_markers[marker_name] = frame_lines
     
     def _setup_camera(self):
         """Setup camera position behind the robot (negative Y direction)."""
@@ -383,6 +388,9 @@ class PyBulletVisualizer:
     def update_coordinate_frame(self, frame_name: str, position: np.ndarray, 
                                orientation_quat: Optional[np.ndarray] = None):
         """Update coordinate frame visualization."""
+        if not self.enable_debug_frames:
+            return
+
         if not self.is_connected or frame_name not in self.viz_markers:
             return
         
@@ -422,6 +430,9 @@ class PyBulletVisualizer:
     
     def hide_frame(self, frame_name: str):
         """Hide a coordinate frame."""
+        if not self.enable_debug_frames:
+            return
+
         if frame_name in self.viz_markers:
             frame_lines = self.viz_markers[frame_name]
             for line_id in frame_lines:

@@ -4,6 +4,7 @@ let isKeyboardEnabled = false;
 let isRobotEngaged = false;
 let currentConfig = {};
 let warningTimeout = null;
+let prefersVrView = false;
 
 // Settings modal functions
 // 设置弹窗相关函数
@@ -322,33 +323,15 @@ function isVRMode() {
 // 根据设备能力/模式更新界面
 function updateUIForDevice() {
   const desktopInterface = document.getElementById('desktopInterface');
+  if (!desktopInterface) return;
 
-  if (isVRMode()) {
+  // Keep the desktop interface visible by default, even on XR-capable
+  // browsers. Only hide it after the user explicitly switches to the
+  // VR view or once the browser has actually entered VR/fullscreen mode.
+  if (isVRMode() || prefersVrView) {
     desktopInterface.style.display = 'none';
   } else {
-    // Check if this is a VR-capable device
-    // 检查设备是否支持 VR
-    if (navigator.xr) {
-      navigator.xr.isSessionSupported('immersive-vr').then((supported) => {
-        if (supported) {
-          // VR-capable device - hide desktop interface (custom button in vr_app.js handles VR)
-          // 支持 VR 的设备：隐藏桌面界面（VR 的自定义按钮由 vr_app.js 处理）
-          desktopInterface.style.display = 'none';
-        } else {
-          // Not VR-capable - show desktop interface
-          // 不支持 VR：显示桌面界面
-          desktopInterface.style.display = 'block';
-        }
-      }).catch(() => {
-        // Fallback to desktop interface if XR check fails
-        // XR 检测失败时回退到桌面界面
-        desktopInterface.style.display = 'block';
-      });
-    } else {
-      // No XR support - show desktop interface
-      // 浏览器无 XR 支持：显示桌面界面
-      desktopInterface.style.display = 'block';
-    }
+    desktopInterface.style.display = 'block';
   }
 }
 
@@ -494,20 +477,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle VR mode changes
   // 处理 VR 模式变化（全屏变化）
   document.addEventListener('fullscreenchange', updateUIForDevice);
-  
-  // VR session detection
-  // VR 会话检测
-  if (navigator.xr) {
-    navigator.xr.addEventListener('sessionstart', () => {
-      updateStatus();
-      updateUIForDevice();
-    });
-    
-    navigator.xr.addEventListener('sessionend', () => {
-      updateStatus();
-      updateUIForDevice();
-    });
-  }
 
   // Settings form handler
   // 设置表单提交处理
@@ -523,6 +492,20 @@ document.addEventListener('DOMContentLoaded', () => {
       closeSettings();
     }
   });
+  
+  // VR session detection
+  // VR 会话检测
+  if (navigator.xr && typeof navigator.xr.addEventListener === 'function') {
+    navigator.xr.addEventListener('sessionstart', () => {
+      updateStatus();
+      updateUIForDevice();
+    });
+    
+    navigator.xr.addEventListener('sessionend', () => {
+      updateStatus();
+      updateUIForDevice();
+    });
+  }
 });
 
 // Handle window resize
@@ -533,6 +516,7 @@ window.addEventListener('resize', updateUIForDevice);
 // 在桌面视图与 VR 视图间切换
 function switchToVrView() {
   const desktopInterface = document.getElementById('desktopInterface');
+  prefersVrView = true;
   desktopInterface.style.display = 'none';
   // The VR start button should already be visible or will be created by vr_app.js
   // VR 开始按钮应该已存在，或由 vr_app.js 创建
@@ -548,6 +532,7 @@ function switchToVrView() {
 
 function switchToDesktopView() {
   const desktopInterface = document.getElementById('desktopInterface');
+  prefersVrView = false;
   desktopInterface.style.display = 'block';
   hideBackToDesktopButton();
 }
@@ -636,7 +621,11 @@ function createFallbackVrButton() {
           await new Promise(resolve => setTimeout(resolve, 500));
         }
         startButton.textContent = 'Starting VR...';
-        await sceneEl.enterVR(true);
+        if (typeof enterImmersiveMode === 'function') {
+          await enterImmersiveMode(sceneEl);
+        } else {
+          throw new Error('VR entry helper not loaded');
+        }
       } catch (err) {
         alert(`Failed to start: ${err.message}`);
         startButton.textContent = 'Start Controller Tracking';

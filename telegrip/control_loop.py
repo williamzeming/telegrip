@@ -32,6 +32,7 @@ class ArmState:
         self.origin_wrist_flex_angle = 0.0
         self.current_wrist_roll = 0.0
         self.current_wrist_flex = 0.0
+        self.current_gripper = None
         
     def reset(self):
         """Reset arm state to idle."""
@@ -210,6 +211,8 @@ class ControlLoop:
             
             self.left_arm.current_wrist_flex = left_angles[WRIST_FLEX_INDEX]
             self.right_arm.current_wrist_flex = right_angles[WRIST_FLEX_INDEX]
+            self.left_arm.current_gripper = left_angles[GRIPPER_INDEX]
+            self.right_arm.current_gripper = right_angles[GRIPPER_INDEX]
             
             logger.info(f"Initialized left arm at position: {left_pos.round(3)}")
             logger.info(f"Initialized right arm at position: {right_pos.round(3)}")
@@ -308,6 +311,7 @@ class ControlLoop:
                 arm_state.current_wrist_flex = current_angles[WRIST_FLEX_INDEX]
                 arm_state.origin_wrist_roll_angle = current_angles[WRIST_ROLL_INDEX]
                 arm_state.origin_wrist_flex_angle = current_angles[WRIST_FLEX_INDEX]
+                arm_state.current_gripper = current_angles[GRIPPER_INDEX]
                 
                 logger.info(f"🔄 {goal.arm.upper()} arm: Target position reset to current robot position (idle timeout)")
             return
@@ -330,6 +334,7 @@ class ControlLoop:
                     arm_state.current_wrist_flex = current_angles[WRIST_FLEX_INDEX]
                     arm_state.origin_wrist_roll_angle = current_angles[WRIST_ROLL_INDEX]
                     arm_state.origin_wrist_flex_angle = current_angles[WRIST_FLEX_INDEX]
+                    arm_state.current_gripper = current_angles[GRIPPER_INDEX]
                 
                 logger.info(f"🔒 {goal.arm.upper()} arm: Position control ACTIVATED (target reset to current position)")
                 
@@ -383,6 +388,7 @@ class ControlLoop:
         # Handle gripper control (independent of mode)
         if goal.gripper_closed is not None and self.robot_interface:
             self.robot_interface.set_gripper(goal.arm, goal.gripper_closed)
+            arm_state.current_gripper = self.robot_interface.get_arm_angles(goal.arm)[GRIPPER_INDEX]
     
     def _update_robot_safely(self):
         """Update robot with current control goals (with error handling)."""
@@ -409,7 +415,11 @@ class ControlLoop:
             ik_solution = self.robot_interface.solve_ik("left", self.left_arm.target_position)
             
             # Update robot angles
-            current_gripper = self.robot_interface.get_arm_angles("left")[GRIPPER_INDEX]
+            current_gripper = (
+                self.left_arm.current_gripper
+                if self.left_arm.current_gripper is not None
+                else self.robot_interface.get_arm_angles("left")[GRIPPER_INDEX]
+            )
             self.robot_interface.update_arm_angles("left", ik_solution, 
                                                  self.left_arm.current_wrist_flex, 
                                                  self.left_arm.current_wrist_roll, 
@@ -424,7 +434,11 @@ class ControlLoop:
             ik_solution = self.robot_interface.solve_ik("right", self.right_arm.target_position)
             
             # Update robot angles
-            current_gripper = self.robot_interface.get_arm_angles("right")[GRIPPER_INDEX]
+            current_gripper = (
+                self.right_arm.current_gripper
+                if self.right_arm.current_gripper is not None
+                else self.robot_interface.get_arm_angles("right")[GRIPPER_INDEX]
+            )
             self.robot_interface.update_arm_angles("right", ik_solution, 
                                                   self.right_arm.current_wrist_flex, 
                                                   self.right_arm.current_wrist_roll, 

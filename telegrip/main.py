@@ -102,44 +102,50 @@ class APIHandler(http.server.BaseHTTPRequestHandler):
     
     def do_GET(self):
         """Handle GET requests."""
-        if self.path == '/api/status':
+        request_path = urllib.parse.urlparse(self.path).path
+
+        if request_path == '/api/status':
             self.handle_status_request()
-        elif self.path == '/api/config':
+        elif request_path == '/api/config':
             self.handle_config_get_request()
-        elif self.path == '/' or self.path == '/index.html':
+        elif request_path == '/' or request_path == '/index.html':
             # Serve main page from web-ui directory
             self.serve_file('web-ui/index.html', 'text/html')
-        elif self.path.endswith('.css'):
+        elif request_path.endswith('.css'):
             # Serve CSS files from web-ui directory
-            self.serve_file(f'web-ui{self.path}', 'text/css')
-        elif self.path.endswith('.js'):
+            self.serve_file(f'web-ui{request_path}', 'text/css')
+        elif request_path.endswith('.js'):
             # Serve JS files from web-ui directory
-            self.serve_file(f'web-ui{self.path}', 'application/javascript')
-        elif self.path.endswith('.ico'):
-            self.serve_file(self.path[1:], 'image/x-icon')
-        elif self.path.endswith(('.jpg', '.jpeg')):
+            self.serve_file(f'web-ui{request_path}', 'application/javascript')
+        elif request_path.endswith('.ico'):
+            self.serve_file(request_path[1:], 'image/x-icon')
+        elif request_path.endswith(('.jpg', '.jpeg')):
             # Serve image files from web-ui directory
-            self.serve_file(f'web-ui{self.path}', 'image/jpeg')
-        elif self.path.endswith('.png'):
+            self.serve_file(f'web-ui{request_path}', 'image/jpeg')
+        elif request_path.endswith('.png'):
             # Serve image files from web-ui directory
-            self.serve_file(f'web-ui{self.path}', 'image/png')
-        elif self.path.endswith('.gif'):
+            self.serve_file(f'web-ui{request_path}', 'image/png')
+        elif request_path.endswith('.gif'):
             # Serve image files from web-ui directory
-            self.serve_file(f'web-ui{self.path}', 'image/gif')
+            self.serve_file(f'web-ui{request_path}', 'image/gif')
         else:
             self.send_error(404, "Not found")
     
     def do_POST(self):
         """Handle POST requests."""
-        if self.path == '/api/keyboard':
+        request_path = urllib.parse.urlparse(self.path).path
+
+        if request_path == '/api/keyboard':
             self.handle_keyboard_request()
-        elif self.path == '/api/robot':
+        elif request_path == '/api/robot':
             self.handle_robot_request()
-        elif self.path == '/api/keypress':
+        elif request_path == '/api/keypress':
             self.handle_keypress_request()
-        elif self.path == '/api/config':
+        elif request_path == '/api/vr':
+            self.handle_vr_input_request()
+        elif request_path == '/api/config':
             self.handle_config_post_request()
-        elif self.path == '/api/restart':
+        elif request_path == '/api/restart':
             self.handle_restart_request()
         else:
             self.send_error(404, "Not found")
@@ -167,7 +173,10 @@ class APIHandler(http.server.BaseHTTPRequestHandler):
                 # Get VR connection status
                 vr_connected = False
                 if system.vr_server and system.vr_server.is_running:
-                    vr_connected = len(system.vr_server.clients) > 0
+                    vr_connected = (
+                        len(system.vr_server.clients) > 0 or
+                        system.vr_server.has_recent_http_activity()
+                    )
                 
                 status = {
                     **control_status,
@@ -319,6 +328,44 @@ class APIHandler(http.server.BaseHTTPRequestHandler):
         except Exception as e:
             logger.error(f"Error handling config get request: {e}")
             self.send_error(500, str(e))
+
+    def handle_vr_input_request(self):
+        """Handle VR controller data over HTTPS fallback."""
+        try:
+            content_length = int(self.headers.get('Content-Length', 0))
+            if content_length == 0:
+                self.send_error(400, "No request body")
+                return
+
+            post_data = self.rfile.read(content_length)
+            data = json.loads(post_data.decode('utf-8'))
+
+            if not hasattr(self.server, 'api_handler') or not self.server.api_handler:
+                self.send_error(500, "System not available")
+                return
+
+            system = self.server.api_handler
+            if not system.vr_server or not system.main_loop:
+                self.send_error(500, "VR server not available")
+                return
+
+            system.vr_server.mark_http_activity()
+            future = asyncio.run_coroutine_threadsafe(
+                system.vr_server.process_controller_data(data),
+                system.main_loop
+            )
+            future.result(timeout=1.0)
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": True, "transport": "https-fallback"}).encode('utf-8'))
+
+        except json.JSONDecodeError:
+            self.send_error(400, "Invalid JSON")
+        except Exception as e:
+            logger.error(f"Error handling VR input request: {e}")
+            self.send_error(500, str(e))
     
     def handle_config_post_request(self):
         """Handle configuration update requests."""
@@ -379,6 +426,9 @@ class APIHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-Type', content_type)
             self.send_header('Content-Length', len(file_content))
+            self.send_header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+            self.send_header('Pragma', 'no-cache')
+            self.send_header('Expires', '0')
             self.end_headers()
             self.wfile.write(file_content)
             

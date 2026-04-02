@@ -5,11 +5,11 @@ test
 
 这是一个面向 [SO100 机械臂](https://github.com/TheRobotStudio/SO-ARM100) 的开源遥操作控制系统，支持通过 VR 控制器或键盘输入进行控制，并集成了共享逆/正运动学、3D 可视化和 Web UI。
 
-<img src="web-ui/media/telegrip_instructions.jpg" alt="VR Controller Instructions" width="400">
+
 
 *通过 Meta Quest 这类 VR 头显以及内置的 WebXR 应用，控制器运动会被实时传输到 telegrip 控制器中，这样你无需专门的 leader arm 就可以记录训练数据。*
 
-https://github.com/user-attachments/assets/e21168b5-e9b4-4c83-ab4d-a15cb470d11b
+[https://github.com/user-attachments/assets/e21168b5-e9b4-4c83-ab4d-a15cb470d11b](https://github.com/user-attachments/assets/e21168b5-e9b4-4c83-ab4d-a15cb470d11b)
 
 *使用 Quest 3 头显对两台 SO-100 机械臂进行 telegrip 遥操作*
 
@@ -149,24 +149,20 @@ telegrip --autoconnect
 ### VR 控制器控制
 
 1. **准备**：将 Meta Quest 连接到同一网络，并访问 `https://<你的IP>:8443`
-
 2. **机械臂位置控制**：
-   - **按住 grip 按钮** 激活对应机械臂的位置控制
-   - 按住 grip 时，机械臂夹爪末端会在 3D 空间中跟随控制器位置移动
-   - 松开 grip 按钮后停止位置控制
-
+  - **按住 grip 按钮** 激活对应机械臂的位置控制
+  - 按住 grip 时，机械臂夹爪末端会在 3D 空间中跟随控制器位置移动
+  - 松开 grip 按钮后停止位置控制
 3. **手腕姿态控制**：
-   - 控制器的 **roll 和 pitch** 会映射到机械臂的腕部关节
-   - 这样可以精确控制末端执行器朝向
-
+  - 控制器的 **roll 和 pitch** 会映射到机械臂的腕部关节
+  - 这样可以精确控制末端执行器朝向
 4. **夹爪控制**：
-   - 按住 **trigger 扳机键** 关闭夹爪
-   - 只要持续按住，夹爪就保持闭合
-   - 松开 trigger 后夹爪张开
-
+  - 按住 **trigger 扳机键** 关闭夹爪
+  - 只要持续按住，夹爪就保持闭合
+  - 松开 trigger 后夹爪张开
 5. **独立控制**：
-   - 左右控制器分别独立控制左右机械臂
-   - 你可以同时操作两只手，也可以只操作其中一只
+  - 左右控制器分别独立控制左右机械臂
+  - 你可以同时操作两只手，也可以只操作其中一只
 
 ### 键盘控制
 
@@ -203,15 +199,17 @@ graph TD
     H --> J[3D可视化]
 ```
 
+
+
 ### 控制流程
 
 1. **输入提供器**（VR/键盘）生成 `ControlGoal` 消息
 2. **命令队列** 缓冲这些控制目标，等待处理
 3. **控制循环** 消费目标并执行：
-   - 将位置目标转换为 IK 解
-   - 更新机械臂关节角度，并进行安全裁剪
-   - 向机器人硬件发送命令
-   - 更新 3D 可视化
+  - 将位置目标转换为 IK 解
+  - 更新机械臂关节角度，并进行安全裁剪
+  - 向机器人硬件发送命令
+  - 更新 3D 可视化
 4. **机器人接口** 负责硬件通信和安全控制
 
 ### 数据结构
@@ -256,7 +254,7 @@ class ControlGoal:
 
 **机器人连接失败**：
 
-- 检查 USB 串口设备权限：`sudo chmod 666 /dev/ttySO100*`
+- 检查 USB 串口设备权限：`sudo chmod 666 /dev/ttySO100`*
 - 确认端口名称与实际设备一致
 - 测试时可先运行 `--no-robot`
 
