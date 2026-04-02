@@ -16,6 +16,7 @@ from scipy.spatial.transform import Rotation as R
 from .base import BaseInputProvider, ControlGoal, ControlMode
 from ..config import TelegripConfig
 from ..core.kinematics import compute_relative_position
+from ..utils import get_preferred_local_ip
 
 logger = logging.getLogger(__name__)
 
@@ -76,16 +77,7 @@ class VRWebSocketServer(BaseInputProvider):
 
     def _get_local_ip(self) -> str:
         """Get the local IP address of this machine."""
-        import socket
-        try:
-            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-                s.connect(("8.8.8.8", 80))
-                return s.getsockname()[0]
-        except Exception:
-            try:
-                return socket.gethostbyname(socket.gethostname())
-            except Exception:
-                return "localhost"
+        return get_preferred_local_ip()
 
     def setup_ssl(self) -> Optional[ssl.SSLContext]:
         """Setup SSL context for WebSocket server."""

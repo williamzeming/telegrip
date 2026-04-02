@@ -2,13 +2,89 @@
 Utility functions for the teleoperation system.
 """
 
+import ipaddress
 import os
+import socket
 import subprocess
 import logging
 from pathlib import Path
 from typing import Tuple
 
 logger = logging.getLogger(__name__)
+
+
+def _is_rfc1918_address(ip: str) -> bool:
+    """Return True for common private LAN IPv4 ranges."""
+    try:
+        address = ipaddress.ip_address(ip)
+    except ValueError:
+        return False
+
+    if not isinstance(address, ipaddress.IPv4Address):
+        return False
+
+    return (
+        ip.startswith("10.")
+        or ip.startswith("192.168.")
+        or (
+            ip.startswith("172.")
+            and 16 <= int(ip.split(".")[1]) <= 31
+        )
+    )
+
+
+def get_preferred_local_ip() -> str:
+    """Best-effort selection of a LAN-reachable IPv4 address."""
+    candidates = []
+
+    try:
+        result = subprocess.run(
+            ["hostname", "-I"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        candidates.extend(result.stdout.split())
+    except Exception:
+        pass
+
+    try:
+        hostname = socket.gethostname()
+        for family, _, _, _, sockaddr in socket.getaddrinfo(hostname, None, socket.AF_INET):
+            if family == socket.AF_INET:
+                candidates.append(sockaddr[0])
+    except Exception:
+        pass
+
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
+            sock.connect(("8.8.8.8", 80))
+            candidates.append(sock.getsockname()[0])
+    except Exception:
+        pass
+
+    seen = set()
+    filtered = []
+    for ip in candidates:
+        if ip in seen:
+            continue
+        seen.add(ip)
+        try:
+            address = ipaddress.ip_address(ip)
+        except ValueError:
+            continue
+        if address.is_loopback or address.is_unspecified or address.is_multicast:
+            continue
+        filtered.append(ip)
+
+    for ip in filtered:
+        if _is_rfc1918_address(ip):
+            return ip
+
+    if filtered:
+        return filtered[0]
+
+    return "localhost"
 
 def get_package_dir() -> Path:
     """

@@ -22,22 +22,12 @@ import threading
 from pathlib import Path
 import weakref
 
+from .utils import get_preferred_local_ip
+
 
 def get_local_ip():
     """Get the local IP address of this machine."""
-    try:
-        # Connect to a remote address to determine the local IP
-        # This doesn't actually send any data
-        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-            s.connect(("8.8.8.8", 80))
-            return s.getsockname()[0]
-    except Exception:
-        try:
-            # Fallback: get hostname IP
-            return socket.gethostbyname(socket.gethostname())
-        except Exception:
-            # Final fallback
-            return "localhost"
+    return get_preferred_local_ip()
 
 
 @contextlib.contextmanager

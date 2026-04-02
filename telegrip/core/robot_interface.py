@@ -10,10 +10,25 @@ import logging
 import os
 import sys
 import contextlib
-from typing import Optional, Dict, Tuple
+from typing import Any, Optional, Dict, Tuple
 
-# New lerobot structure imports
-from lerobot.robots.so_follower.so_follower import SOFollower, SOFollowerRobotConfig
+LEROBOT_IMPORT_ERROR = None
+LeRobotFollower = None
+LeRobotFollowerConfig = None
+
+try:
+    # Older telegrip versions expected this module layout.
+    from lerobot.robots.so_follower.so_follower import SOFollower as LeRobotFollower
+    from lerobot.robots.so_follower.so_follower import SOFollowerRobotConfig as LeRobotFollowerConfig
+except ImportError as exc:
+    LEROBOT_IMPORT_ERROR = exc
+    try:
+        # LeRobot 0.4.x exposes SO100Follower from the package root.
+        from lerobot.robots.so100_follower import SO100Follower as LeRobotFollower
+        from lerobot.robots.so100_follower import SO100FollowerConfig as LeRobotFollowerConfig
+        LEROBOT_IMPORT_ERROR = None
+    except ImportError as newer_exc:
+        LEROBOT_IMPORT_ERROR = newer_exc
 
 from ..config import (
     TelegripConfig, NUM_JOINTS, JOINT_NAMES,
@@ -97,22 +112,33 @@ class RobotInterface:
         self.initial_left_arm = np.array([0, -100, 100, 60, 0, 0])
         self.initial_right_arm = np.array([0, -100, 100, 60, 0, 0])
     
-    def setup_robot_configs(self) -> Tuple[SOFollowerRobotConfig, SOFollowerRobotConfig]:
+    def _make_robot_config(self, port: str, arm_id: str) -> Any:
+        """Create a follower config for either old or new LeRobot APIs."""
+        if LeRobotFollowerConfig is None:
+            raise ModuleNotFoundError(
+                "LeRobot is not available in the current Python environment"
+            ) from LEROBOT_IMPORT_ERROR
+
+        common_kwargs = {
+            "port": port,
+            "use_degrees": True,
+            "disable_torque_on_disconnect": True,
+        }
+
+        try:
+            return LeRobotFollowerConfig(id=arm_id, **common_kwargs)
+        except TypeError:
+            return LeRobotFollowerConfig(**common_kwargs)
+
+    def setup_robot_configs(self) -> Tuple[Any, Any]:
         """Create robot configurations for both arms."""
         logger.info(f"Setting up robot configs with ports: {self.config.follower_ports}")
 
-        left_config = SOFollowerRobotConfig(
-            port=self.config.follower_ports["left"],
-            id="left_follower",
-            use_degrees=True,  # Use degrees for easier debugging
-            disable_torque_on_disconnect=True
+        left_config = self._make_robot_config(
+            self.config.follower_ports["left"], "left_follower"
         )
-
-        right_config = SOFollowerRobotConfig(
-            port=self.config.follower_ports["right"],
-            id="right_follower",
-            use_degrees=True,  # Use degrees for easier debugging
-            disable_torque_on_disconnect=True
+        right_config = self._make_robot_config(
+            self.config.follower_ports["right"], "right_follower"
         )
 
         return left_config, right_config
@@ -127,6 +153,13 @@ class RobotInterface:
             logger.info("Robot interface disabled in config")
             self.is_connected = True  # Mark as "connected" for testing
             return True
+
+        if LeRobotFollower is None:
+            logger.error(
+                "Robot support requires LeRobot, but it could not be imported: %s",
+                LEROBOT_IMPORT_ERROR,
+            )
+            return False
         
         # Setup suppression if requested
         should_suppress = (self.config.log_level == "warning" or 
@@ -142,10 +175,10 @@ class RobotInterface:
             try:
                 if should_suppress:
                     with suppress_stdout_stderr():
-                        self.left_robot = SOFollower(left_config)
+                        self.left_robot = LeRobotFollower(left_config)
                         self.left_robot.connect()
                 else:
-                    self.left_robot = SOFollower(left_config)
+                    self.left_robot = LeRobotFollower(left_config)
                     self.left_robot.connect()
                 self.left_arm_connected = True
                 logger.info("✅ Left arm connected successfully")
@@ -157,10 +190,10 @@ class RobotInterface:
             try:
                 if should_suppress:
                     with suppress_stdout_stderr():
-                        self.right_robot = SOFollower(right_config)
+                        self.right_robot = LeRobotFollower(right_config)
                         self.right_robot.connect()
                 else:
-                    self.right_robot = SOFollower(right_config)
+                    self.right_robot = LeRobotFollower(right_config)
                     self.right_robot.connect()
                 self.right_arm_connected = True
                 logger.info("✅ Right arm connected successfully")
