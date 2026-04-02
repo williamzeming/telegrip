@@ -12,11 +12,13 @@
   </head>
   <body>
     <!-- Settings Button -->
+    <!-- 设置按钮 -->
     <div class="settings-button" onclick="openSettings()">
       ⚙️
     </div>
 
     <!-- Settings Modal -->
+    <!-- 设置弹窗 -->
     <div class="settings-modal" id="settingsModal">
       <div class="settings-content">
         <div class="settings-header">
@@ -104,6 +106,7 @@
     </div>
 
     <!-- Desktop Interface -->
+    <!-- 桌面端界面 -->
     <div class="desktop-interface" id="desktopInterface">
       <div class="desktop-header">
         <div class="desktop-title">telegrip</div>
@@ -127,6 +130,7 @@
           </div>
           
           <!-- Robot Engagement Controls -->
+          <!-- 机器人使能/断开控制区 -->
           <div class="robot-controls">
             <button id="robotEngageBtn" class="engage-btn" onclick="toggleRobotEngagement()">
               <span id="engageBtnText">🔌 Connect Robot</span>
@@ -142,6 +146,7 @@
         </div>
 
         <!-- VR Instructions Section -->
+        <!-- VR 操作说明区域 -->
         <div class="vr-instructions-section">
           <h2>🥽 VR Controller Instructions</h2>
           <div class="instructions-content">
@@ -173,6 +178,7 @@
 
       <div class="keyboard-help">
         <!-- Collapsed state: just the enable button -->
+        <!-- 折叠状态：仅显示启用按钮 -->
         <div class="keyboard-help-collapsed">
           <div class="control-toggle" id="keyboardToggle" onclick="toggleKeyboardControl()">
             <span>🎮</span>
@@ -181,6 +187,7 @@
         </div>
         
         <!-- Expanded state: title, disable button, and content -->
+        <!-- 展开状态：标题、禁用按钮与内容 -->
         <div class="keyboard-help-expanded">
           <div class="keyboard-help-header">
             <div class="control-toggle active" onclick="toggleKeyboardControl()">
@@ -256,16 +263,20 @@
     </div>
 
     <!-- VR-only content (hidden - using custom start button instead) -->
+    <!-- 仅 VR 使用的内容（隐藏：改用自定义开始按钮） -->
     <div class="vr-content" id="vrContent" style="display: none;">
       <div class="vr-title">VR Teleoperation</div>
     </div>
 
     <!-- A-Frame VR Scene -->
+    <!-- A-Frame VR 场景 -->
     <a-scene vr-mode-ui="enabled: false;">
       <!-- Passthrough setup -->
+      <!-- 透视（Passthrough）设置 -->
       <a-entity webxr-passthrough="referenceSpaceType: local-floor"></a-entity>
 
       <!-- Controllers -->
+      <!-- 控制器 -->
       <a-entity id="leftHand" oculus-touch-controls="hand: left">
         <a-text id="leftHandInfo" value="Pos: ...\nRot: ..." position="0 0.04 -0.05" rotation="0 0 0" scale="0.05 0.05 0.05" color="white" align="center"></a-text>
       </a-entity>
@@ -276,6 +287,7 @@
 
     <script>
       // Update VR server URL dynamically
+      // 动态更新 VR 访问地址
       document.addEventListener('DOMContentLoaded', function() {
         const vrUrlElement = document.getElementById('vrServerUrl');
         if (vrUrlElement) {
