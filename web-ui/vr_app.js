@@ -1,91 +1,5 @@
-// Wait for A-Frame scene to load
-// 等待 A-Frame 场景加载完成 interface
-
-function ensureVrDebugPanel() {
-  let panel = document.getElementById('vr-websocket-debug-panel');
-  if (panel) return panel;
-
-  panel = document.createElement('div');
-  panel.id = 'vr-websocket-debug-panel';
-  panel.style.cssText = `
-    position: fixed;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(92vw, 720px);
-    padding: 12px 16px;
-    border-radius: 12px;
-    background: rgba(10, 10, 10, 0.88);
-    color: #fff;
-    font-family: monospace;
-    font-size: 14px;
-    line-height: 1.45;
-    text-align: left;
-    z-index: 2147483647;
-    border: 2px solid rgba(255,255,255,0.3);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-    white-space: pre-wrap;
-    word-break: break-word;
-    pointer-events: none;
-  `;
-  document.body.appendChild(panel);
-  return panel;
-}
-
-function ensureVrDebugBadge() {
-  let badge = document.getElementById('vr-websocket-debug-badge');
-  if (badge) return badge;
-
-  badge = document.createElement('div');
-  badge.id = 'vr-websocket-debug-badge';
-  badge.style.cssText = `
-    position: fixed;
-    top: calc(50% + 72px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(88vw, 520px);
-    padding: 10px 14px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.82);
-    color: #fff;
-    font-family: monospace;
-    font-size: 13px;
-    line-height: 1.4;
-    text-align: center;
-    z-index: 2147483647;
-    border: 2px solid rgba(255,255,255,0.22);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-    white-space: pre-wrap;
-    word-break: break-word;
-    pointer-events: none;
-  `;
-  document.body.appendChild(badge);
-  return badge;
-}
-
-function updateVrDebugPanel(state, details) {
-  const panel = ensureVrDebugPanel();
-  const badge = ensureVrDebugBadge();
-  const colors = {
-    connecting: '#f1c40f',
-    connected: '#2ecc71',
-    failed: '#ff6b6b',
-    disconnected: '#ff6b6b',
-    idle: '#bdc3c7'
-  };
-
-  panel.style.borderColor = colors[state] || colors.idle;
-  panel.innerHTML = [
-    `<strong style="color:${colors[state] || colors.idle}">VR WebSocket: ${state}</strong>`,
-    details || ''
-  ].filter(Boolean).join('<br>');
-
-  badge.style.borderColor = colors[state] || colors.idle;
-  badge.innerHTML = [
-    `<strong style="color:${colors[state] || colors.idle}">VR WebSocket: ${state}</strong>`,
-    details || ''
-  ].filter(Boolean).join('<br>');
-}
+// Wait for the A-Frame scene to load.
+// 等待 A-Frame 场景加载完成。
 
 function getVrTransportState() {
   if (!window.__telegripVrTransport) {
@@ -103,7 +17,6 @@ function getVrTransportState() {
 if (typeof AFRAME !== 'undefined') {
 AFRAME.registerComponent('controller-updater', {
   init: function () {
-    console.log("Controller updater component initialized.");
     // Controllers are enabled
     // 控制器已启用
 
@@ -147,19 +60,10 @@ AFRAME.registerComponent('controller-updater', {
     const websocketUrl = `wss://${serverHostname}:${websocketPort}`;
     const transportState = getVrTransportState();
     transportState.websocketUrl = websocketUrl;
-    console.log(`Attempting WebSocket connection to: ${websocketUrl}`);
-    updateVrDebugPanel('connecting', `Transport: websocket<br>Target: ${websocketUrl}`);
-    // !!! IMPORTANT: Replace 'YOUR_LAPTOP_IP' with the actual IP address of your laptop !!!
-    // !!! 重要：将 'YOUR_LAPTOP_IP' 替换为你笔记本电脑的实际 IP 地址 !!!
-    // const websocketUrl = 'ws://YOUR_LAPTOP_IP:8442';
-    // 示例：将 websocketUrl 改为指向你笔记本电脑 IP 的 ws 地址
 
     const enableHttpsFallback = (reason) => {
       transportState.mode = 'https-fallback';
-      updateVrDebugPanel(
-        'connected',
-        `Transport: https-fallback<br>POST: ${transportState.fallbackUrl}<br>Reason: ${reason}`
-      );
+      console.warn(`Falling back to HTTPS VR transport: ${reason}`);
       this.reportVRStatus(true);
     };
 
@@ -167,40 +71,24 @@ AFRAME.registerComponent('controller-updater', {
       this.websocket = new WebSocket(websocketUrl);
       this.websocket.onopen = (event) => {
         transportState.mode = 'websocket';
-        console.log(`WebSocket connected to ${websocketUrl}`);
-        updateVrDebugPanel('connected', `Transport: websocket<br>Target: ${websocketUrl}`);
         this.reportVRStatus(true);
       };
       this.websocket.onerror = (event) => {
-        // More detailed error logging
-        // 输出更详细的错误日志
-        console.error(`WebSocket Error: Event type: ${event.type}`, event);
+        console.warn(`WebSocket transport error (${event.type}); using HTTPS fallback.`);
         enableHttpsFallback('browser blocked or handshake failed');
       };
       this.websocket.onclose = (event) => {
-        console.log(`WebSocket disconnected from ${websocketUrl}. Clean close: ${event.wasClean}, Code: ${event.code}, Reason: '${event.reason}'`);
-        // Attempt to log specific error if available (might be limited by browser security)
-        // 如果可用则尝试记录更具体的错误信息（可能受浏览器安全限制）
         if (!event.wasClean) {
           console.error('WebSocket closed unexpectedly.');
         }
-        // 清除引用
-        this.websocket = null; // Clear the reference
+        this.websocket = null;
         if (transportState.mode !== 'https-fallback') {
           enableHttpsFallback(`close code ${event.code}`);
-        } else {
-          updateVrDebugPanel(
-            'connected',
-            `Transport: https-fallback<br>POST: ${transportState.fallbackUrl}<br>Reason: websocket closed (${event.code})`
-          );
         }
       };
-      this.websocket.onmessage = (event) => {
-        // 记录服务器发来的任何消息
-        console.log(`WebSocket message received: ${event.data}`); // Log any messages from server
-      };
+      this.websocket.onmessage = () => {};
     } catch (error) {
-        console.error(`Failed to create WebSocket connection to ${websocketUrl}:`, error);
+        console.warn(`Failed to create WebSocket connection to ${websocketUrl}:`, error);
         enableHttpsFallback(error.message || 'WebSocket constructor failed');
     }
     // --- End WebSocket Setup ---
@@ -267,7 +155,6 @@ AFRAME.registerComponent('controller-updater', {
           gripReleased: true
         };
         this.websocket.send(JSON.stringify(releaseMessage));
-        console.log(`Sent grip release for ${hand} hand`);
       }
     };
 
@@ -286,7 +173,6 @@ AFRAME.registerComponent('controller-updater', {
           triggerReleased: true
         };
         this.websocket.send(JSON.stringify(releaseMessage));
-        console.log(`Sent trigger release for ${hand} hand`);
       }
     };
 
@@ -323,17 +209,9 @@ AFRAME.registerComponent('controller-updater', {
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
         }
-        updateVrDebugPanel(
-          'connected',
-          `Transport: https-fallback<br>POST: ${transport.fallbackUrl}<br>Status: active`
-        );
       })
       .catch((error) => {
         console.error('HTTPS VR fallback failed:', error);
-        updateVrDebugPanel(
-          'failed',
-          `Transport: https-fallback<br>POST: ${transport.fallbackUrl}<br>Error: ${error.message}`
-        );
         this.reportVRStatus(false);
       })
       .finally(() => {
@@ -397,17 +275,14 @@ AFRAME.registerComponent('controller-updater', {
     // --- Modify Event Listeners ---
     // --- 修改事件监听器 ---
     this.leftHand.addEventListener('triggerdown', (evt) => {
-        console.log('Left Trigger Pressed');
         this.leftTriggerDown = true;
     });
     this.leftHand.addEventListener('triggerup', (evt) => {
-        console.log('Left Trigger Released');
         this.leftTriggerDown = false;
         // 发送 trigger 松开消息
         this.sendTriggerRelease('left'); // Send trigger release message
     });
     this.leftHand.addEventListener('gripdown', (evt) => {
-        console.log('Left Grip Pressed');
         // 设置 grip 状态
         this.leftGripDown = true; // Set grip state
         
@@ -424,14 +299,10 @@ AFRAME.registerComponent('controller-updater', {
           // Store initial quaternion for Z-axis rotation tracking
           // 保存初始四元数，用于 Z 轴旋转跟踪
           this.leftGripInitialQuaternion = this.leftHand.object3D.quaternion.clone();
-          
-          console.log('Left grip initial rotation:', this.leftGripInitialRotation);
-          console.log('Left grip initial quaternion:', this.leftGripInitialQuaternion);
         }
     });
     // 添加 gripup 监听器
     this.leftHand.addEventListener('gripup', (evt) => { // Add gripup listener
-        console.log('Left Grip Released');
         // 重置 grip 状态
         this.leftGripDown = false; // Reset grip state
         // 重置初始旋转
@@ -447,17 +318,14 @@ AFRAME.registerComponent('controller-updater', {
     });
 
     this.rightHand.addEventListener('triggerdown', (evt) => {
-        console.log('Right Trigger Pressed');
         this.rightTriggerDown = true;
     });
     this.rightHand.addEventListener('triggerup', (evt) => {
-        console.log('Right Trigger Released');
         this.rightTriggerDown = false;
         // 发送 trigger 松开消息
         this.sendTriggerRelease('right'); // Send trigger release message
     });
     this.rightHand.addEventListener('gripdown', (evt) => {
-        console.log('Right Grip Pressed');
         // 设置 grip 状态
         this.rightGripDown = true; // Set grip state
         
@@ -474,14 +342,10 @@ AFRAME.registerComponent('controller-updater', {
           // Store initial quaternion for Z-axis rotation tracking
           // 保存初始四元数，用于 Z 轴旋转跟踪
           this.rightGripInitialQuaternion = this.rightHand.object3D.quaternion.clone();
-          
-          console.log('Right grip initial rotation:', this.rightGripInitialRotation);
-          console.log('Right grip initial quaternion:', this.rightGripInitialQuaternion);
         }
     });
     // 添加 gripup 监听器
     this.rightHand.addEventListener('gripup', (evt) => { // Add gripup listener
-        console.log('Right Grip Released');
         // 重置 grip 状态
         this.rightGripDown = false; // Reset grip state
         // 重置初始旋转
@@ -638,27 +502,12 @@ AFRAME.registerComponent('controller-updater', {
     rightZTip.setAttribute('rotation', '90 0 0');
     this.rightHand.appendChild(rightZTip);
 
-    console.log('XYZ axis indicators created for both controllers (RGB for XYZ)');
   },
 
   tick: function () {
     // Update controller text if controllers are visible
     // 如果控制器可见，则更新控制器文本
-    // 增加安全检查
-    if (!this.leftHand || !this.rightHand) return; // Added safety check
-
-    // --- BEGIN DETAILED LOGGING ---
-    // --- 开始详细日志 ---
-    if (this.leftHand.object3D) {
-      // console.log(`Left Hand Raw - Visible: ${this.leftHand.object3D.visible}, Pos: ${this.leftHand.object3D.position.x.toFixed(2)},${this.leftHand.object3D.position.y.toFixed(2)},${this.leftHand.object3D.position.z.toFixed(2)}`);
-      // 左手原始数据日志：可见性与位置
-    }
-    if (this.rightHand.object3D) {
-      // console.log(`Right Hand Raw - Visible: ${this.rightHand.object3D.visible}, Pos: ${this.rightHand.object3D.position.x.toFixed(2)},${this.rightHand.object3D.position.y.toFixed(2)},${this.rightHand.object3D.position.z.toFixed(2)}`);
-      // 右手原始数据日志：可见性与位置
-    }
-    // --- END DETAILED LOGGING ---
-    // --- 结束详细日志 ---
+    if (!this.leftHand || !this.rightHand) return;
 
     // Collect data from both controllers
     // 收集两个控制器的数据
@@ -707,8 +556,6 @@ AFRAME.registerComponent('controller-updater', {
             );
           }
           
-          console.log('Left relative rotation:', this.leftRelativeRotation);
-          console.log('Left Z-axis rotation:', this.leftZAxisRotation.toFixed(1), 'degrees');
         }
 
         // Create display text including relative rotation when grip is held
@@ -765,8 +612,6 @@ AFRAME.registerComponent('controller-updater', {
             );
           }
           
-          console.log('Right relative rotation:', this.rightRelativeRotation);
-          console.log('Right Z-axis rotation:', this.rightZAxisRotation.toFixed(1), 'degrees');
         }
 
         // Create display text including relative rotation when grip is held
@@ -832,45 +677,24 @@ AFRAME.registerComponent('controller-updater', {
 // Add the component to the scene after it's loaded
 // 在场景加载完成后将组件添加到场景中
 document.addEventListener('DOMContentLoaded', (event) => {
-    const initialWebsocketUrl = `wss://${window.location.hostname}:8442`;
-    updateVrDebugPanel('idle', `Page loaded<br>Target: ${initialWebsocketUrl}`);
-
     if (typeof AFRAME === 'undefined') {
-        updateVrDebugPanel(
-            'failed',
-            `A-Frame failed to load from CDN<br>VR controller logic unavailable<br>Target: ${initialWebsocketUrl}`
-        );
+        console.error('A-Frame failed to load. VR controller logic unavailable.');
         return;
     }
 
     const scene = document.querySelector('a-scene');
 
     if (scene) {
-        updateVrDebugPanel('idle', `Scene found<br>Target: ${initialWebsocketUrl}`);
-        // Listen for controller connection events
-        // 监听控制器连接事件
-        scene.addEventListener('controllerconnected', (evt) => {
-            console.log('Controller CONNECTED:', evt.detail.name, evt.detail.component.data.hand);
-        });
-        scene.addEventListener('controllerdisconnected', (evt) => {
-            console.log('Controller DISCONNECTED:', evt.detail.name, evt.detail.component.data.hand);
-        });
-
         // Add controller-updater component when scene is loaded (A-Frame manages session)
         // 场景加载完成后添加 controller-updater 组件（会话由 A-Frame 管理）
         if (scene.hasLoaded) {
             scene.setAttribute('controller-updater', '');
-            updateVrDebugPanel('connecting', `Attaching controller-updater<br>Target: ${initialWebsocketUrl}`);
-            console.log("controller-updater component added immediately.");
         } else {
             scene.addEventListener('loaded', () => {
                 scene.setAttribute('controller-updater', '');
-                updateVrDebugPanel('connecting', `Scene loaded, attaching controller-updater<br>Target: ${initialWebsocketUrl}`);
-                console.log("controller-updater component added after scene loaded.");
             });
         }
     } else {
-        updateVrDebugPanel('failed', `A-Frame scene not found<br>Target: ${initialWebsocketUrl}`);
         console.error('A-Frame scene not found!');
     }
 
@@ -940,7 +764,6 @@ function addControllerTrackingButton() {
                 });
 
                 startButton.onclick = async () => {
-                    console.log('Start Controller Tracking button clicked.');
                     const sceneEl = document.querySelector('a-scene');
                     if (!sceneEl) {
                         console.error('A-Frame scene not found for enterVR call!');
@@ -959,7 +782,6 @@ function addControllerTrackingButton() {
                         const status = await statusResponse.json();
 
                         if (!status.robotEngaged) {
-                            console.log('Robot not connected. Connecting arms first...');
                             startButton.textContent = 'Connecting Arms...';
 
                             // Connect the robot arms
@@ -976,18 +798,13 @@ function addControllerTrackingButton() {
                             if (!connectResult.success) {
                                 throw new Error(connectResult.error || 'Failed to connect robot arms');
                             }
-                            console.log('Robot arms connected successfully.');
-
                             // Wait a moment for arms to initialize
                             // 稍等片刻，让机械臂完成初始化
                             await new Promise(resolve => setTimeout(resolve, 500));
-                        } else {
-                            console.log('Robot already connected.');
                         }
 
                         // Now enter VR mode
                         // 现在进入 VR 模式
-                        console.log('Requesting VR session via A-Frame...');
                         startButton.textContent = 'Starting VR...';
                         await enterImmersiveMode(sceneEl);
                     } catch (err) {
@@ -1001,7 +818,6 @@ function addControllerTrackingButton() {
                 };
 
                 document.body.appendChild(startButton);
-                console.log('Official "Start Controller Tracking" button added.');
 
                 // Add VR instructions panel
                 // 添加 VR 说明面板
@@ -1018,12 +834,10 @@ function addControllerTrackingButton() {
                 const sceneEl = document.querySelector('a-scene');
                 if (sceneEl) {
                     sceneEl.addEventListener('enter-vr', () => {
-                        console.log('Entered VR - hiding start button');
                         startButton.style.display = 'none';
                     });
 
                     sceneEl.addEventListener('exit-vr', () => {
-                        console.log('Exited VR - showing start button');
                         startButton.style.display = 'block';
                     });
                 }

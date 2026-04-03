@@ -8,9 +8,11 @@ used.
 
 from __future__ import annotations
 
+from collections import deque
 import logging
 import math
 import threading
+import time
 from typing import Dict, Optional, Tuple
 
 logger = logging.getLogger(__name__)
@@ -42,6 +44,7 @@ class TelegripROS2Bridge:
         self._lock = threading.Lock()
         self._started = False
         self._owns_rclpy_context = False
+        self._packet_timestamps = deque(maxlen=512)
 
         self.node = None
         self.tf_broadcaster = None
@@ -113,6 +116,8 @@ class TelegripROS2Bridge:
         with self._lock:
             if not self._started or self.node is None:
                 return
+
+            self._record_packet_timestamp()
 
             if "leftController" in data and "rightController" in data:
                 self._publish_hand("left", data.get("leftController") or {})
@@ -209,3 +214,38 @@ class TelegripROS2Bridge:
         qy = cr * sp * cy + sr * cp * sy
         qz = cr * cp * sy - sr * sp * cy
         return (qx, qy, qz, qw)
+
+    def _record_packet_timestamp(self):
+        self._packet_timestamps.append(time.monotonic())
+
+    def get_input_rate_hz(self, window_seconds: float = 2.0) -> float:
+        """Estimate incoming VR packet rate over a recent time window."""
+        with self._lock:
+            now = time.monotonic()
+            timestamps = [ts for ts in self._packet_timestamps if now - ts <= window_seconds]
+
+        if len(timestamps) < 2:
+            return 0.0
+
+        elapsed = timestamps[-1] - timestamps[0]
+        if elapsed <= 0.0:
+            return 0.0
+
+        return (len(timestamps) - 1) / elapsed
+
+    def get_topic_names(self) -> Dict[str, list[str]]:
+        """Return the ROS 2 topics and TF frames published by the bridge."""
+        return {
+            "topics": [
+                "/telegrip/left/pose",
+                "/telegrip/right/pose",
+                "/telegrip/left/enable",
+                "/telegrip/right/enable",
+                "/telegrip/left/gripper_input",
+                "/telegrip/right/gripper_input",
+            ],
+            "tf_frames": [
+                f"{self.frame_id} -> left_controller",
+                f"{self.frame_id} -> right_controller",
+            ],
+        }

@@ -55,6 +55,8 @@ class HandState:
     enabled: bool = False
     last_input_pose: Optional[PoseState] = None
     latched_pose: Optional[PoseState] = None
+    grip_reference_pose: Optional[PoseState] = None
+    grip_anchor_pose: Optional[PoseState] = None
     latched_gripper: float = 0.0
 
 
@@ -125,8 +127,12 @@ class TeleopInputAdapter(Node):
         pose_state = self._pose_state_from_msg(msg)
         state.last_input_pose = pose_state
 
-        if state.enabled:
-            state.latched_pose = pose_state
+        if state.enabled and state.grip_reference_pose is not None and state.grip_anchor_pose is not None:
+            state.latched_pose = self._compose_relative_pose(
+                anchor_pose=state.grip_anchor_pose,
+                reference_pose=state.grip_reference_pose,
+                current_pose=pose_state,
+            )
             self._publish_command_pose(hand)
 
     def _on_enable(self, hand: str, msg: Bool):
@@ -135,8 +141,15 @@ class TeleopInputAdapter(Node):
         state.enabled = bool(msg.data)
 
         if state.enabled and not was_enabled and state.last_input_pose is not None:
-            state.latched_pose = state.last_input_pose
-            self._publish_command_pose(hand)
+            if state.latched_pose is None:
+                state.latched_pose = state.last_input_pose
+                self._publish_command_pose(hand)
+
+            state.grip_reference_pose = state.last_input_pose
+            state.grip_anchor_pose = state.latched_pose
+        elif not state.enabled and was_enabled:
+            state.grip_reference_pose = None
+            state.grip_anchor_pose = None
 
     def _on_gripper_input(self, hand: str, msg: Float32):
         state = self.hand_states[hand]
@@ -178,6 +191,38 @@ class TeleopInputAdapter(Node):
         self.gripper_cmd_publishers[hand].publish(msg)
 
     @staticmethod
+    def _compose_relative_pose(
+        anchor_pose: PoseState,
+        reference_pose: PoseState,
+        current_pose: PoseState,
+    ) -> PoseState:
+        delta_position = (
+            current_pose.position[0] - reference_pose.position[0],
+            current_pose.position[1] - reference_pose.position[1],
+            current_pose.position[2] - reference_pose.position[2],
+        )
+        composed_position = (
+            anchor_pose.position[0] + delta_position[0],
+            anchor_pose.position[1] + delta_position[1],
+            anchor_pose.position[2] + delta_position[2],
+        )
+
+        relative_orientation = TeleopInputAdapter._quaternion_multiply(
+            current_pose.orientation,
+            TeleopInputAdapter._quaternion_inverse(reference_pose.orientation),
+        )
+        composed_orientation = TeleopInputAdapter._quaternion_multiply(
+            relative_orientation,
+            anchor_pose.orientation,
+        )
+
+        return PoseState(
+            frame_id=anchor_pose.frame_id,
+            position=composed_position,
+            orientation=TeleopInputAdapter._normalize_quaternion(composed_orientation),
+        )
+
+    @staticmethod
     def _pose_state_from_msg(msg: PoseStamped) -> PoseState:
         return PoseState(
             frame_id=msg.header.frame_id,
@@ -197,6 +242,36 @@ class TeleopInputAdapter(Node):
     @staticmethod
     def _clamp(value: float, lower: float, upper: float) -> float:
         return max(lower, min(upper, float(value)))
+
+    @staticmethod
+    def _quaternion_multiply(
+        lhs: Tuple[float, float, float, float],
+        rhs: Tuple[float, float, float, float],
+    ) -> Tuple[float, float, float, float]:
+        lx, ly, lz, lw = lhs
+        rx, ry, rz, rw = rhs
+        return (
+            lw * rx + lx * rw + ly * rz - lz * ry,
+            lw * ry - lx * rz + ly * rw + lz * rx,
+            lw * rz + lx * ry - ly * rx + lz * rw,
+            lw * rw - lx * rx - ly * ry - lz * rz,
+        )
+
+    @staticmethod
+    def _quaternion_inverse(quaternion: Tuple[float, float, float, float]) -> Tuple[float, float, float, float]:
+        x, y, z, w = quaternion
+        norm_sq = x * x + y * y + z * z + w * w
+        if norm_sq <= 1e-12:
+            return (0.0, 0.0, 0.0, 1.0)
+        return (-x / norm_sq, -y / norm_sq, -z / norm_sq, w / norm_sq)
+
+    @staticmethod
+    def _normalize_quaternion(quaternion: Tuple[float, float, float, float]) -> Tuple[float, float, float, float]:
+        x, y, z, w = quaternion
+        norm = (x * x + y * y + z * z + w * w) ** 0.5
+        if norm <= 1e-12:
+            return (0.0, 0.0, 0.0, 1.0)
+        return (x / norm, y / norm, z / norm, w / norm)
 
 
 def parse_args():

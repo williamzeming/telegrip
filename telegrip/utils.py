@@ -7,6 +7,7 @@ import os
 import socket
 import subprocess
 import logging
+import tempfile
 from pathlib import Path
 from typing import Tuple
 
@@ -114,6 +115,43 @@ def get_absolute_path(relative_path: str) -> Path:
     """
     return get_project_root() / relative_path
 
+
+def _get_ssl_san_entries() -> list[str]:
+    """Build subjectAltName entries for localhost and the current LAN IP."""
+    san_entries = ["DNS:localhost", "IP:127.0.0.1"]
+    local_ip = get_preferred_local_ip()
+
+    if local_ip != "localhost":
+        san_entries.append(f"IP:{local_ip}")
+
+    return san_entries
+
+
+def _certificate_matches_expected_hosts(cert_path: Path) -> bool:
+    """Return True when an existing certificate covers localhost and the current LAN IP."""
+    if not cert_path.exists():
+        return False
+
+    try:
+        result = subprocess.run(
+            ["openssl", "x509", "-in", str(cert_path), "-text", "-noout"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except Exception as exc:
+        logger.warning(f"Could not inspect SSL certificate {cert_path}: {exc}")
+        return False
+
+    cert_text = result.stdout
+    expected_entries = _get_ssl_san_entries()
+
+    # Require SAN coverage, since many browsers ignore CN for host validation.
+    if "X509v3 Subject Alternative Name" not in cert_text:
+        return False
+
+    return all(entry in cert_text for entry in expected_entries)
+
 def generate_ssl_certificates(cert_path: str = "cert.pem", key_path: str = "key.pem") -> bool:
     """
     Automatically generate self-signed SSL certificates if they don't exist.
@@ -129,25 +167,42 @@ def generate_ssl_certificates(cert_path: str = "cert.pem", key_path: str = "key.
     cert_abs_path = get_absolute_path(cert_path)
     key_abs_path = get_absolute_path(key_path)
     
-    # Check if certificates already exist
+    # Check if compatible certificates already exist
     if cert_abs_path.exists() and key_abs_path.exists():
-        logger.info(f"SSL certificates already exist: {cert_abs_path}, {key_abs_path}")
-        return True
+        if _certificate_matches_expected_hosts(cert_abs_path):
+            logger.info(f"SSL certificates already exist: {cert_abs_path}, {key_abs_path}")
+            return True
+
+        logger.warning(
+            "Existing SSL certificate does not match localhost/current LAN IP. "
+            "Regenerating certificate for headset/browser access."
+        )
     
     logger.info("SSL certificates not found, generating self-signed certificates...")
     
     try:
-        # Generate self-signed certificate using openssl
-        cmd = [
-            "openssl", "req", "-x509", "-newkey", "rsa:2048",
-            "-keyout", str(key_abs_path),
-            "-out", str(cert_abs_path),
-            "-sha256", "-days", "365", "-nodes",
-            "-subj", "/C=US/ST=Test/L=Test/O=Test/OU=Test/CN=localhost"
-        ]
-        
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        
+        san_entries = ",".join(_get_ssl_san_entries())
+
+        with tempfile.TemporaryDirectory(prefix="telegrip-cert-") as temp_dir:
+            temp_dir_path = Path(temp_dir)
+            temp_cert_path = temp_dir_path / "cert.pem"
+            temp_key_path = temp_dir_path / "key.pem"
+
+            # Generate self-signed certificate using openssl with SAN entries.
+            cmd = [
+                "openssl", "req", "-x509", "-newkey", "rsa:2048",
+                "-keyout", str(temp_key_path),
+                "-out", str(temp_cert_path),
+                "-sha256", "-days", "365", "-nodes",
+                "-subj", "/C=US/ST=Test/L=Test/O=Test/OU=Test/CN=localhost",
+                "-addext", f"subjectAltName={san_entries}",
+            ]
+
+            subprocess.run(cmd, capture_output=True, text=True, check=True)
+
+            cert_abs_path.write_bytes(temp_cert_path.read_bytes())
+            key_abs_path.write_bytes(temp_key_path.read_bytes())
+
         # Set appropriate permissions (readable by owner only for security)
         os.chmod(key_abs_path, 0o600)
         os.chmod(cert_abs_path, 0o644)
@@ -182,7 +237,12 @@ def ensure_ssl_certificates(cert_path: str = "cert.pem", key_path: str = "key.pe
     if not generate_ssl_certificates(cert_path, key_path):
         logger.error("Could not ensure SSL certificates are available")
         logger.error("Manual certificate generation may be required:")
-        logger.error("openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -sha256 -days 365 -nodes -subj \"/C=US/ST=Test/L=Test/O=Test/OU=Test/CN=localhost\"")
+        logger.error(
+            "openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem "
+            "-sha256 -days 365 -nodes "
+            "-subj \"/C=US/ST=Test/L=Test/O=Test/OU=Test/CN=localhost\" "
+            "-addext \"subjectAltName=DNS:localhost,IP:127.0.0.1,IP:<your-lan-ip>\""
+        )
         return False
     
     return True 

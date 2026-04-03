@@ -1,0 +1,69 @@
+transform:
+  output_frame_id: robot_base
+  hands:
+    left:
+      enabled: true
+      input_pose_topic: /teleop/left/command_pose
+      input_gripper_topic: /teleop/left/gripper_cmd
+      output_pose_topic: /robot_teleop/left/target_pose
+      output_gripper_topic: /robot_teleop/left/gripper_cmd
+      translation_xyz: [0.30, 0.20, 0.10]
+      rotation_rpy_deg: [0.0, 0.0, 0.0]
+      scale_xyz: [1.0, 1.0, 1.0]
+    right:
+      enabled: true
+      input_pose_topic: /teleop/right/command_pose
+      input_gripper_topic: /teleop/right/gripper_cmd
+      output_pose_topic: /robot_teleop/right/target_pose
+      output_gripper_topic: /robot_teleop/right/gripper_cmd
+      translation_xyz: [0.30, -0.20, 0.10]
+      rotation_rpy_deg: [0.0, 0.0, 0.0]
+      scale_xyz: [1.0, 1.0, 1.0]
+
+ik:
+  publish_rate_hz: 30.0
+  hands:
+    left:
+      enabled: true
+      input_pose_topic: /robot_teleop/left/target_pose
+      input_gripper_topic: /robot_teleop/left/gripper_cmd
+      output_topic: /robot_teleop/left/joint_command
+      command_interface: joint_state
+      urdf_path: /absolute/path/to/your_robot.urdf
+      base_position_xyz: [0.0, 0.0, 0.0]
+      base_rpy_deg: [0.0, 0.0, 0.0]
+      joint_names:
+        - joint1
+        - joint2
+        - joint3
+        - joint4
+        - joint5
+        - joint6
+      end_effector_link: tool0
+      position_only_ik: true
+      position_tolerance_m: 0.03
+      gripper_joint_name: gripper_joint
+      gripper_limits: [0.0, 0.8]
+      trajectory_time_sec: 0.1
+    right:
+      enabled: true
+      input_pose_topic: /robot_teleop/right/target_pose
+      input_gripper_topic: /robot_teleop/right/gripper_cmd
+      output_topic: /robot_teleop/right/joint_command
+      command_interface: joint_state
+      urdf_path: /absolute/path/to/your_robot.urdf
+      base_position_xyz: [0.0, 0.0, 0.0]
+      base_rpy_deg: [0.0, 0.0, 0.0]
+      joint_names:
+        - joint1
+        - joint2
+        - joint3
+        - joint4
+        - joint5
+        - joint6
+      end_effector_link: tool0
+      position_only_ik: true
+      position_tolerance_m: 0.03
+      gripper_joint_name: gripper_joint
+      gripper_limits: [0.0, 0.8]
+      trajectory_time_sec: 0.1

@@ -67,6 +67,7 @@ class ROS2TelegripSystem:
         self.tasks = []
         self.is_running = False
         self.main_loop = None
+        self._last_runtime_status = None
 
     def add_control_command(self, action: str):
         try:
@@ -109,6 +110,29 @@ class ROS2TelegripSystem:
         while self.is_running:
             await self.process_control_commands()
             await asyncio.sleep(0.05)
+
+    def _current_vr_transport_mode(self) -> str:
+        if self.vr_server and self.vr_server.clients:
+            return "websocket"
+        if self.vr_server and self.vr_server.has_recent_http_activity():
+            return "https-fallback"
+        return "waiting-for-client"
+
+    async def _run_runtime_status_logger(self):
+        while self.is_running:
+            transport_mode = self._current_vr_transport_mode()
+            input_rate_hz = self.ros2_bridge.get_input_rate_hz()
+
+            if transport_mode == "waiting-for-client" and input_rate_hz == 0.0:
+                status_line = "VR transport: waiting-for-client | input rate: 0.0 Hz"
+            else:
+                status_line = f"VR transport: {transport_mode} | input rate: {input_rate_hz:.1f} Hz"
+
+            if status_line != self._last_runtime_status:
+                logger.info(status_line)
+                self._last_runtime_status = status_line
+
+            await asyncio.sleep(2.0)
 
     def restart(self):
         def do_restart():
@@ -171,6 +195,9 @@ class ROS2TelegripSystem:
             command_processor_task = asyncio.create_task(self._run_command_processor())
             self.tasks.append(command_processor_task)
 
+            runtime_status_task = asyncio.create_task(self._run_runtime_status_logger())
+            self.tasks.append(runtime_status_task)
+
             logger.info("System restart completed successfully")
 
             if self.config.autoconnect and self.config.enable_robot:
@@ -198,6 +225,9 @@ class ROS2TelegripSystem:
 
             command_processor_task = asyncio.create_task(self._run_command_processor())
             self.tasks.append(command_processor_task)
+
+            runtime_status_task = asyncio.create_task(self._run_runtime_status_logger())
+            self.tasks.append(runtime_status_task)
 
             logger.info("All system components started successfully")
 
@@ -372,6 +402,7 @@ async def main():
 
     config = create_config_from_args(args)
     bridge = TelegripROS2Bridge(frame_id=args.ros_frame_id, node_name=args.ros_node_name)
+    bridge_outputs = bridge.get_topic_names()
 
     if not config.ensure_ssl_certificates():
         logger.error("Failed to ensure SSL certificates are available")
@@ -392,14 +423,25 @@ async def main():
         logger.info("  WebSocket Port: %s", config.websocket_port)
         logger.info("  Robot Ports: %s", config.follower_ports)
         logger.info("  ROS frame_id: %s", args.ros_frame_id)
+        logger.info("Published ROS 2 topics:")
+        for topic_name in bridge_outputs["topics"]:
+            logger.info("  %s", topic_name)
+        logger.info("Published TF frames:")
+        for tf_frame in bridge_outputs["tf_frames"]:
+            logger.info("  %s", tf_frame)
     else:
         host_display = get_local_ip() if config.host_ip == "0.0.0.0" else config.host_ip
         print("🤖 telegrip ROS 2 bridge starting...")
         print("📱 Open the UI in your browser on:")
         print(f"   https://{host_display}:{config.https_port}")
-        print("📡 RViz2 topics:")
-        print("   /telegrip/left/pose")
-        print("   /telegrip/right/pose")
+        print("📡 Published ROS 2 topics:")
+        for topic_name in bridge_outputs["topics"]:
+            print(f"   {topic_name}")
+        print("🧭 Published TF frames:")
+        for tf_frame in bridge_outputs["tf_frames"]:
+            print(f"   {tf_frame}")
+        print("📊 Runtime status:")
+        print("   VR transport and input rate are logged after a headset connects")
         print("💡 Use --log-level info to see detailed output")
         print()
 
