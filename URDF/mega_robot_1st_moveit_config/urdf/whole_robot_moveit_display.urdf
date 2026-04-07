@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="mega_robot_1st_urdf">
+  <material name="dark_grey">
+    <color rgba="0.35 0.35 0.38 1.0" />
+  </material>
+  <material name="light_grey">
+    <color rgba="0.72 0.72 0.75 1.0" />
+  </material>
+  <material name="blue">
+    <color rgba="0.25 0.45 0.85 1.0" />
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.28 0.20 0.16" />
+      </geometry>
+      <material name="dark_grey" />
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.28 0.20 0.16" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="trunk1">
+    <visual>
+      <origin xyz="0.06 0.0 0.18" rpy="0 0 0" />
+      <geometry>
+        <box size="0.16 0.14 0.36" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.06 0.0 0.18" rpy="0 0 0" />
+      <geometry>
+        <box size="0.16 0.14 0.36" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="trunk_J1" type="revolute">
+    <origin xyz="0 0 0.161000000045019" rpy="0 0 3.14159265358979" />
+    <parent link="base_link" />
+    <child link="trunk1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.1416" upper="3.1416" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="trunk2">
+    <visual>
+      <origin xyz="-0.08 -0.08 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.26 0.26 0.14" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="-0.08 -0.08 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.26 0.26 0.14" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="trunk_J2" type="revolute">
+    <origin xyz="0.119999999999998 0 0.415" rpy="-1.5707963267949 0 0" />
+    <parent link="trunk1" />
+    <child link="trunk2" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-3.1416" upper="3.1416" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="trunk3">
+    <visual>
+      <origin xyz="0.0 -0.18 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.24 0.42 0.16" />
+      </geometry>
+      <material name="dark_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 -0.18 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.24 0.42 0.16" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="trunk_J3" type="revolute">
+    <origin xyz="-0.212132034355965 -0.212132034355963 0" rpy="0 0 0" />
+    <parent link="trunk2" />
+    <child link="trunk3" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.1416" upper="3.1416" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Right_link1">
+    <visual>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.04" />
+      </geometry>
+      <material name="blue" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.04" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Right_J1" type="revolute">
+    <origin xyz="0 -0.384999999999999 0.136199999954927" rpy="0 0 0" />
+    <parent link="trunk3" />
+    <child link="Right_link1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.8797" upper="2.8797" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Right_link2">
+    <visual>
+      <origin xyz="0.0 -0.08 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.07 0.18 0.07" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 -0.08 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.07 0.18 0.07" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Right_J2" type="revolute">
+    <origin xyz="0 0 0.0846" rpy="3.14159265358979 1.5707963267949 0" />
+    <parent link="Right_link1" />
+    <child link="Right_link2" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.9198" upper="0.08" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Right_link3">
+    <visual>
+      <origin xyz="0.0 0.0 -0.145" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.06 0.29" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 -0.145" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.06 0.29" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Right_J3" type="revolute">
+    <origin xyz="0 -0.141000000042135 0" rpy="-1.5707963267949 0 0" />
+    <parent link="Right_link2" />
+    <child link="Right_link3" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-2.8797" upper="2.8797" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Right_link4">
+    <visual>
+      <origin xyz="0.0 0.07 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.18 0.06" />
+      </geometry>
+      <material name="blue" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.07 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.18 0.06" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Right_J4" type="revolute">
+    <origin xyz="0 0 -0.178999999999999" rpy="-1.5707963267949 0 -1.5707963267949" />
+    <parent link="Right_link3" />
+    <child link="Right_link4" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.8753" upper="2.0943" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Right_link5">
+    <visual>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.035" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.035" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Right_J5" type="revolute">
+    <origin xyz="0 0.140000235405189 0" rpy="-1.5707963267949 0 0" />
+    <parent link="Right_link4" />
+    <child link="Right_link5" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.8797" upper="2.8797" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Right_link6">
+    <visual>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.03" />
+      </geometry>
+      <material name="blue" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.03" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Right_J6" type="revolute">
+    <origin xyz="0 0 0.17" rpy="-1.5707963267949 0 1.5707963267949" />
+    <parent link="Right_link5" />
+    <child link="Right_link6" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.6981" upper="0.6981" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Right_link7">
+    <visual>
+      <origin xyz="0.06 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.14 0.05 0.05" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.06 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.14 0.05 0.05" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Right_J7" type="revolute">
+    <origin xyz="0 0 0" rpy="1.5707963267949 0 -1.5707963267949" />
+    <parent link="Right_link6" />
+    <child link="Right_link7" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.6981" upper="0.6981" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="rhand">
+    <visual>
+      <origin xyz="0.03 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.03 0.03" />
+      </geometry>
+      <material name="dark_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.03 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.03 0.03" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rfix_joint" type="fixed">
+    <origin xyz="0.1041 0 0" rpy="0 0 0" />
+    <parent link="Right_link7" />
+    <child link="rhand" />
+  </joint>
+
+  <link name="Left_link1">
+    <visual>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.04" />
+      </geometry>
+      <material name="blue" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.04" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Left_J1" type="revolute">
+    <origin xyz="0 -0.384999999999999 -0.136199999954923" rpy="-3.14159265358979 0 0" />
+    <parent link="trunk3" />
+    <child link="Left_link1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.8797" upper="2.8797" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Left_link2">
+    <visual>
+      <origin xyz="0.0 0.08 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.07 0.18 0.07" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.08 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.07 0.18 0.07" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Left_J2" type="revolute">
+    <origin xyz="0 0 0.0846000000000572" rpy="3.14159265358979 1.5707963267949 0" />
+    <parent link="Left_link1" />
+    <child link="Left_link2" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.08" upper="1.9198" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Left_link3">
+    <visual>
+      <origin xyz="0.0 0.0 -0.145" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.06 0.29" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 -0.145" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.06 0.29" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Left_J3" type="revolute">
+    <origin xyz="0 0.141000000042135 0" rpy="-1.5707963267949 0 3.14159265358979" />
+    <parent link="Left_link2" />
+    <child link="Left_link3" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-2.8797" upper="2.8797" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Left_link4">
+    <visual>
+      <origin xyz="0.0 -0.07 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.18 0.06" />
+      </geometry>
+      <material name="blue" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 -0.07 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.18 0.06" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Left_J4" type="revolute">
+    <origin xyz="0 0 -0.178999999999999" rpy="1.5707963267949 0 -1.5707963267949" />
+    <parent link="Left_link3" />
+    <child link="Left_link4" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-2.0943" upper="0.8753" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Left_link5">
+    <visual>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.035" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.035" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Left_J5" type="revolute">
+    <origin xyz="0 -0.140000235405188 0" rpy="1.5707963267949 0 0" />
+    <parent link="Left_link4" />
+    <child link="Left_link5" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.8797" upper="2.8797" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Left_link6">
+    <visual>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.03" />
+      </geometry>
+      <material name="blue" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.08" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.16" radius="0.03" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Left_J6" type="revolute">
+    <origin xyz="0 0 0.17" rpy="-1.5707963267949 0 1.5707963267949" />
+    <parent link="Left_link5" />
+    <child link="Left_link6" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.6981" upper="0.6981" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Left_link7">
+    <visual>
+      <origin xyz="0.06 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.14 0.05 0.05" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.06 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.14 0.05 0.05" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Left_J7" type="revolute">
+    <origin xyz="0 0 0" rpy="0 1.5707963267949 0" />
+    <parent link="Left_link6" />
+    <child link="Left_link7" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.6981" upper="0.6981" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="lhand">
+    <visual>
+      <origin xyz="0.03 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.03 0.03" />
+      </geometry>
+      <material name="dark_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.03 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.06 0.03 0.03" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="lfix_joint" type="fixed">
+    <origin xyz="0 -0.1041 0" rpy="3.1416 0 -1.5708" />
+    <parent link="Left_link7" />
+    <child link="lhand" />
+  </joint>
+
+  <link name="Head1">
+    <visual>
+      <origin xyz="0 0 0.10" rpy="0 0 0" />
+      <geometry>
+        <box size="0.10 0.10 0.20" />
+      </geometry>
+      <material name="light_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.10" rpy="0 0 0" />
+      <geometry>
+        <box size="0.10 0.10 0.20" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Head_J1" type="revolute">
+    <origin xyz="0 -0.467500000000006 0" rpy="1.5707963267949 0 0" />
+    <parent link="trunk3" />
+    <child link="Head1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.1416" upper="3.1416" effort="0" velocity="2.0" />
+  </joint>
+
+  <link name="Head2">
+    <visual>
+      <origin xyz="0.0 0.05 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.16 0.16 0.12" />
+      </geometry>
+      <material name="dark_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.05 0.0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.16 0.16 0.12" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Head_J2" type="revolute">
+    <origin xyz="0 0 0.128500000000001" rpy="1.5707963267949 0 0" />
+    <parent link="Head1" />
+    <child link="Head2" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.1416" upper="3.1416" effort="0" velocity="2.0" />
+  </joint>
+</robot>

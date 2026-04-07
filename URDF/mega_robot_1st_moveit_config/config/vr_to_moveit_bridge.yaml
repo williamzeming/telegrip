@@ -1,0 +1,94 @@
+vr_to_moveit_bridge:
+  ros__parameters:
+    planning_frame: base_link
+    publish_rate_hz: 15.0
+    ik_service_name: /compute_ik
+    ik_timeout_sec: 0.05
+    avoid_collisions: false
+    world_frame: vr_world
+    robot_base_translation_xyz: [0.75, 0.0, 0.0]
+    robot_base_rpy_deg: [0.0, 0.0, 0.0]
+    joint_names:
+      - trunk_J1
+      - trunk_J2
+      - trunk_J3
+      - Right_J1
+      - Right_J2
+      - Right_J3
+      - Right_J4
+      - Right_J5
+      - Right_J6
+      - Right_J7
+      - Left_J1
+      - Left_J2
+      - Left_J3
+      - Left_J4
+      - Left_J5
+      - Left_J6
+      - Left_J7
+      - Head_J1
+      - Head_J2
+    initial_positions:
+      trunk_J1: 0.0
+      trunk_J2: 0.0
+      trunk_J3: 0.0
+      Right_J1: 0.0
+      Right_J2: -0.6
+      Right_J3: 0.0
+      Right_J4: 1.2
+      Right_J5: 0.0
+      Right_J6: 0.0
+      Right_J7: 0.0
+      Left_J1: 0.0
+      Left_J2: 0.6
+      Left_J3: 0.0
+      Left_J4: -1.2
+      Left_J5: 0.0
+      Left_J6: 0.0
+      Left_J7: 0.0
+      Head_J1: 0.0
+      Head_J2: 0.0
+    left:
+      enabled: true
+      input_pose_topic: /teleop/left/command_pose
+      input_enable_topic: /telegrip_calibrated/left/enable
+      output_pose_topic: /mega_moveit/left/target_pose
+      ik_group_name: left_arm
+      ik_link_name: lhand
+      translation_xyz: [0.478, 0.486, 0.785]
+      rotation_rpy_deg: [0.0, 0.0, 0.0]
+      scale_xyz: [0.35, 0.25, 0.25]
+      workspace_min_xyz: [0.34, 0.26, 0.55]
+      workspace_max_xyz: [0.55, 0.50, 0.85]
+      neutral_quaternion_xyzw: [0.0, 0.7071068, 0.0, 0.7071068]
+      track_orientation: false
+      arm_joint_names:
+        - Left_J1
+        - Left_J2
+        - Left_J3
+        - Left_J4
+        - Left_J5
+        - Left_J6
+        - Left_J7
+    right:
+      enabled: true
+      input_pose_topic: /teleop/right/command_pose
+      input_enable_topic: /telegrip_calibrated/right/enable
+      output_pose_topic: /mega_moveit/right/target_pose
+      ik_group_name: right_arm
+      ik_link_name: rhand
+      translation_xyz: [0.478, -0.486, 0.785]
+      rotation_rpy_deg: [0.0, 0.0, 0.0]
+      scale_xyz: [0.35, 0.25, 0.25]
+      workspace_min_xyz: [0.30, -0.55, 0.45]
+      workspace_max_xyz: [0.55, -0.20, 0.85]
+      neutral_quaternion_xyzw: [0.0, 0.7071068, 0.0, 0.7071068]
+      track_orientation: false
+      arm_joint_names:
+        - Right_J1
+        - Right_J2
+        - Right_J3
+        - Right_J4
+        - Right_J5
+        - Right_J6
+        - Right_J7

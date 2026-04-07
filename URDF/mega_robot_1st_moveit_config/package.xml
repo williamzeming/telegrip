@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>mega_robot_1st_moveit_config</name>
+  <version>0.0.0</version>
+  <description>MoveIt 2 configuration for the Mega Robot dual-arm upper body.</description>
+
+  <maintainer email="andy@example.com">Andy</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>ament_index_python</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>launch</depend>
+  <depend>launch_ros</depend>
+  <depend>moveit_configs_utils</depend>
+  <depend>moveit_msgs</depend>
+  <depend>moveit_ros_move_group</depend>
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>moveit_ros_visualization</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>rviz2</depend>
+  <depend>tf2_ros</depend>
+  <depend>xacro</depend>
+
+  <exec_depend>mega_robot_1st_urdf</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

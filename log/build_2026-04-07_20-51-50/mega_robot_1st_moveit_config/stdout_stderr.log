@@ -1,0 +1,40 @@
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/config/joint_limits.yaml
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/config/kinematics.yaml
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/config/moveit_controllers.yaml
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/config/ompl_planning.yaml
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/config/vr_to_moveit_bridge.yaml
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/launch/__pycache__/moveit_rviz.launch.cpython-310.pyc
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/launch/__pycache__/teleop_dual_arm.launch.cpython-310.pyc
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/launch/moveit_rviz.launch.py
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/launch/teleop_dual_arm.launch.py
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/rviz/mega_robot_dual_arm.rviz
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/srdf/mega_robot_1st.srdf
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/urdf/whole_robot_moveit_display.urdf
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/ament_index/resource_index/package_run_dependencies/mega_robot_1st_moveit_config
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/ament_index/resource_index/parent_prefix_path/mega_robot_1st_moveit_config
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/environment/path.sh
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/environment/path.dsv
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/local_setup.bash
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/local_setup.sh
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/local_setup.zsh
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/local_setup.dsv
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.dsv
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/ament_index/resource_index/packages/mega_robot_1st_moveit_config
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/cmake/mega_robot_1st_moveit_configConfig.cmake
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/cmake/mega_robot_1st_moveit_configConfig-version.cmake
+-- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.xml

@@ -34,6 +34,7 @@ dev = [
 
 [project.scripts]
 telegrip = "telegrip.main:main_cli"
+telegrip-ros2-moveit-bridge = "telegrip.ros2_moveit_bridge:main"
 
 [project.urls]
 Homepage = "https://github.com/your-username/vr_so100_teleoperation"

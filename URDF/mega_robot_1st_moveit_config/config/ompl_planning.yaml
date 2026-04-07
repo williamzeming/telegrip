@@ -1,0 +1,26 @@
+planner_configs:
+  RRTConnectkConfigDefault:
+    type: geometric::RRTConnect
+    range: 0.0
+  RRTstarkConfigDefault:
+    type: geometric::RRTstar
+    range: 0.0
+    goal_bias: 0.05
+    delay_collision_checking: 1
+
+left_arm:
+  planner_configs:
+    - RRTConnectkConfigDefault
+    - RRTstarkConfigDefault
+  default_planner_config: RRTConnectkConfigDefault
+
+right_arm:
+  planner_configs:
+    - RRTConnectkConfigDefault
+    - RRTstarkConfigDefault
+  default_planner_config: RRTConnectkConfigDefault
+
+both_arms:
+  planner_configs:
+    - RRTConnectkConfigDefault
+  default_planner_config: RRTConnectkConfigDefault

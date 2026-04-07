@@ -1,0 +1,49 @@
+[0.008s] Invoking command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf': /usr/bin/cmake --build /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf -- -j32 -l32
+[0.054s] Invoked command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf' returned '0': /usr/bin/cmake --build /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf -- -j32 -l32
+[0.076s] Invoking command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf': /usr/bin/cmake --install /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf
+[0.087s] -- Install configuration: ""
+[0.088s] -- Execute custom install script
+[0.089s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Head1.STL
+[0.089s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Head2.STL
+[0.089s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link1.STL
+[0.089s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link2.STL
+[0.089s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link3.STL
+[0.089s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link4.STL
+[0.089s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link5.STL
+[0.089s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link6.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link7.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link1.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link2.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link3.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link4.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link5.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link6.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link7.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/base_link.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/trunk1.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/trunk2.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/trunk3.STL
+[0.090s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/urdf/whole_robot.csv
+[0.091s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/urdf/whole_robot.urdf
+[0.091s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/urdf/whole_robot.urdf.backup
+[0.091s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/urdf/whole_robot_moveit.urdf
+[0.091s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/urdf/whole_robot_withhand.urdf
+[0.091s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/launch/display.launch.py
+[0.091s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/launch/gazebo.launch.py
+[0.091s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/rviz/mega_robot_1st.rviz
+[0.091s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/ament_index/resource_index/package_run_dependencies/mega_robot_1st_urdf
+[0.092s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/ament_index/resource_index/parent_prefix_path/mega_robot_1st_urdf
+[0.092s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/environment/ament_prefix_path.sh
+[0.092s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/environment/ament_prefix_path.dsv
+[0.092s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/environment/path.sh
+[0.092s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/environment/path.dsv
+[0.092s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/local_setup.bash
+[0.092s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/local_setup.sh
+[0.092s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/local_setup.zsh
+[0.092s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/local_setup.dsv
+[0.093s] -- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.dsv
+[0.102s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/ament_index/resource_index/packages/mega_robot_1st_urdf
+[0.102s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/cmake/mega_robot_1st_urdfConfig.cmake
+[0.102s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/cmake/mega_robot_1st_urdfConfig-version.cmake
+[0.102s] -- Up-to-date symlink: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.xml
+[0.104s] Invoked command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf' returned '0': /usr/bin/cmake --install /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf

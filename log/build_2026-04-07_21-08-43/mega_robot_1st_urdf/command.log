@@ -1,0 +1,4 @@
+Invoking command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf': /usr/bin/cmake --build /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf -- -j32 -l32
+Invoked command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf' returned '0': /usr/bin/cmake --build /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf -- -j32 -l32
+Invoking command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf': /usr/bin/cmake --install /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf
+Invoked command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf' returned '0': /usr/bin/cmake --install /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf

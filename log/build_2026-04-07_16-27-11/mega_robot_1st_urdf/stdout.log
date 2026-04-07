@@ -1,0 +1,64 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Head1.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Head2.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link1.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link2.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link3.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link4.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link5.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link6.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Left_link7.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link1.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link2.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link3.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link4.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link5.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link6.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/Right_link7.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/base_link.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/trunk1.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/trunk2.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/meshes/trunk3.STL
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/urdf/whole_robot.csv
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/urdf/whole_robot.urdf
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/urdf/whole_robot.urdf.backup
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/urdf/whole_robot_moveit.urdf
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/urdf/whole_robot_withhand.urdf
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/launch/display.launch.py
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/launch/gazebo.launch.py
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/rviz/mega_robot_1st.rviz
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/ament_index/resource_index/package_run_dependencies/mega_robot_1st_urdf
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/ament_index/resource_index/parent_prefix_path/mega_robot_1st_urdf
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/environment/ament_prefix_path.sh
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/environment/ament_prefix_path.dsv
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/environment/path.sh
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/environment/path.dsv
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/local_setup.bash
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/local_setup.sh
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/local_setup.zsh
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/local_setup.dsv
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.dsv
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/ament_index/resource_index/packages/mega_robot_1st_urdf
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/cmake/mega_robot_1st_urdfConfig.cmake
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/cmake/mega_robot_1st_urdfConfig-version.cmake
+-- Symlinking: /home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.xml

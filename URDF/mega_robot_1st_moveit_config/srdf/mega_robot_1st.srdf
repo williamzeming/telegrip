@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="mega_robot_1st_urdf">
+  <virtual_joint name="world_joint" type="fixed" parent_frame="world" child_link="base_link" />
+
+  <group name="right_arm">
+    <chain base_link="trunk3" tip_link="rhand" />
+  </group>
+
+  <group name="left_arm">
+    <chain base_link="trunk3" tip_link="lhand" />
+  </group>
+
+  <group name="both_arms">
+    <group name="left_arm" />
+    <group name="right_arm" />
+  </group>
+
+  <end_effector name="right_hand" parent_link="rhand" group="right_arm" />
+  <end_effector name="left_hand" parent_link="lhand" group="left_arm" />
+
+  <group_state name="home" group="right_arm">
+    <joint name="Right_J1" value="0.0" />
+    <joint name="Right_J2" value="-0.6" />
+    <joint name="Right_J3" value="0.0" />
+    <joint name="Right_J4" value="1.2" />
+    <joint name="Right_J5" value="0.0" />
+    <joint name="Right_J6" value="0.0" />
+    <joint name="Right_J7" value="0.0" />
+  </group_state>
+
+  <group_state name="home" group="left_arm">
+    <joint name="Left_J1" value="0.0" />
+    <joint name="Left_J2" value="0.6" />
+    <joint name="Left_J3" value="0.0" />
+    <joint name="Left_J4" value="-1.2" />
+    <joint name="Left_J5" value="0.0" />
+    <joint name="Left_J6" value="0.0" />
+    <joint name="Left_J7" value="0.0" />
+  </group_state>
+
+  <group_state name="home" group="both_arms">
+    <joint name="Right_J1" value="0.0" />
+    <joint name="Right_J2" value="-0.6" />
+    <joint name="Right_J3" value="0.0" />
+    <joint name="Right_J4" value="1.2" />
+    <joint name="Right_J5" value="0.0" />
+    <joint name="Right_J6" value="0.0" />
+    <joint name="Right_J7" value="0.0" />
+    <joint name="Left_J1" value="0.0" />
+    <joint name="Left_J2" value="0.6" />
+    <joint name="Left_J3" value="0.0" />
+    <joint name="Left_J4" value="-1.2" />
+    <joint name="Left_J5" value="0.0" />
+    <joint name="Left_J6" value="0.0" />
+    <joint name="Left_J7" value="0.0" />
+  </group_state>
+
+  <disable_collisions link1="base_link" link2="trunk1" reason="Adjacent" />
+  <disable_collisions link1="trunk1" link2="trunk2" reason="Adjacent" />
+  <disable_collisions link1="trunk2" link2="trunk3" reason="Adjacent" />
+  <disable_collisions link1="trunk3" link2="Right_link1" reason="Adjacent" />
+  <disable_collisions link1="Right_link1" link2="Right_link2" reason="Adjacent" />
+  <disable_collisions link1="Right_link2" link2="Right_link3" reason="Adjacent" />
+  <disable_collisions link1="Right_link3" link2="Right_link4" reason="Adjacent" />
+  <disable_collisions link1="Right_link4" link2="Right_link5" reason="Adjacent" />
+  <disable_collisions link1="Right_link5" link2="Right_link6" reason="Adjacent" />
+  <disable_collisions link1="Right_link6" link2="Right_link7" reason="Adjacent" />
+  <disable_collisions link1="Right_link7" link2="rhand" reason="Adjacent" />
+  <disable_collisions link1="trunk3" link2="Left_link1" reason="Adjacent" />
+  <disable_collisions link1="Left_link1" link2="Left_link2" reason="Adjacent" />
+  <disable_collisions link1="Left_link2" link2="Left_link3" reason="Adjacent" />
+  <disable_collisions link1="Left_link3" link2="Left_link4" reason="Adjacent" />
+  <disable_collisions link1="Left_link4" link2="Left_link5" reason="Adjacent" />
+  <disable_collisions link1="Left_link5" link2="Left_link6" reason="Adjacent" />
+  <disable_collisions link1="Left_link6" link2="Left_link7" reason="Adjacent" />
+  <disable_collisions link1="Left_link7" link2="lhand" reason="Adjacent" />
+  <disable_collisions link1="trunk3" link2="Head1" reason="Adjacent" />
+  <disable_collisions link1="Head1" link2="Head2" reason="Adjacent" />
+</robot>

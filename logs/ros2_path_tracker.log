@@ -1,5 +1,5 @@
 pybullet build time: Jan 29 2025 23:16:28
-[INFO] [1775542013.134459807] [pose_path_tracker]: Pose path tracker started with 500 max points per topic
+[INFO] [1775568055.154509637] [pose_path_tracker]: Pose path tracker started with 500 max points per topic
 Traceback (most recent call last):
   File "/home/andy/miniconda3/envs/teleop/lib/python3.10/runpy.py", line 196, in _run_module_as_main
     return _run_code(code, main_globals, None,

@@ -1,0 +1,1 @@
+/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf/ament_cmake_environment_hooks/local_setup.bash
