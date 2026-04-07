@@ -22,6 +22,7 @@ AFRAME.registerComponent('controller-updater', {
 
     this.leftHand = document.querySelector('#leftHand');
     this.rightHand = document.querySelector('#rightHand');
+    this.headset = document.querySelector('#headset');
     this.leftHandInfoText = document.querySelector('#leftHandInfo');
     this.rightHandInfoText = document.querySelector('#rightHandInfo');
 
@@ -124,6 +125,7 @@ AFRAME.registerComponent('controller-updater', {
       // 检查具体缺少哪些元素
       if (!this.leftHand) console.error("Left hand entity not found");
       if (!this.rightHand) console.error("Right hand entity not found");
+      if (!this.headset) console.warn("Headset entity not found");
       if (!this.leftHandInfoText) console.error("Left hand info text not found");
       if (!this.rightHandInfoText) console.error("Right hand info text not found");
       return;
@@ -509,6 +511,36 @@ AFRAME.registerComponent('controller-updater', {
     // 如果控制器可见，则更新控制器文本
     if (!this.leftHand || !this.rightHand) return;
 
+    let headset = null;
+    if (this.headset) {
+        const headsetWorldPosition = new THREE.Vector3();
+        const headsetWorldQuaternion = new THREE.Quaternion();
+        const headsetWorldEuler = new THREE.Euler();
+
+        this.headset.object3D.getWorldPosition(headsetWorldPosition);
+        this.headset.object3D.getWorldQuaternion(headsetWorldQuaternion);
+        headsetWorldEuler.setFromQuaternion(headsetWorldQuaternion, 'XYZ');
+
+        headset = {
+            position: {
+                x: headsetWorldPosition.x,
+                y: headsetWorldPosition.y,
+                z: headsetWorldPosition.z
+            },
+            rotation: {
+                x: THREE.MathUtils.radToDeg(headsetWorldEuler.x),
+                y: THREE.MathUtils.radToDeg(headsetWorldEuler.y),
+                z: THREE.MathUtils.radToDeg(headsetWorldEuler.z)
+            },
+            quaternion: {
+                x: headsetWorldQuaternion.x,
+                y: headsetWorldQuaternion.y,
+                z: headsetWorldQuaternion.z,
+                w: headsetWorldQuaternion.w
+            }
+        };
+    }
+
     // Collect data from both controllers
     // 收集两个控制器的数据
     const leftController = {
@@ -645,24 +677,28 @@ AFRAME.registerComponent('controller-updater', {
     if (transport.mode === 'https-fallback') {
         const hasValidLeft = leftController.position && (leftController.position.x !== 0 || leftController.position.y !== 0 || leftController.position.z !== 0);
         const hasValidRight = rightController.position && (rightController.position.x !== 0 || rightController.position.y !== 0 || rightController.position.z !== 0);
+        const hasValidHeadset = !!headset;
 
-        if (hasValidLeft || hasValidRight) {
+        if (hasValidLeft || hasValidRight || hasValidHeadset) {
             const dualControllerData = {
                 timestamp: Date.now(),
                 leftController: leftController,
-                rightController: rightController
+                rightController: rightController,
+                headset: headset
             };
             this.sendViaHttps(dualControllerData);
         }
     } else if (this.websocket && this.websocket.readyState === WebSocket.OPEN) {
         const hasValidLeft = leftController.position && (leftController.position.x !== 0 || leftController.position.y !== 0 || leftController.position.z !== 0);
         const hasValidRight = rightController.position && (rightController.position.x !== 0 || rightController.position.y !== 0 || rightController.position.z !== 0);
+        const hasValidHeadset = !!headset;
         
-        if (hasValidLeft || hasValidRight) {
+        if (hasValidLeft || hasValidRight || hasValidHeadset) {
             const dualControllerData = {
                 timestamp: Date.now(),
                 leftController: leftController,
-                rightController: rightController
+                rightController: rightController,
+                headset: headset
             };
             this.websocket.send(JSON.stringify(dualControllerData));
         }

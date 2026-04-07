@@ -48,6 +48,8 @@ class PosePathTracker(Node):
         topic_pairs = {
             "telegrip_left": ("/telegrip/left/pose", "/telegrip/left/path"),
             "telegrip_right": ("/telegrip/right/pose", "/telegrip/right/path"),
+            "telegrip_calibrated_left": ("/telegrip_calibrated/left/pose", "/telegrip_calibrated/left/path"),
+            "telegrip_calibrated_right": ("/telegrip_calibrated/right/pose", "/telegrip_calibrated/right/path"),
             "teleop_left": ("/teleop/left/command_pose", "/teleop/left/path"),
             "teleop_right": ("/teleop/right/command_pose", "/teleop/right/path"),
         }

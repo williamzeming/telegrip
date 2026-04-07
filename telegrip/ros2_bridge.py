@@ -51,6 +51,7 @@ class TelegripROS2Bridge:
         self.pose_publishers: Dict[str, object] = {}
         self.enable_publishers: Dict[str, object] = {}
         self.trigger_publishers: Dict[str, object] = {}
+        self.headset_publisher = None
 
     def start(self):
         """Initialize ROS 2 resources."""
@@ -84,6 +85,7 @@ class TelegripROS2Bridge:
                 "left": self.node.create_publisher(Float32, "/telegrip/left/gripper_input", 10),
                 "right": self.node.create_publisher(Float32, "/telegrip/right/gripper_input", 10),
             }
+            self.headset_publisher = self.node.create_publisher(PoseStamped, "/telegrip/headset/pose", 10)
 
             self._started = True
             logger.info("ROS 2 bridge started with frame_id=%s", self.frame_id)
@@ -103,6 +105,7 @@ class TelegripROS2Bridge:
                 self.pose_publishers = {}
                 self.enable_publishers = {}
                 self.trigger_publishers = {}
+                self.headset_publisher = None
                 self._started = False
 
                 if self._owns_rclpy_context and rclpy is not None and rclpy.ok():
@@ -122,6 +125,7 @@ class TelegripROS2Bridge:
             if "leftController" in data and "rightController" in data:
                 self._publish_hand("left", data.get("leftController") or {})
                 self._publish_hand("right", data.get("rightController") or {})
+                self._publish_headset(data.get("headset") or {})
                 return
 
             hand = data.get("hand")
@@ -164,6 +168,45 @@ class TelegripROS2Bridge:
         tf_msg.header.stamp = stamp
         tf_msg.header.frame_id = self.frame_id
         tf_msg.child_frame_id = f"{hand}_controller"
+        tf_msg.transform.translation.x = pose_msg.pose.position.x
+        tf_msg.transform.translation.y = pose_msg.pose.position.y
+        tf_msg.transform.translation.z = pose_msg.pose.position.z
+        tf_msg.transform.rotation.x = qx
+        tf_msg.transform.rotation.y = qy
+        tf_msg.transform.rotation.z = qz
+        tf_msg.transform.rotation.w = qw
+        self.tf_broadcaster.sendTransform(tf_msg)
+
+    def _publish_headset(self, data: Dict):
+        if self.node is None or self.headset_publisher is None:
+            return
+
+        position = data.get("position")
+        if not position:
+            return
+
+        qx, qy, qz, qw = self._extract_quaternion(
+            data.get("quaternion"),
+            data.get("rotation"),
+        )
+        stamp = self.node.get_clock().now().to_msg()
+
+        pose_msg = PoseStamped()
+        pose_msg.header.stamp = stamp
+        pose_msg.header.frame_id = self.frame_id
+        pose_msg.pose.position.x = float(position.get("x", 0.0))
+        pose_msg.pose.position.y = float(position.get("y", 0.0))
+        pose_msg.pose.position.z = float(position.get("z", 0.0))
+        pose_msg.pose.orientation.x = qx
+        pose_msg.pose.orientation.y = qy
+        pose_msg.pose.orientation.z = qz
+        pose_msg.pose.orientation.w = qw
+        self.headset_publisher.publish(pose_msg)
+
+        tf_msg = TransformStamped()
+        tf_msg.header.stamp = stamp
+        tf_msg.header.frame_id = self.frame_id
+        tf_msg.child_frame_id = "headset"
         tf_msg.transform.translation.x = pose_msg.pose.position.x
         tf_msg.transform.translation.y = pose_msg.pose.position.y
         tf_msg.transform.translation.z = pose_msg.pose.position.z
@@ -239,6 +282,7 @@ class TelegripROS2Bridge:
             "topics": [
                 "/telegrip/left/pose",
                 "/telegrip/right/pose",
+                "/telegrip/headset/pose",
                 "/telegrip/left/enable",
                 "/telegrip/right/enable",
                 "/telegrip/left/gripper_input",
@@ -247,5 +291,6 @@ class TelegripROS2Bridge:
             "tf_frames": [
                 f"{self.frame_id} -> left_controller",
                 f"{self.frame_id} -> right_controller",
+                f"{self.frame_id} -> headset",
             ],
         }
