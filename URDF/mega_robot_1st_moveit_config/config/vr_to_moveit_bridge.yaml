@@ -3,8 +3,9 @@ vr_to_moveit_bridge:
     planning_frame: base_link
     publish_rate_hz: 15.0
     ik_service_name: /compute_ik
-    ik_timeout_sec: 0.05
-    avoid_collisions: false
+    ik_timeout_sec: 0.12
+    ik_seed_towards_initial_ratio: 0.35
+    avoid_collisions: true
     world_frame: vr_world
     robot_base_translation_xyz: [0.75, 0.0, 0.0]
     robot_base_rpy_deg: [0.0, 0.0, 0.0]
@@ -57,11 +58,13 @@ vr_to_moveit_bridge:
       ik_link_name: lhand
       translation_xyz: [0.478, 0.486, 0.785]
       rotation_rpy_deg: [0.0, 0.0, 0.0]
+      position_axis_mapping: ["-z", "-x", "+y"]
       scale_xyz: [0.35, 0.25, 0.25]
-      workspace_min_xyz: [0.34, 0.26, 0.55]
-      workspace_max_xyz: [0.55, 0.50, 0.85]
+      workspace_min_xyz: [0.25, 0.15, 0.35]
+      workspace_max_xyz: [0.65, 0.65, 0.95]
       neutral_quaternion_xyzw: [0.0, 0.7071068, 0.0, 0.7071068]
-      track_orientation: false
+      track_orientation: true
+      orientation_tracking_gain: 0.25
       arm_joint_names:
         - Left_J1
         - Left_J2
@@ -79,11 +82,13 @@ vr_to_moveit_bridge:
       ik_link_name: rhand
       translation_xyz: [0.478, -0.486, 0.785]
       rotation_rpy_deg: [0.0, 0.0, 0.0]
+      position_axis_mapping: ["-z", "-x", "+y"]
       scale_xyz: [0.35, 0.25, 0.25]
-      workspace_min_xyz: [0.30, -0.55, 0.45]
-      workspace_max_xyz: [0.55, -0.20, 0.85]
+      workspace_min_xyz: [0.25, -0.65, 0.35]
+      workspace_max_xyz: [0.65, -0.15, 0.95]
       neutral_quaternion_xyzw: [0.0, 0.7071068, 0.0, 0.7071068]
-      track_orientation: false
+      track_orientation: true
+      orientation_tracking_gain: 0.25
       arm_joint_names:
         - Right_J1
         - Right_J2

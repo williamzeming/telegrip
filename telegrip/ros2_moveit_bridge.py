@@ -53,11 +53,13 @@ class HandConfig:
     ik_link_name: str
     translation_xyz: Vector3
     rotation_rpy_deg: Vector3
+    position_axis_mapping: tuple[str, str, str]
     scale_xyz: Vector3
     workspace_min_xyz: Vector3
     workspace_max_xyz: Vector3
     neutral_quaternion_xyzw: Quaternion
     track_orientation: bool
+    orientation_tracking_gain: float
     arm_joint_names: list[str]
 
     @property
@@ -87,6 +89,10 @@ class VRToMoveItBridge(Node):
         self.publish_rate_hz = float(self.get_parameter("publish_rate_hz").value or 15.0)
         self.ik_service_name = self.get_parameter("ik_service_name").value or "/compute_ik"
         self.ik_timeout_sec = float(self.get_parameter("ik_timeout_sec").value or 0.05)
+        self.ik_seed_towards_initial_ratio = max(
+            0.0,
+            min(1.0, float(self.get_parameter("ik_seed_towards_initial_ratio").value or 0.0)),
+        )
         self.avoid_collisions = bool(self.get_parameter("avoid_collisions").value)
         self.world_frame = self.get_parameter("world_frame").value or "vr_world"
         self.robot_base_translation_xyz = tuple(
@@ -102,10 +108,11 @@ class VRToMoveItBridge(Node):
             raise RuntimeError("`joint_names` parameter must not be empty.")
 
         initial_positions_params = self.get_parameters_by_prefix("initial_positions")
-        self.current_joint_positions: Dict[str, float] = {
+        self.initial_joint_positions: Dict[str, float] = {
             name: float(initial_positions_params.get(name).value) if name in initial_positions_params else 0.0
             for name in self.joint_names
         }
+        self.current_joint_positions: Dict[str, float] = dict(self.initial_joint_positions)
 
         self.hand_configs: Dict[str, HandConfig] = {}
         self.hand_runtime: Dict[str, HandRuntimeState] = {
@@ -129,7 +136,9 @@ class VRToMoveItBridge(Node):
 
         self.get_logger().info(
             f"VR to MoveIt bridge started: planning_frame={self.planning_frame}, "
-            f"ik_service={self.ik_service_name}"
+            f"ik_service={self.ik_service_name}, "
+            f"avoid_collisions={self.avoid_collisions}, "
+            f"seed_towards_initial={self.ik_seed_towards_initial_ratio:.2f}"
         )
 
     def _load_hand_config(self, hand: str):
@@ -148,11 +157,18 @@ class VRToMoveItBridge(Node):
             ik_link_name=str(params.get("ik_link_name").value),
             translation_xyz=tuple(float(v) for v in params.get("translation_xyz").value),
             rotation_rpy_deg=tuple(float(v) for v in params.get("rotation_rpy_deg").value),
+            position_axis_mapping=parse_axis_mapping(
+                params.get("position_axis_mapping").value if "position_axis_mapping" in params else ["-z", "-x", "+y"]
+            ),
             scale_xyz=tuple(float(v) for v in params.get("scale_xyz").value),
             workspace_min_xyz=tuple(float(v) for v in params.get("workspace_min_xyz").value),
             workspace_max_xyz=tuple(float(v) for v in params.get("workspace_max_xyz").value),
             neutral_quaternion_xyzw=tuple(float(v) for v in params.get("neutral_quaternion_xyzw").value),
             track_orientation=bool(params.get("track_orientation").value),
+            orientation_tracking_gain=max(
+                0.0,
+                min(1.0, float(params.get("orientation_tracking_gain").value))
+            ) if "orientation_tracking_gain" in params else 1.0,
             arm_joint_names=[str(name) for name in params.get("arm_joint_names").value],
         )
         self.hand_configs[hand] = config
@@ -219,8 +235,9 @@ class VRToMoveItBridge(Node):
             runtime.reset_reference_on_next_pose = False
 
         delta_vr = subtract_vectors(input_position, runtime.reference_input_position)
-        robot_delta = vr_delta_to_robot(delta_vr, config.scale_xyz)
-        rotated_position = rotate_vector(config.rotation_quaternion, robot_delta)
+        robot_delta = vr_delta_to_robot(delta_vr, config.scale_xyz, config.position_axis_mapping)
+        position_rotation = quaternion_multiply(self.robot_base_quaternion, config.rotation_quaternion)
+        rotated_position = rotate_vector(position_rotation, robot_delta)
         unclamped_position = add_vectors(runtime.anchor_target_position, rotated_position)
         final_position = clamp_vector(unclamped_position, config.workspace_min_xyz, config.workspace_max_xyz)
 
@@ -230,10 +247,15 @@ class VRToMoveItBridge(Node):
                 input_orientation,
                 quaternion_inverse(runtime.reference_input_orientation),
             )
+            softened_relative_orientation = scale_quaternion_rotation(
+                relative_orientation,
+                config.orientation_tracking_gain,
+            )
+            orientation_rotation = quaternion_multiply(self.robot_base_quaternion, config.rotation_quaternion)
             target_orientation = normalize_quaternion(
                 quaternion_multiply(
-                    config.rotation_quaternion,
-                    quaternion_multiply(relative_orientation, runtime.anchor_target_orientation),
+                    orientation_rotation,
+                    quaternion_multiply(softened_relative_orientation, runtime.anchor_target_orientation),
                 )
             )
 
@@ -278,13 +300,25 @@ class VRToMoveItBridge(Node):
         request.ik_request.pose_stamped = target_pose
         request.ik_request.avoid_collisions = self.avoid_collisions
         request.ik_request.timeout = duration_from_seconds(self.ik_timeout_sec)
-        request.ik_request.robot_state = self._build_robot_state()
+        request.ik_request.robot_state = self._build_robot_state(config)
         return request
 
-    def _build_robot_state(self) -> RobotState:
+    def _build_robot_state(self, active_config: Optional[HandConfig] = None) -> RobotState:
         state = RobotState()
         state.joint_state.name = list(self.joint_names)
-        state.joint_state.position = [float(self.current_joint_positions[name]) for name in self.joint_names]
+        positions = [float(self.current_joint_positions[name]) for name in self.joint_names]
+
+        if active_config is not None and self.ik_seed_towards_initial_ratio > 0.0:
+            blend_ratio = self.ik_seed_towards_initial_ratio
+            arm_joint_names = set(active_config.arm_joint_names)
+            for index, joint_name in enumerate(state.joint_state.name):
+                if joint_name not in arm_joint_names:
+                    continue
+                current_position = float(self.current_joint_positions[joint_name])
+                initial_position = float(self.initial_joint_positions.get(joint_name, current_position))
+                positions[index] = ((1.0 - blend_ratio) * current_position) + (blend_ratio * initial_position)
+
+        state.joint_state.position = positions
         state.joint_state.velocity = []
         state.joint_state.effort = []
         return state
@@ -381,6 +415,32 @@ def normalize_quaternion(quaternion: Quaternion) -> Quaternion:
     return (x / norm, y / norm, z / norm, w / norm)
 
 
+def scale_quaternion_rotation(quaternion: Quaternion, scale: float) -> Quaternion:
+    if scale <= 0.0:
+        return (0.0, 0.0, 0.0, 1.0)
+    if scale >= 1.0:
+        return normalize_quaternion(quaternion)
+
+    x, y, z, w = normalize_quaternion(quaternion)
+    w = max(-1.0, min(1.0, w))
+    half_angle = math.acos(w)
+    sin_half_angle = math.sin(half_angle)
+
+    if sin_half_angle <= 1e-8:
+        return (0.0, 0.0, 0.0, 1.0)
+
+    axis = (x / sin_half_angle, y / sin_half_angle, z / sin_half_angle)
+    scaled_half_angle = half_angle * scale
+    scaled_sin = math.sin(scaled_half_angle)
+    scaled_quaternion = (
+        axis[0] * scaled_sin,
+        axis[1] * scaled_sin,
+        axis[2] * scaled_sin,
+        math.cos(scaled_half_angle),
+    )
+    return normalize_quaternion(scaled_quaternion)
+
+
 def rotate_vector(quaternion: Quaternion, vector: Vector3) -> Vector3:
     q = normalize_quaternion(quaternion)
     x, y, z = vector
@@ -389,13 +449,54 @@ def rotate_vector(quaternion: Quaternion, vector: Vector3) -> Vector3:
     return (rotated[0], rotated[1], rotated[2])
 
 
-def vr_delta_to_robot(delta_vr: Vector3, scale_xyz: Vector3) -> Vector3:
-    """Match the project's existing VR-to-robot axis convention."""
-    delta_x, delta_y, delta_z = delta_vr
+def parse_axis_mapping(raw_mapping) -> tuple[str, str, str]:
+    mapping = tuple(str(entry).strip().lower() for entry in raw_mapping)
+    if len(mapping) != 3:
+        raise ValueError(
+            "`position_axis_mapping` must provide exactly three entries, "
+            f"got {mapping!r}."
+        )
+
+    for entry in mapping:
+        if not entry:
+            raise ValueError("Axis mapping entries must not be empty.")
+        axis = entry[-1]
+        if axis not in {"x", "y", "z"}:
+            raise ValueError(
+                "`position_axis_mapping` entries must end with x, y, or z, "
+                f"got {entry!r}."
+            )
+        if len(entry) > 1 and entry[0] not in {"+", "-"}:
+            raise ValueError(
+                "`position_axis_mapping` entries must look like x, -x, +y, etc., "
+                f"got {entry!r}."
+            )
+
+    return mapping
+
+
+def vr_delta_to_robot(
+    delta_vr: Vector3,
+    scale_xyz: Vector3,
+    axis_mapping: tuple[str, str, str],
+) -> Vector3:
+    """Map VR delta axes into robot xyz using a configurable axis convention."""
+    axis_values = {
+        "x": float(delta_vr[0]),
+        "y": float(delta_vr[1]),
+        "z": float(delta_vr[2]),
+    }
+
+    robot_components = []
+    for axis_spec, scale in zip(axis_mapping, scale_xyz):
+        sign = -1.0 if axis_spec.startswith("-") else 1.0
+        axis_name = axis_spec[-1]
+        robot_components.append(sign * axis_values[axis_name] * scale)
+
     return (
-        -delta_x * scale_xyz[0],
-        delta_z * scale_xyz[1],
-        delta_y * scale_xyz[2],
+        robot_components[0],
+        robot_components[1],
+        robot_components[2],
     )
 
 

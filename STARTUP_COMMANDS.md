@@ -28,7 +28,7 @@ conda activate teleop
 - `grip` 按键保持逻辑
 - 在 `rviz2` 中显示原始轨迹和保持后的轨迹
 
-### 可选：一键启动整套 ROS 2 链路
+### 可选：一键启动无模型演示版
 
 如果你只是想快速启动整套链路，而不想分 5 个终端手动执行，也可以直接运行：
 
@@ -43,6 +43,12 @@ bash /home/andy/teleOp/telegrip/start_telegrip_ros2_stack.sh
 - `telegrip.ros2_input_adapter --input-prefix /telegrip_calibrated`
 - `telegrip.ros2_path_tracker`
 - 预配置 `rviz2`
+
+这条命令对应的是：
+
+- 无机器人模型版
+- 只显示头显、左右手柄、校正后位姿和轨迹
+- 不启动 `mega_robot`、MoveIt 和 IK 桥接
 
 说明：
 
@@ -281,6 +287,19 @@ conda activate teleop
 bash /home/andy/teleOp/telegrip/start_mega_moveit_teleop.sh
 ```
 
+如果你想直接一键启动“基础 VR ROS2 链路 + Mega 机器人 RViz 遥操版”，可以改用：
+
+```bash
+bash /home/andy/teleOp/telegrip/start_telegrip_mega_demo.sh
+```
+
+这条命令对应的是：
+
+- 有机器人模型版
+- 会先启动基础 VR ROS2 链路（不带基础 RViz）
+- 再启动 `mega_robot` 的 MoveIt + RViz + 桥接节点
+- 适合直接在 RViz 中看机器人跟随手柄运动
+
 它会启动：
 
 - `robot_state_publisher`
@@ -322,6 +341,7 @@ ros2 service call /telegrip_heading_calibrator/calibrate std_srvs/srv/Trigger "{
 2. 再测试左臂
 3. 如果模型跳得太远，调 `URDF/mega_robot_1st_moveit_config/config/vr_to_moveit_bridge.yaml` 中每只手的：
    - `translation_xyz`
+   - `position_axis_mapping`
    - `scale_xyz`
    - `workspace_min_xyz`
    - `workspace_max_xyz`
@@ -329,7 +349,11 @@ ros2 service call /telegrip_heading_calibrator/calibrate std_srvs/srv/Trigger "{
 4. 如果姿态方向不对，优先调：
    - `rotation_rpy_deg`
    - `robot_base_rpy_deg`
-5. 当前桥接逻辑已经改成：
+5. 当前位置映射现在支持按轴显式配置：
+   - `position_axis_mapping: ["-z", "-x", "+y"]`
+   - 表示机器人 `x/y/z` 分别取自 VR 的 `-z/-x/+y`
+   - 如果出现“向右变后退”这类问题，优先先改这个字段，而不是先怀疑 IK
+6. 当前桥接逻辑已经改成：
    - 只有对应手 `grip` 按住时才发该手 IK
    - 每次重新按下 `grip` 都会重置参考点
    - 目标位姿会被夹在各自手臂的可达工作空间内
