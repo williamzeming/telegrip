@@ -674,6 +674,41 @@
     <child
       link="rhand" />
   </joint>
+  <link
+    name="right_tool">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.001 0.001 0.001" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_tool_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="2.541592653589793 0 2.7707963267948967" />
+    <parent
+      link="rhand" />
+    <child
+      link="right_tool" />
+  </joint>
   <!--=============================================================================================-->
   <link
     name="Left_link1">
@@ -1131,6 +1166,41 @@
       link="Left_link7" />
     <child
       link="lhand" />
+  </joint>
+  <link
+    name="left_tool">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.001 0.001 0.001" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_tool_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="-2.541592653589793 0 2.7707963267948967" />
+    <parent
+      link="lhand" />
+    <child
+      link="left_tool" />
   </joint>
   
   <link

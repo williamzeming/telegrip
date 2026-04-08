@@ -8,7 +8,9 @@ function getVrTransportState() {
       websocketUrl: null,
       fallbackUrl: '/api/vr',
       fallbackInFlight: false,
-      lastFallbackPostTs: 0
+      lastFallbackPostTs: 0,
+      reconnectTimer: null,
+      lastSendTs: 0
     };
   }
   return window.__telegripVrTransport;
@@ -61,6 +63,8 @@ AFRAME.registerComponent('controller-updater', {
     const websocketUrl = `wss://${serverHostname}:${websocketPort}`;
     const transportState = getVrTransportState();
     transportState.websocketUrl = websocketUrl;
+    this.keepaliveIntervalMs = 1000;
+    this.keepalivePayload = { timestamp: Date.now(), keepalive: true };
 
     const enableHttpsFallback = (reason) => {
       transportState.mode = 'https-fallback';
@@ -68,30 +72,49 @@ AFRAME.registerComponent('controller-updater', {
       this.reportVRStatus(true);
     };
 
-    try {
-      this.websocket = new WebSocket(websocketUrl);
-      this.websocket.onopen = (event) => {
-        transportState.mode = 'websocket';
-        this.reportVRStatus(true);
-      };
-      this.websocket.onerror = (event) => {
-        console.warn(`WebSocket transport error (${event.type}); using HTTPS fallback.`);
-        enableHttpsFallback('browser blocked or handshake failed');
-      };
-      this.websocket.onclose = (event) => {
-        if (!event.wasClean) {
-          console.error('WebSocket closed unexpectedly.');
-        }
-        this.websocket = null;
-        if (transportState.mode !== 'https-fallback') {
-          enableHttpsFallback(`close code ${event.code}`);
-        }
-      };
-      this.websocket.onmessage = () => {};
-    } catch (error) {
-        console.warn(`Failed to create WebSocket connection to ${websocketUrl}:`, error);
+    this.scheduleWebsocketReconnect = () => {
+      if (!transportState.websocketUrl || transportState.reconnectTimer) {
+        return;
+      }
+      transportState.reconnectTimer = window.setTimeout(() => {
+        transportState.reconnectTimer = null;
+        this.connectWebsocket();
+      }, 1000);
+    };
+
+    this.connectWebsocket = () => {
+      try {
+        const ws = new WebSocket(transportState.websocketUrl);
+        this.websocket = ws;
+        ws.onopen = () => {
+          transportState.mode = 'websocket';
+          this.reportVRStatus(true);
+        };
+        ws.onerror = (event) => {
+          console.warn(`WebSocket transport error (${event.type}); using HTTPS fallback.`);
+          enableHttpsFallback('browser blocked or handshake failed');
+        };
+        ws.onclose = (event) => {
+          if (!event.wasClean) {
+            console.error('WebSocket closed unexpectedly.');
+          }
+          if (this.websocket === ws) {
+            this.websocket = null;
+          }
+          if (transportState.mode !== 'https-fallback') {
+            enableHttpsFallback(`close code ${event.code}`);
+          }
+          this.scheduleWebsocketReconnect();
+        };
+        ws.onmessage = () => {};
+      } catch (error) {
+        console.warn(`Failed to create WebSocket connection to ${transportState.websocketUrl}:`, error);
         enableHttpsFallback(error.message || 'WebSocket constructor failed');
-    }
+        this.scheduleWebsocketReconnect();
+      }
+    };
+
+    this.connectWebsocket();
     // --- End WebSocket Setup ---
     // --- WebSocket 设置结束 ---
 
@@ -219,6 +242,23 @@ AFRAME.registerComponent('controller-updater', {
       .finally(() => {
         transport.fallbackInFlight = false;
       });
+    };
+
+    this.sendKeepaliveIfNeeded = () => {
+      const transport = getVrTransportState();
+      const now = Date.now();
+      if (now - transport.lastSendTs < this.keepaliveIntervalMs) {
+        return;
+      }
+      const keepalivePayload = { ...this.keepalivePayload, timestamp: now };
+      if (transport.mode === 'https-fallback') {
+        this.sendViaHttps(keepalivePayload);
+        return;
+      }
+      if (this.websocket && this.websocket.readyState === WebSocket.OPEN) {
+        this.websocket.send(JSON.stringify(keepalivePayload));
+        transport.lastSendTs = now;
+      }
     };
 
     // --- Helper function to calculate Z-axis rotation from quaternions ---
@@ -687,6 +727,7 @@ AFRAME.registerComponent('controller-updater', {
                 headset: headset
             };
             this.sendViaHttps(dualControllerData);
+            transport.lastSendTs = Date.now();
         }
     } else if (this.websocket && this.websocket.readyState === WebSocket.OPEN) {
         const hasValidLeft = leftController.position && (leftController.position.x !== 0 || leftController.position.y !== 0 || leftController.position.z !== 0);
@@ -701,8 +742,11 @@ AFRAME.registerComponent('controller-updater', {
                 headset: headset
             };
             this.websocket.send(JSON.stringify(dualControllerData));
+            transport.lastSendTs = Date.now();
         }
     }
+
+    this.sendKeepaliveIfNeeded();
   }
 });
 } else {

@@ -54,6 +54,7 @@ class HandConfig:
     translation_xyz: Vector3
     rotation_rpy_deg: Vector3
     position_axis_mapping: tuple[str, str, str]
+    orientation_axis_mapping: tuple[str, str, str]
     scale_xyz: Vector3
     workspace_min_xyz: Vector3
     workspace_max_xyz: Vector3
@@ -65,6 +66,10 @@ class HandConfig:
     @property
     def rotation_quaternion(self) -> Quaternion:
         return quaternion_from_rpy_deg(*self.rotation_rpy_deg)
+
+    @property
+    def orientation_mapping_quaternion(self) -> Quaternion:
+        return quaternion_from_axis_mapping(self.orientation_axis_mapping)
 
 
 @dataclass
@@ -160,6 +165,15 @@ class VRToMoveItBridge(Node):
             position_axis_mapping=parse_axis_mapping(
                 params.get("position_axis_mapping").value if "position_axis_mapping" in params else ["-z", "-x", "+y"]
             ),
+            orientation_axis_mapping=parse_axis_mapping(
+                params.get("orientation_axis_mapping").value
+                if "orientation_axis_mapping" in params
+                else (
+                    params.get("position_axis_mapping").value
+                    if "position_axis_mapping" in params
+                    else ["-z", "-x", "+y"]
+                )
+            ),
             scale_xyz=tuple(float(v) for v in params.get("scale_xyz").value),
             workspace_min_xyz=tuple(float(v) for v in params.get("workspace_min_xyz").value),
             workspace_max_xyz=tuple(float(v) for v in params.get("workspace_max_xyz").value),
@@ -251,11 +265,21 @@ class VRToMoveItBridge(Node):
                 relative_orientation,
                 config.orientation_tracking_gain,
             )
-            orientation_rotation = quaternion_multiply(self.robot_base_quaternion, config.rotation_quaternion)
+            orientation_rotation = quaternion_multiply(
+                quaternion_multiply(self.robot_base_quaternion, config.rotation_quaternion),
+                config.orientation_mapping_quaternion,
+            )
+            mapped_relative_orientation = quaternion_multiply(
+                orientation_rotation,
+                quaternion_multiply(
+                    softened_relative_orientation,
+                    quaternion_inverse(orientation_rotation),
+                ),
+            )
             target_orientation = normalize_quaternion(
                 quaternion_multiply(
-                    orientation_rotation,
-                    quaternion_multiply(softened_relative_orientation, runtime.anchor_target_orientation),
+                    mapped_relative_orientation,
+                    runtime.anchor_target_orientation,
                 )
             )
 
@@ -473,6 +497,71 @@ def parse_axis_mapping(raw_mapping) -> tuple[str, str, str]:
             )
 
     return mapping
+
+
+def quaternion_from_axis_mapping(axis_mapping: tuple[str, str, str]) -> Quaternion:
+    rotation_matrix = rotation_matrix_from_axis_mapping(axis_mapping)
+    return quaternion_from_rotation_matrix(rotation_matrix)
+
+
+def rotation_matrix_from_axis_mapping(axis_mapping: tuple[str, str, str]) -> tuple[tuple[float, float, float], ...]:
+    axis_index = {"x": 0, "y": 1, "z": 2}
+    rows = []
+    for axis_spec in axis_mapping:
+        row = [0.0, 0.0, 0.0]
+        sign = -1.0 if axis_spec.startswith("-") else 1.0
+        row[axis_index[axis_spec[-1]]] = sign
+        rows.append(tuple(row))
+
+    determinant = (
+        rows[0][0] * (rows[1][1] * rows[2][2] - rows[1][2] * rows[2][1])
+        - rows[0][1] * (rows[1][0] * rows[2][2] - rows[1][2] * rows[2][0])
+        + rows[0][2] * (rows[1][0] * rows[2][1] - rows[1][1] * rows[2][0])
+    )
+    if determinant <= 0.0:
+        raise ValueError(
+            "`orientation_axis_mapping` must define a proper rotation (determinant > 0), "
+            f"got {axis_mapping!r}."
+        )
+
+    return (rows[0], rows[1], rows[2])
+
+
+def quaternion_from_rotation_matrix(matrix: tuple[tuple[float, float, float], ...]) -> Quaternion:
+    trace = matrix[0][0] + matrix[1][1] + matrix[2][2]
+    if trace > 0.0:
+        scale = math.sqrt(trace + 1.0) * 2.0
+        quaternion = (
+            (matrix[2][1] - matrix[1][2]) / scale,
+            (matrix[0][2] - matrix[2][0]) / scale,
+            (matrix[1][0] - matrix[0][1]) / scale,
+            0.25 * scale,
+        )
+    elif matrix[0][0] > matrix[1][1] and matrix[0][0] > matrix[2][2]:
+        scale = math.sqrt(1.0 + matrix[0][0] - matrix[1][1] - matrix[2][2]) * 2.0
+        quaternion = (
+            0.25 * scale,
+            (matrix[0][1] + matrix[1][0]) / scale,
+            (matrix[0][2] + matrix[2][0]) / scale,
+            (matrix[2][1] - matrix[1][2]) / scale,
+        )
+    elif matrix[1][1] > matrix[2][2]:
+        scale = math.sqrt(1.0 + matrix[1][1] - matrix[0][0] - matrix[2][2]) * 2.0
+        quaternion = (
+            (matrix[0][1] + matrix[1][0]) / scale,
+            0.25 * scale,
+            (matrix[1][2] + matrix[2][1]) / scale,
+            (matrix[0][2] - matrix[2][0]) / scale,
+        )
+    else:
+        scale = math.sqrt(1.0 + matrix[2][2] - matrix[0][0] - matrix[1][1]) * 2.0
+        quaternion = (
+            (matrix[0][2] + matrix[2][0]) / scale,
+            (matrix[1][2] + matrix[2][1]) / scale,
+            0.25 * scale,
+            (matrix[1][0] - matrix[0][1]) / scale,
+        )
+    return normalize_quaternion(quaternion)
 
 
 def vr_delta_to_robot(

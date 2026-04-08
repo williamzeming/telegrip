@@ -3,11 +3,11 @@
   <virtual_joint name="world_joint" type="fixed" parent_frame="world" child_link="base_link" />
 
   <group name="right_arm">
-    <chain base_link="trunk3" tip_link="rhand" />
+    <chain base_link="trunk3" tip_link="right_tool" />
   </group>
 
   <group name="left_arm">
-    <chain base_link="trunk3" tip_link="lhand" />
+    <chain base_link="trunk3" tip_link="left_tool" />
   </group>
 
   <group name="both_arms">
@@ -15,8 +15,8 @@
     <group name="right_arm" />
   </group>
 
-  <end_effector name="right_hand" parent_link="rhand" group="right_arm" />
-  <end_effector name="left_hand" parent_link="lhand" group="left_arm" />
+  <end_effector name="right_hand" parent_link="right_tool" group="right_arm" />
+  <end_effector name="left_hand" parent_link="left_tool" group="left_arm" />
 
   <group_state name="home" group="right_arm">
     <joint name="Right_J1" value="0.0" />
@@ -66,6 +66,7 @@
   <disable_collisions link1="Right_link5" link2="Right_link6" reason="Adjacent" />
   <disable_collisions link1="Right_link6" link2="Right_link7" reason="Adjacent" />
   <disable_collisions link1="Right_link7" link2="rhand" reason="Adjacent" />
+  <disable_collisions link1="rhand" link2="right_tool" reason="Adjacent" />
   <disable_collisions link1="trunk3" link2="Left_link1" reason="Adjacent" />
   <disable_collisions link1="Left_link1" link2="Left_link2" reason="Adjacent" />
   <disable_collisions link1="Left_link2" link2="Left_link3" reason="Adjacent" />
@@ -74,6 +75,7 @@
   <disable_collisions link1="Left_link5" link2="Left_link6" reason="Adjacent" />
   <disable_collisions link1="Left_link6" link2="Left_link7" reason="Adjacent" />
   <disable_collisions link1="Left_link7" link2="lhand" reason="Adjacent" />
+  <disable_collisions link1="lhand" link2="left_tool" reason="Adjacent" />
   <disable_collisions link1="trunk3" link2="Head1" reason="Adjacent" />
   <disable_collisions link1="Head1" link2="Head2" reason="Adjacent" />
 </robot>

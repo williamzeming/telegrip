@@ -1,6 +1,6 @@
 pybullet build time: Jan 29 2025 23:16:28
-[INFO] [1775619054.282664916] [telegrip_heading_calibrator]: Loaded heading calibration from /home/andy/.cache/telegrip/heading_calibration.json
-[INFO] [1775619054.287687799] [telegrip_heading_calibrator]: Heading calibrator started: /telegrip -> /telegrip_calibrated | yaw_offset=10.2 deg | mirror=False
+[INFO] [1775642745.189632618] [telegrip_heading_calibrator]: Loaded heading calibration from /home/andy/.cache/telegrip/heading_calibration.json
+[INFO] [1775642745.201127962] [telegrip_heading_calibrator]: Heading calibrator started: /telegrip -> /telegrip_calibrated | yaw_offset=14.3 deg | mirror=False
 Traceback (most recent call last):
   File "/home/andy/teleOp/telegrip/telegrip/ros2_heading_calibrator.py", line 426, in main
     rclpy.spin(node)

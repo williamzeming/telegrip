@@ -1,470 +1,427 @@
 pybullet build time: Jan 29 2025 23:16:28
-2026-04-08 11:30:52,296 - telegrip.utils - WARNING - Existing SSL certificate does not match localhost/current LAN IP. Regenerating certificate for headset/browser access.
-2026-04-08 11:30:52,296 - telegrip.utils - INFO - SSL certificates not found, generating self-signed certificates...
-2026-04-08 11:30:52,332 - telegrip.utils - INFO - SSL certificates generated successfully: /home/andy/teleOp/telegrip/cert.pem, /home/andy/teleOp/telegrip/key.pem
-2026-04-08 11:30:52,332 - __main__ - INFO - Starting with configuration:
-2026-04-08 11:30:52,332 - __main__ - INFO -   Robot: disabled
-2026-04-08 11:30:52,332 - __main__ - INFO -   PyBullet: disabled
-2026-04-08 11:30:52,332 - __main__ - INFO -   Headless mode: disabled
-2026-04-08 11:30:52,332 - __main__ - INFO -   VR: enabled
-2026-04-08 11:30:52,332 - __main__ - INFO -   Keyboard: enabled
-2026-04-08 11:30:52,332 - __main__ - INFO -   Auto-connect: disabled
-2026-04-08 11:30:52,332 - __main__ - INFO -   HTTPS Port: 8443
-2026-04-08 11:30:52,332 - __main__ - INFO -   WebSocket Port: 8442
-2026-04-08 11:30:52,332 - __main__ - INFO -   Robot Ports: {'left': '/dev/ttySO100blue', 'right': '/dev/ttySO100red'}
-2026-04-08 11:30:52,332 - __main__ - INFO -   ROS frame_id: vr_world
-2026-04-08 11:30:52,332 - __main__ - INFO - Published ROS 2 topics:
-2026-04-08 11:30:52,332 - __main__ - INFO -   /telegrip/left/pose
-2026-04-08 11:30:52,332 - __main__ - INFO -   /telegrip/right/pose
-2026-04-08 11:30:52,332 - __main__ - INFO -   /telegrip/headset/pose
-2026-04-08 11:30:52,332 - __main__ - INFO -   /telegrip/left/enable
-2026-04-08 11:30:52,332 - __main__ - INFO -   /telegrip/right/enable
-2026-04-08 11:30:52,333 - __main__ - INFO -   /telegrip/left/gripper_input
-2026-04-08 11:30:52,333 - __main__ - INFO -   /telegrip/right/gripper_input
-2026-04-08 11:30:52,333 - __main__ - INFO - Published TF frames:
-2026-04-08 11:30:52,333 - __main__ - INFO -   vr_world -> left_controller
-2026-04-08 11:30:52,333 - __main__ - INFO -   vr_world -> right_controller
-2026-04-08 11:30:52,333 - __main__ - INFO -   vr_world -> headset
-2026-04-08 11:30:52,344 - telegrip.ros2_bridge - INFO - ROS 2 bridge started with frame_id=vr_world
-2026-04-08 11:30:52,347 - telegrip.main - INFO - HTTPS server started on https://192.168.1.110:8443
-2026-04-08 11:30:52,348 - telegrip.inputs.vr_ws_server - INFO - SSL certificate and key loaded successfully for WebSocket server
-2026-04-08 11:30:52,357 - telegrip.inputs.vr_ws_server - INFO - VR WebSocket server running on wss://192.168.1.110:8442
-2026-04-08 11:30:52,358 - telegrip.inputs.web_keyboard - INFO - Web keyboard handler started (no X11 required)
-2026-04-08 11:30:52,358 - __main__ - INFO - All system components started successfully
-2026-04-08 11:30:52,358 - telegrip.inputs.web_keyboard - INFO - Web keyboard control loop started
-2026-04-08 11:30:52,358 - telegrip.core.robot_interface - INFO - Robot interface disabled in config
-2026-04-08 11:30:52,358 - telegrip.control_loop - INFO - Set robot interface on web keyboard handler
-2026-04-08 11:30:52,358 - telegrip.control_loop - INFO - Control loop started
-2026-04-08 11:30:52,358 - telegrip.control_loop - INFO - Initialized left arm at position: [0.2  0.   0.15]
-2026-04-08 11:30:52,359 - telegrip.control_loop - INFO - Initialized right arm at position: [0.2  0.   0.15]
-2026-04-08 11:30:52,359 - __main__ - INFO - VR transport: waiting-for-client | input rate: 0.0 Hz
-2026-04-08 11:31:23,395 - telegrip.inputs.vr_ws_server - INFO - VR client connected: ('192.168.1.102', 37016)
-2026-04-08 11:31:24,371 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:31:28,374 - __main__ - INFO - VR transport: websocket | input rate: 0.0 Hz
-2026-04-08 11:31:54,386 - __main__ - INFO - VR transport: websocket | input rate: 78.3 Hz
-2026-04-08 11:31:56,388 - __main__ - INFO - VR transport: websocket | input rate: 90.9 Hz
-2026-04-08 11:31:58,388 - __main__ - INFO - VR transport: websocket | input rate: 77.1 Hz
-2026-04-08 11:31:58,838 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
-2026-04-08 11:31:58,838 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
-2026-04-08 11:31:58,839 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [0. 0. 0. 0. 0. 0.]
-2026-04-08 11:31:59,072 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
-2026-04-08 11:31:59,093 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
-2026-04-08 11:32:00,079 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
-2026-04-08 11:32:00,105 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
-2026-04-08 11:32:00,389 - __main__ - INFO - VR transport: websocket | input rate: 91.0 Hz
-2026-04-08 11:32:00,870 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.   3.2 -0.8  0. ]
-2026-04-08 11:32:01,884 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   32.5 -17.2   0. ]
-2026-04-08 11:32:02,390 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:32:02,903 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   34.  -10.4   0. ]
-2026-04-08 11:32:03,929 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -24.2  21.7   0. ]
-2026-04-08 11:32:04,391 - __main__ - INFO - VR transport: websocket | input rate: 89.6 Hz
-2026-04-08 11:32:04,944 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -24.2  24.5   0. ]
-2026-04-08 11:32:05,960 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   13.2 -14.4   0. ]
-2026-04-08 11:32:06,296 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
-2026-04-08 11:32:06,316 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
-2026-04-08 11:32:06,392 - __main__ - INFO - VR transport: websocket | input rate: 90.6 Hz
-2026-04-08 11:32:07,103 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
-2026-04-08 11:32:07,125 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
-2026-04-08 11:32:07,987 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   64.2 -77.    0. ]
-2026-04-08 11:32:08,393 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
-2026-04-08 11:32:09,002 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   81.4 -98.8   0. ]
-2026-04-08 11:32:10,018 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   86.3 -97.1   0. ]
-2026-04-08 11:32:10,394 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:32:11,036 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   32.2 -26.    0. ]
-2026-04-08 11:32:12,054 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   15.4 -12.    0. ]
-2026-04-08 11:32:12,395 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:32:13,068 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   30.7 -10.7   0. ]
-2026-04-08 11:32:14,084 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   33.7 -28.8   0. ]
-2026-04-08 11:32:14,396 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:32:15,100 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   28.  -58.3   0. ]
-2026-04-08 11:32:15,113 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
-2026-04-08 11:32:15,151 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
-2026-04-08 11:32:15,837 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
-2026-04-08 11:32:15,863 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
-2026-04-08 11:32:16,119 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   48.1 -34.8   0. ]
-2026-04-08 11:32:16,397 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:32:17,137 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  92.2  4.1  0. ]
-2026-04-08 11:32:18,160 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   54.8 -12.2   0. ]
-2026-04-08 11:32:18,397 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:32:19,179 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.   19.8 -51.8   0. ]
-2026-04-08 11:32:19,284 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
-2026-04-08 11:32:19,332 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
-2026-04-08 11:32:20,399 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:32:20,588 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
-2026-04-08 11:32:20,599 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
-2026-04-08 11:32:21,209 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.    6.8 -30.    0. ]
-2026-04-08 11:32:22,230 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.   8.4 -5.1  0. ]
-2026-04-08 11:32:22,400 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:32:23,063 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
-2026-04-08 11:32:23,093 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
-2026-04-08 11:32:23,825 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
-2026-04-08 11:32:23,854 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
-2026-04-08 11:32:24,259 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.   4.7 13.5  0. ]
-2026-04-08 11:32:24,401 - __main__ - INFO - VR transport: websocket | input rate: 90.9 Hz
-2026-04-08 11:32:25,277 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  30.4 78.8  0. ]
-2026-04-08 11:32:25,707 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
-2026-04-08 11:32:25,735 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
-2026-04-08 11:32:28,402 - __main__ - INFO - VR transport: websocket | input rate: 96.3 Hz
-2026-04-08 11:32:30,403 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:32:32,404 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:32:36,405 - __main__ - INFO - VR transport: websocket | input rate: 96.9 Hz
-2026-04-08 11:32:38,406 - __main__ - INFO - VR transport: websocket | input rate: 90.6 Hz
-2026-04-08 11:32:40,407 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:32:42,408 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:32:44,409 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:32:46,410 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:32:48,411 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
-2026-04-08 11:32:50,412 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:32:54,415 - __main__ - INFO - VR transport: websocket | input rate: 90.8 Hz
-2026-04-08 11:32:56,416 - __main__ - INFO - VR transport: websocket | input rate: 94.1 Hz
-2026-04-08 11:32:58,417 - __main__ - INFO - VR transport: websocket | input rate: 96.5 Hz
-2026-04-08 11:33:00,418 - __main__ - INFO - VR transport: websocket | input rate: 91.7 Hz
-2026-04-08 11:33:02,419 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:33:04,420 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:33:06,422 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
-2026-04-08 11:33:08,425 - __main__ - INFO - VR transport: websocket | input rate: 91.7 Hz
-2026-04-08 11:33:10,425 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:33:12,426 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:33:14,426 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:33:16,427 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:33:18,428 - __main__ - INFO - VR transport: websocket | input rate: 95.8 Hz
-2026-04-08 11:33:20,429 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:33:22,429 - __main__ - INFO - VR transport: websocket | input rate: 91.4 Hz
-2026-04-08 11:33:24,431 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:33:26,431 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:33:28,432 - __main__ - INFO - VR transport: websocket | input rate: 95.2 Hz
-2026-04-08 11:33:30,433 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:33:32,435 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
-2026-04-08 11:33:34,436 - __main__ - INFO - VR transport: websocket | input rate: 91.6 Hz
-2026-04-08 11:33:36,437 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:33:40,439 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:33:42,440 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:33:44,441 - __main__ - INFO - VR transport: websocket | input rate: 96.2 Hz
-2026-04-08 11:33:46,442 - __main__ - INFO - VR transport: websocket | input rate: 95.1 Hz
-2026-04-08 11:33:48,442 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:33:50,444 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:33:52,444 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:33:54,445 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:33:56,446 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:33:58,448 - __main__ - INFO - VR transport: websocket | input rate: 90.6 Hz
-2026-04-08 11:34:00,449 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:34:02,450 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:34:04,450 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:34:06,452 - __main__ - INFO - VR transport: websocket | input rate: 89.6 Hz
-2026-04-08 11:34:08,452 - __main__ - INFO - VR transport: websocket | input rate: 93.6 Hz
-2026-04-08 11:34:10,453 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
-2026-04-08 11:34:12,456 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:34:14,457 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:34:16,457 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:34:24,461 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:34:26,463 - __main__ - INFO - VR transport: websocket | input rate: 85.3 Hz
-2026-04-08 11:34:28,464 - __main__ - INFO - VR transport: websocket | input rate: 93.1 Hz
-2026-04-08 11:34:30,465 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:34:32,466 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:34:34,466 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:34:36,467 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:34:38,467 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:34:40,469 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:34:46,471 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:34:48,471 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:34:50,472 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:34:54,475 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:34:56,475 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:35:00,477 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:35:02,478 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:35:04,480 - __main__ - INFO - VR transport: websocket | input rate: 89.6 Hz
-2026-04-08 11:35:06,481 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:35:08,481 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:35:10,481 - __main__ - INFO - VR transport: websocket | input rate: 91.3 Hz
-2026-04-08 11:35:12,482 - __main__ - INFO - VR transport: websocket | input rate: 94.9 Hz
-2026-04-08 11:35:14,483 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:35:16,483 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:35:18,483 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:35:20,484 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:35:22,485 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:35:24,485 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:35:26,486 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:35:28,487 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:35:30,488 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:35:32,490 - __main__ - INFO - VR transport: websocket | input rate: 94.7 Hz
-2026-04-08 11:35:34,491 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:35:38,492 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
-2026-04-08 11:35:40,493 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
-2026-04-08 11:35:42,494 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:35:48,497 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:35:50,498 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:35:52,499 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:35:54,499 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:35:56,502 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:36:00,504 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:36:02,505 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:36:04,506 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:36:06,508 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:36:08,509 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
-2026-04-08 11:36:10,509 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:36:12,510 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:36:14,511 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:36:16,512 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:36:18,513 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:36:26,516 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:36:28,517 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:36:34,520 - __main__ - INFO - VR transport: websocket | input rate: 103.7 Hz
-2026-04-08 11:36:36,520 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:36:42,522 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:36:44,522 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:36:46,524 - __main__ - INFO - VR transport: websocket | input rate: 96.2 Hz
-2026-04-08 11:36:48,525 - __main__ - INFO - VR transport: websocket | input rate: 96.7 Hz
-2026-04-08 11:36:50,526 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:36:52,527 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:36:54,527 - __main__ - INFO - VR transport: websocket | input rate: 92.1 Hz
-2026-04-08 11:36:56,528 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:36:58,529 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:37:00,530 - __main__ - INFO - VR transport: websocket | input rate: 94.8 Hz
-2026-04-08 11:37:02,531 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:37:06,533 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:37:08,533 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:37:10,534 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:37:12,534 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:37:16,538 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:37:22,539 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:37:24,540 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:37:28,543 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
-2026-04-08 11:37:30,544 - __main__ - INFO - VR transport: websocket | input rate: 94.7 Hz
-2026-04-08 11:37:32,545 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:37:36,546 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:37:38,547 - __main__ - INFO - VR transport: websocket | input rate: 95.3 Hz
-2026-04-08 11:37:40,549 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:37:46,550 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:37:48,551 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:37:50,552 - __main__ - INFO - VR transport: websocket | input rate: 91.1 Hz
-2026-04-08 11:37:52,552 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:37:54,553 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:37:56,555 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:38:00,556 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:38:02,557 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:38:06,559 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:38:08,561 - __main__ - INFO - VR transport: websocket | input rate: 89.6 Hz
-2026-04-08 11:38:10,561 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:38:12,563 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:38:14,564 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:38:18,567 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:38:20,567 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:38:22,568 - __main__ - INFO - VR transport: websocket | input rate: 96.3 Hz
-2026-04-08 11:38:24,569 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:38:26,570 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:38:28,571 - __main__ - INFO - VR transport: websocket | input rate: 94.3 Hz
-2026-04-08 11:38:30,573 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:38:32,574 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:38:34,575 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:38:36,576 - __main__ - INFO - VR transport: websocket | input rate: 95.7 Hz
-2026-04-08 11:38:38,577 - __main__ - INFO - VR transport: websocket | input rate: 91.1 Hz
-2026-04-08 11:38:40,578 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:38:42,579 - __main__ - INFO - VR transport: websocket | input rate: 95.3 Hz
-2026-04-08 11:38:44,580 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:38:46,581 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
-2026-04-08 11:38:48,581 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:38:52,583 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:38:54,584 - __main__ - INFO - VR transport: websocket | input rate: 95.3 Hz
-2026-04-08 11:38:56,585 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:39:00,587 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:39:02,588 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:39:04,590 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:39:06,590 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:39:08,591 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:39:10,593 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:39:16,596 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:39:18,597 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:39:22,598 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:39:24,599 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:39:26,600 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:39:28,601 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:39:30,601 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:39:32,602 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:39:34,603 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:39:36,603 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:39:38,604 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:39:42,606 - __main__ - INFO - VR transport: websocket | input rate: 94.9 Hz
-2026-04-08 11:39:44,607 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:39:46,608 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:39:48,609 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:39:52,611 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:39:54,612 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:39:56,613 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:39:58,615 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:40:00,615 - __main__ - INFO - VR transport: websocket | input rate: 100.9 Hz
-2026-04-08 11:40:02,617 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:40:04,619 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:40:06,620 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:40:08,620 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:40:10,621 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:40:12,622 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:40:14,623 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:40:18,624 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:40:20,624 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:40:22,625 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
-2026-04-08 11:40:24,625 - __main__ - INFO - VR transport: websocket | input rate: 90.6 Hz
-2026-04-08 11:40:26,627 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:40:28,627 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
-2026-04-08 11:40:30,628 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:40:32,629 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:40:34,630 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:40:36,632 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:40:38,633 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:40:40,633 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:40:42,634 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:40:44,634 - __main__ - INFO - VR transport: websocket | input rate: 94.5 Hz
-2026-04-08 11:40:46,635 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
-2026-04-08 11:40:48,636 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:40:50,638 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:40:52,638 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:40:56,639 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:40:58,641 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
-2026-04-08 11:41:00,641 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:41:02,642 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:41:06,644 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:41:08,645 - __main__ - INFO - VR transport: websocket | input rate: 90.9 Hz
-2026-04-08 11:41:10,646 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:41:12,647 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:41:14,648 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
-2026-04-08 11:41:16,648 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:41:18,651 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:41:24,654 - __main__ - INFO - VR transport: websocket | input rate: 90.9 Hz
-2026-04-08 11:41:26,655 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:41:28,656 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:41:32,657 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:41:34,659 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:41:36,661 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:41:40,663 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:41:42,664 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:41:44,665 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:41:46,666 - __main__ - INFO - VR transport: websocket | input rate: 94.1 Hz
-2026-04-08 11:41:48,666 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:41:50,667 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:41:58,670 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:42:00,671 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:42:02,672 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:42:04,674 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:42:06,675 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:42:08,676 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:42:10,677 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:42:12,678 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:42:16,680 - __main__ - INFO - VR transport: websocket | input rate: 89.6 Hz
-2026-04-08 11:42:18,681 - __main__ - INFO - VR transport: websocket | input rate: 90.9 Hz
-2026-04-08 11:42:20,682 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:42:22,684 - __main__ - INFO - VR transport: websocket | input rate: 90.8 Hz
-2026-04-08 11:42:24,685 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:42:26,685 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:42:28,686 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:42:30,688 - __main__ - INFO - VR transport: websocket | input rate: 95.0 Hz
-2026-04-08 11:42:32,688 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:42:34,689 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:42:38,691 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:42:40,692 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:42:42,693 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:42:44,694 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:42:46,695 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:42:48,696 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:42:50,696 - __main__ - INFO - VR transport: websocket | input rate: 95.2 Hz
-2026-04-08 11:42:52,697 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:42:54,699 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:42:56,700 - __main__ - INFO - VR transport: websocket | input rate: 95.6 Hz
-2026-04-08 11:42:58,701 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:43:00,702 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:43:02,703 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
-2026-04-08 11:43:04,703 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:43:06,704 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:43:12,707 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:43:16,709 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:43:18,710 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:43:20,710 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:43:22,712 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
-2026-04-08 11:43:24,713 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:43:26,714 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:43:28,715 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:43:30,715 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:43:32,716 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:43:34,717 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:43:36,718 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:43:38,719 - __main__ - INFO - VR transport: websocket | input rate: 91.5 Hz
-2026-04-08 11:43:40,720 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:43:42,721 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:43:46,723 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:43:50,725 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:43:52,726 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:44:00,730 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:44:02,730 - __main__ - INFO - VR transport: websocket | input rate: 90.6 Hz
-2026-04-08 11:44:04,731 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:44:06,732 - __main__ - INFO - VR transport: websocket | input rate: 95.2 Hz
-2026-04-08 11:44:08,733 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:44:10,734 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:44:14,736 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:44:16,737 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:44:26,741 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:44:28,741 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:44:34,743 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:44:36,744 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:44:38,744 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:44:40,745 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:44:42,746 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
-2026-04-08 11:44:44,747 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:44:46,748 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:44:54,752 - __main__ - INFO - VR transport: websocket | input rate: 94.7 Hz
-2026-04-08 11:44:56,752 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:44:58,753 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:45:00,754 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:45:02,755 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:45:04,756 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:45:06,757 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:45:10,759 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
-2026-04-08 11:45:12,760 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:45:14,761 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:45:16,762 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:45:18,764 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:45:20,764 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
-2026-04-08 11:45:22,765 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:45:26,767 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:45:28,768 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:45:30,769 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:45:32,770 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:45:36,771 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:45:38,772 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:45:40,773 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:45:42,774 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:45:44,775 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:45:48,777 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:45:50,778 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:45:52,778 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:45:56,780 - __main__ - INFO - VR transport: websocket | input rate: 94.9 Hz
-2026-04-08 11:45:58,781 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:46:04,784 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:46:06,785 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
-2026-04-08 11:46:08,786 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
-2026-04-08 11:46:10,787 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:46:12,788 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:46:14,789 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:46:16,790 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:46:18,791 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:46:20,792 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:46:24,794 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:46:32,799 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:46:34,800 - __main__ - INFO - VR transport: websocket | input rate: 91.3 Hz
-2026-04-08 11:46:36,800 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:46:40,802 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:46:42,803 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:46:56,809 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:46:58,810 - __main__ - INFO - VR transport: websocket | input rate: 101.2 Hz
-2026-04-08 11:47:00,811 - __main__ - INFO - VR transport: websocket | input rate: 96.0 Hz
-2026-04-08 11:47:02,812 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:47:04,813 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:47:06,813 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:47:08,814 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
-2026-04-08 11:47:10,815 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:47:14,815 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
-2026-04-08 11:47:16,816 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
-2026-04-08 11:47:18,817 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:47:22,819 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
-2026-04-08 11:47:24,820 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
-2026-04-08 11:47:26,316 - telegrip.main - INFO - Received signal 2
-2026-04-08 11:47:26,317 - telegrip.main - INFO - Received signal 15
+2026-04-08 18:05:43,192 - telegrip.utils - WARNING - Existing SSL certificate does not match localhost/current LAN IP. Regenerating certificate for headset/browser access.
+2026-04-08 18:05:43,192 - telegrip.utils - INFO - SSL certificates not found, generating self-signed certificates...
+2026-04-08 18:05:43,245 - telegrip.utils - INFO - SSL certificates generated successfully: /home/andy/teleOp/telegrip/cert.pem, /home/andy/teleOp/telegrip/key.pem
+2026-04-08 18:05:43,245 - __main__ - INFO - Starting with configuration:
+2026-04-08 18:05:43,245 - __main__ - INFO -   Robot: disabled
+2026-04-08 18:05:43,245 - __main__ - INFO -   PyBullet: disabled
+2026-04-08 18:05:43,245 - __main__ - INFO -   Headless mode: disabled
+2026-04-08 18:05:43,245 - __main__ - INFO -   VR: enabled
+2026-04-08 18:05:43,245 - __main__ - INFO -   Keyboard: enabled
+2026-04-08 18:05:43,245 - __main__ - INFO -   Auto-connect: disabled
+2026-04-08 18:05:43,245 - __main__ - INFO -   HTTPS Port: 8443
+2026-04-08 18:05:43,245 - __main__ - INFO -   WebSocket Port: 8442
+2026-04-08 18:05:43,245 - __main__ - INFO -   Robot Ports: {'left': '/dev/ttySO100blue', 'right': '/dev/ttySO100red'}
+2026-04-08 18:05:43,245 - __main__ - INFO -   ROS frame_id: vr_world
+2026-04-08 18:05:43,245 - __main__ - INFO - Published ROS 2 topics:
+2026-04-08 18:05:43,245 - __main__ - INFO -   /telegrip/left/pose
+2026-04-08 18:05:43,245 - __main__ - INFO -   /telegrip/right/pose
+2026-04-08 18:05:43,245 - __main__ - INFO -   /telegrip/headset/pose
+2026-04-08 18:05:43,245 - __main__ - INFO -   /telegrip/left/enable
+2026-04-08 18:05:43,245 - __main__ - INFO -   /telegrip/right/enable
+2026-04-08 18:05:43,245 - __main__ - INFO -   /telegrip/left/gripper_input
+2026-04-08 18:05:43,246 - __main__ - INFO -   /telegrip/right/gripper_input
+2026-04-08 18:05:43,246 - __main__ - INFO - Published TF frames:
+2026-04-08 18:05:43,246 - __main__ - INFO -   vr_world -> left_controller
+2026-04-08 18:05:43,246 - __main__ - INFO -   vr_world -> right_controller
+2026-04-08 18:05:43,246 - __main__ - INFO -   vr_world -> headset
+2026-04-08 18:05:43,255 - telegrip.ros2_bridge - INFO - ROS 2 bridge started with frame_id=vr_world
+2026-04-08 18:05:43,258 - telegrip.main - INFO - HTTPS server started on https://192.168.1.110:8443
+2026-04-08 18:05:43,258 - telegrip.inputs.vr_ws_server - INFO - SSL certificate and key loaded successfully for WebSocket server
+2026-04-08 18:05:43,269 - telegrip.inputs.vr_ws_server - INFO - VR WebSocket server running on wss://192.168.1.110:8442
+2026-04-08 18:05:43,269 - telegrip.inputs.web_keyboard - INFO - Web keyboard handler started (no X11 required)
+2026-04-08 18:05:43,269 - __main__ - INFO - All system components started successfully
+2026-04-08 18:05:43,269 - telegrip.inputs.web_keyboard - INFO - Web keyboard control loop started
+2026-04-08 18:05:43,269 - telegrip.core.robot_interface - INFO - Robot interface disabled in config
+2026-04-08 18:05:43,269 - telegrip.control_loop - INFO - Set robot interface on web keyboard handler
+2026-04-08 18:05:43,269 - telegrip.control_loop - INFO - Control loop started
+2026-04-08 18:05:43,269 - telegrip.control_loop - INFO - Initialized left arm at position: [0.2  0.   0.15]
+2026-04-08 18:05:43,270 - telegrip.control_loop - INFO - Initialized right arm at position: [0.2  0.   0.15]
+2026-04-08 18:05:43,270 - __main__ - INFO - VR transport: waiting-for-client | input rate: 0.0 Hz
+2026-04-08 18:05:52,842 - telegrip.inputs.vr_ws_server - INFO - VR client connected: ('192.168.1.102', 38018)
+2026-04-08 18:05:53,273 - __main__ - INFO - VR transport: websocket | input rate: 93.1 Hz
+2026-04-08 18:05:55,273 - __main__ - INFO - VR transport: websocket | input rate: 91.0 Hz
+2026-04-08 18:05:57,274 - __main__ - INFO - VR transport: websocket | input rate: 82.6 Hz
+2026-04-08 18:05:59,276 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:06:01,279 - __main__ - INFO - VR transport: websocket | input rate: 102.3 Hz
+2026-04-08 18:06:03,280 - __main__ - INFO - VR transport: websocket | input rate: 89.6 Hz
+2026-04-08 18:06:05,280 - __main__ - INFO - VR transport: websocket | input rate: 90.8 Hz
+2026-04-08 18:06:07,282 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:06:07,282 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:06:07,298 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:06:07,552 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  -0.9  2.7  0. ]
+2026-04-08 18:06:08,567 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -14.8   6.7   0. ]
+2026-04-08 18:06:09,283 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
+2026-04-08 18:06:09,584 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -18.2   6.5   0. ]
+2026-04-08 18:06:10,601 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -11.    1.7   0. ]
+2026-04-08 18:06:11,284 - __main__ - INFO - VR transport: websocket | input rate: 90.6 Hz
+2026-04-08 18:06:11,615 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  -1.3  3.7  0. ]
+2026-04-08 18:06:12,630 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [0.  0.  0.  0.6 2.3 0. ]
+2026-04-08 18:06:13,284 - __main__ - INFO - VR transport: websocket | input rate: 92.6 Hz
+2026-04-08 18:06:13,643 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.  0.  0. 52. -8.  0.]
+2026-04-08 18:06:14,657 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  -7.5  4.7  0. ]
+2026-04-08 18:06:15,286 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
+2026-04-08 18:06:15,672 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.   0.   0. -30.   8.   0.]
+2026-04-08 18:06:16,685 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -24.5   6.    0. ]
+2026-04-08 18:06:17,287 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:06:17,699 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -21.1   3.5   0. ]
+2026-04-08 18:06:18,254 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:06:18,255 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:06:19,288 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
+2026-04-08 18:06:20,557 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:06:20,591 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:06:20,745 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -19.5   2.8   0. ]
+2026-04-08 18:06:21,289 - __main__ - INFO - VR transport: websocket | input rate: 91.1 Hz
+2026-04-08 18:06:21,759 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  -5.5  2.2  0. ]
+2026-04-08 18:06:22,776 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [0.  0.  0.  0.9 0.4 0. ]
+2026-04-08 18:06:23,290 - __main__ - INFO - VR transport: websocket | input rate: 56.6 Hz
+2026-04-08 18:06:23,789 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [0.  0.  0.  1.9 2.  0. ]
+2026-04-08 18:06:24,797 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [0.  0.  0.  1.9 2.  0. ]
+2026-04-08 18:06:25,165 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:06:25,172 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:06:25,291 - __main__ - INFO - VR transport: websocket | input rate: 127.1 Hz
+2026-04-08 18:06:26,922 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:06:26,945 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:06:27,293 - __main__ - INFO - VR transport: websocket | input rate: 93.6 Hz
+2026-04-08 18:06:27,859 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  -7.9  6.4  0. ]
+2026-04-08 18:06:28,873 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.   0.   0. -23.   6.   0.]
+2026-04-08 18:06:29,295 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:06:29,891 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -32.3   4.9   0. ]
+2026-04-08 18:06:30,908 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -20.2  -1.    0. ]
+2026-04-08 18:06:31,295 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
+2026-04-08 18:06:31,922 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [  0.    0.    0.  -14.7   1.3   0. ]
+2026-04-08 18:06:32,941 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  -5.5  4.4  0. ]
+2026-04-08 18:06:33,296 - __main__ - INFO - VR transport: websocket | input rate: 83.3 Hz
+2026-04-08 18:06:33,381 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:06:33,397 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:06:35,297 - __main__ - INFO - VR transport: websocket | input rate: 104.0 Hz
+2026-04-08 18:06:35,870 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:06:35,875 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:06:36,149 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  -3.8  6.9  0. ]
+2026-04-08 18:06:37,164 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  -3.7  5.   0. ]
+2026-04-08 18:06:37,298 - __main__ - INFO - VR transport: websocket | input rate: 104.1 Hz
+2026-04-08 18:06:38,178 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [0. 0. 0. 0. 0. 0.] | Right: [ 0.   0.   0.  -1.4  2.3  0. ]
+2026-04-08 18:06:38,189 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:06:38,229 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:06:39,257 - telegrip.inputs.vr_ws_server - INFO - 🔒 LEFT grip activated - controlling left arm (target reset to current position)
+2026-04-08 18:06:39,299 - __main__ - INFO - VR transport: websocket | input rate: 98.9 Hz
+2026-04-08 18:06:39,299 - telegrip.control_loop - INFO - 🔒 LEFT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:06:40,209 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [ 0.   0.   0.  -4.2 -3.1  0. ] | Right: [ 0.   0.   0.  -1.4  2.3  0. ]
+2026-04-08 18:06:41,225 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [ 0.   0.   0.  -4.5 -5.2  0. ] | Right: [ 0.   0.   0.  -1.4  2.3  0. ]
+2026-04-08 18:06:41,300 - __main__ - INFO - VR transport: websocket | input rate: 92.3 Hz
+2026-04-08 18:06:41,716 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:06:41,736 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:06:42,243 - telegrip.control_loop - INFO - 🤖 Active control: LEFT, RIGHT | Left: [ 0.   0.   0.  -6.7 -3.8  0. ] | Right: [  0.    0.    0.  -12.3  11.2   0. ]
+2026-04-08 18:06:42,621 - telegrip.inputs.vr_ws_server - INFO - 🔓 LEFT grip released - arm control stopped
+2026-04-08 18:06:42,653 - telegrip.control_loop - INFO - 🔓 LEFT arm: Position control DEACTIVATED
+2026-04-08 18:06:42,869 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:06:42,907 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:06:43,301 - __main__ - INFO - VR transport: websocket | input rate: 91.6 Hz
+2026-04-08 18:06:44,267 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:06:44,279 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:06:44,279 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [ 0.   0.   0.  -4.9 -2.   0. ] | Right: [  0.    0.    0.  -13.9  12.8   0. ]
+2026-04-08 18:06:45,291 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [ 0.   0.   0.  -4.9 -2.   0. ] | Right: [  0.    0.    0.  -21.3  20.1   0. ]
+2026-04-08 18:06:45,302 - __main__ - INFO - VR transport: websocket | input rate: 88.6 Hz
+2026-04-08 18:06:46,306 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [ 0.   0.   0.  -4.9 -2.   0. ] | Right: [  0.    0.    0.  -36.8  21.9   0. ]
+2026-04-08 18:06:47,303 - __main__ - INFO - VR transport: websocket | input rate: 99.1 Hz
+2026-04-08 18:06:47,319 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [ 0.   0.   0.  -4.9 -2.   0. ] | Right: [  0.    0.    0.  -52.2  25.2   0. ]
+2026-04-08 18:06:48,336 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [ 0.   0.   0.  -4.9 -2.   0. ] | Right: [  0.    0.    0.  -60.2  25.5   0. ]
+2026-04-08 18:06:49,090 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:06:49,098 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:06:49,303 - __main__ - INFO - VR transport: websocket | input rate: 91.7 Hz
+2026-04-08 18:06:50,078 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:06:50,114 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:06:50,367 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [ 0.   0.   0.  -4.9 -2.   0. ] | Right: [  0.    0.    0.  -66.   26.2   0. ]
+2026-04-08 18:06:51,304 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:06:51,381 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [ 0.   0.   0.  -4.9 -2.   0. ] | Right: [  0.    0.    0.  -90.5  33.8   0. ]
+2026-04-08 18:06:52,394 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [ 0.   0.   0.  -4.9 -2.   0. ] | Right: [   0.     0.     0.  -116.    40.2    0. ]
+2026-04-08 18:06:53,414 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [ 0.   0.   0.  -4.9 -2.   0. ] | Right: [  0.    0.    0.  -95.8  34.3   0. ]
+2026-04-08 18:06:54,427 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [ 0.   0.   0.  -4.9 -2.   0. ] | Right: [  0.    0.    0.  -72.3  26.2   0. ]
+2026-04-08 18:06:54,499 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:06:54,530 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:06:55,307 - __main__ - INFO - VR transport: websocket | input rate: 90.9 Hz
+2026-04-08 18:06:57,308 - __main__ - INFO - VR transport: websocket | input rate: 84.5 Hz
+2026-04-08 18:06:59,309 - __main__ - INFO - VR transport: websocket | input rate: 96.9 Hz
+2026-04-08 18:07:01,310 - __main__ - INFO - VR transport: websocket | input rate: 96.7 Hz
+2026-04-08 18:07:03,311 - __main__ - INFO - VR transport: websocket | input rate: 98.5 Hz
+2026-04-08 18:07:04,890 - telegrip.inputs.vr_ws_server - INFO - 🔒 LEFT grip activated - controlling left arm (target reset to current position)
+2026-04-08 18:07:04,915 - telegrip.control_loop - INFO - 🔒 LEFT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:07:05,311 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
+2026-04-08 18:07:05,575 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -12.6  -4.1   0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:06,596 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -30.7  -8.7   0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:07,312 - __main__ - INFO - VR transport: websocket | input rate: 101.2 Hz
+2026-04-08 18:07:07,615 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -39.7 -10.6   0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:08,632 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -35.3 -12.    0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:09,313 - __main__ - INFO - VR transport: websocket | input rate: 91.0 Hz
+2026-04-08 18:07:09,645 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -28.2 -10.9   0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:10,665 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -20.7 -10.2   0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:11,314 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
+2026-04-08 18:07:11,679 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -17.4  -6.7   0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:12,698 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -10.5  -5.7   0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:13,315 - __main__ - INFO - VR transport: websocket | input rate: 110.3 Hz
+2026-04-08 18:07:13,710 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [ 0.   0.   0.  -0.9 -8.1  0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:14,534 - telegrip.inputs.vr_ws_server - INFO - 🔓 LEFT grip released - arm control stopped
+2026-04-08 18:07:14,572 - telegrip.control_loop - INFO - 🔓 LEFT arm: Position control DEACTIVATED
+2026-04-08 18:07:15,316 - __main__ - INFO - VR transport: websocket | input rate: 91.1 Hz
+2026-04-08 18:07:15,361 - telegrip.inputs.vr_ws_server - INFO - 🔒 LEFT grip activated - controlling left arm (target reset to current position)
+2026-04-08 18:07:15,380 - telegrip.control_loop - INFO - 🔒 LEFT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:07:15,392 - telegrip.inputs.vr_ws_server - INFO - 🔓 LEFT grip released - arm control stopped
+2026-04-08 18:07:15,430 - telegrip.control_loop - INFO - 🔓 LEFT arm: Position control DEACTIVATED
+2026-04-08 18:07:16,815 - telegrip.inputs.vr_ws_server - INFO - 🔒 LEFT grip activated - controlling left arm (target reset to current position)
+2026-04-08 18:07:16,851 - telegrip.control_loop - INFO - 🔒 LEFT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:07:17,318 - __main__ - INFO - VR transport: websocket | input rate: 91.9 Hz
+2026-04-08 18:07:17,761 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -35.8 -63.5   0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:18,777 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -27.6 -43.    0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:19,320 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:07:19,792 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [ 0.   0.   0.  -4.5 33.9  0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:20,807 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [ 0.   0.   0.   5.7 59.5  0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:21,321 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
+2026-04-08 18:07:21,822 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -24.2  -6.3   0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:07:22,058 - telegrip.inputs.vr_ws_server - INFO - 🔓 LEFT grip released - arm control stopped
+2026-04-08 18:07:22,075 - telegrip.control_loop - INFO - 🔓 LEFT arm: Position control DEACTIVATED
+2026-04-08 18:07:23,322 - __main__ - INFO - VR transport: websocket | input rate: 93.9 Hz
+2026-04-08 18:07:25,322 - __main__ - INFO - VR transport: websocket | input rate: 88.2 Hz
+2026-04-08 18:07:27,324 - __main__ - INFO - VR transport: websocket | input rate: 105.9 Hz
+2026-04-08 18:07:29,325 - __main__ - INFO - VR transport: websocket | input rate: 93.4 Hz
+2026-04-08 18:07:31,326 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:07:33,326 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:07:35,327 - __main__ - INFO - VR transport: websocket | input rate: 90.6 Hz
+2026-04-08 18:07:37,327 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:07:39,328 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:07:41,330 - __main__ - INFO - VR transport: websocket | input rate: 90.8 Hz
+2026-04-08 18:07:43,331 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
+2026-04-08 18:07:45,332 - __main__ - INFO - VR transport: websocket | input rate: 96.4 Hz
+2026-04-08 18:07:47,333 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
+2026-04-08 18:07:49,334 - __main__ - INFO - VR transport: websocket | input rate: 90.6 Hz
+2026-04-08 18:07:51,335 - __main__ - INFO - VR transport: websocket | input rate: 113.3 Hz
+2026-04-08 18:07:53,336 - __main__ - INFO - VR transport: websocket | input rate: 198.4 Hz
+2026-04-08 18:07:55,337 - __main__ - INFO - VR transport: websocket | input rate: 95.0 Hz
+2026-04-08 18:07:57,338 - __main__ - INFO - VR transport: websocket | input rate: 23.8 Hz
+2026-04-08 18:07:59,339 - __main__ - INFO - VR transport: websocket | input rate: 177.1 Hz
+2026-04-08 18:08:01,340 - __main__ - INFO - VR transport: websocket | input rate: 90.8 Hz
+2026-04-08 18:08:03,341 - __main__ - INFO - VR transport: websocket | input rate: 94.8 Hz
+2026-04-08 18:08:05,343 - __main__ - INFO - VR transport: websocket | input rate: 95.7 Hz
+2026-04-08 18:08:07,344 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:08:09,345 - __main__ - INFO - VR transport: websocket | input rate: 91.0 Hz
+2026-04-08 18:08:11,346 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:08:13,348 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
+2026-04-08 18:08:15,349 - __main__ - INFO - VR transport: websocket | input rate: 91.3 Hz
+2026-04-08 18:08:17,350 - __main__ - INFO - VR transport: websocket | input rate: 85.8 Hz
+2026-04-08 18:08:19,351 - __main__ - INFO - VR transport: websocket | input rate: 111.0 Hz
+2026-04-08 18:08:21,352 - __main__ - INFO - VR transport: websocket | input rate: 101.4 Hz
+2026-04-08 18:08:23,408 - __main__ - INFO - VR transport: websocket | input rate: 92.0 Hz
+2026-04-08 18:08:25,409 - __main__ - INFO - VR transport: websocket | input rate: 114.7 Hz
+2026-04-08 18:08:27,410 - __main__ - INFO - VR transport: websocket | input rate: 121.9 Hz
+2026-04-08 18:08:29,411 - __main__ - INFO - VR transport: websocket | input rate: 103.5 Hz
+2026-04-08 18:08:31,412 - __main__ - INFO - VR transport: websocket | input rate: 114.1 Hz
+2026-04-08 18:08:33,413 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
+2026-04-08 18:08:35,414 - __main__ - INFO - VR transport: websocket | input rate: 91.1 Hz
+2026-04-08 18:08:37,415 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:08:39,415 - __main__ - INFO - VR transport: websocket | input rate: 90.8 Hz
+2026-04-08 18:08:41,416 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:08:43,417 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:08:45,418 - __main__ - INFO - VR transport: websocket | input rate: 90.8 Hz
+2026-04-08 18:08:47,418 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:08:48,153 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:08:48,153 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:08:48,154 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [  0.    0.    0.  -69.9  25.9   0. ]
+2026-04-08 18:08:49,169 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [  0.    0.    0.  -70.1  29.5   0. ]
+2026-04-08 18:08:49,419 - __main__ - INFO - VR transport: websocket | input rate: 97.4 Hz
+2026-04-08 18:08:49,841 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:08:49,877 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:08:51,420 - __main__ - INFO - VR transport: websocket | input rate: 91.9 Hz
+2026-04-08 18:08:53,421 - __main__ - INFO - VR transport: websocket | input rate: 93.4 Hz
+2026-04-08 18:08:55,422 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:08:57,422 - __main__ - INFO - VR transport: websocket | input rate: 83.2 Hz
+2026-04-08 18:08:59,423 - __main__ - INFO - VR transport: websocket | input rate: 106.3 Hz
+2026-04-08 18:09:01,424 - __main__ - INFO - VR transport: websocket | input rate: 89.6 Hz
+2026-04-08 18:09:03,425 - __main__ - INFO - VR transport: websocket | input rate: 98.8 Hz
+2026-04-08 18:09:05,426 - __main__ - INFO - VR transport: websocket | input rate: 93.6 Hz
+2026-04-08 18:09:07,426 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
+2026-04-08 18:09:09,427 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
+2026-04-08 18:09:11,428 - __main__ - INFO - VR transport: websocket | input rate: 87.0 Hz
+2026-04-08 18:09:13,429 - __main__ - INFO - VR transport: websocket | input rate: 103.0 Hz
+2026-04-08 18:09:15,430 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
+2026-04-08 18:09:17,432 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:09:19,433 - __main__ - INFO - VR transport: websocket | input rate: 101.6 Hz
+2026-04-08 18:09:21,434 - __main__ - INFO - VR transport: websocket | input rate: 86.8 Hz
+2026-04-08 18:09:23,434 - __main__ - INFO - VR transport: websocket | input rate: 127.3 Hz
+2026-04-08 18:09:25,435 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:09:27,436 - __main__ - INFO - VR transport: websocket | input rate: 90.8 Hz
+2026-04-08 18:09:29,437 - __main__ - INFO - VR transport: websocket | input rate: 102.7 Hz
+2026-04-08 18:09:31,438 - __main__ - INFO - VR transport: websocket | input rate: 88.3 Hz
+2026-04-08 18:09:33,439 - __main__ - INFO - VR transport: websocket | input rate: 198.2 Hz
+2026-04-08 18:09:35,440 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
+2026-04-08 18:09:37,441 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:09:39,442 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
+2026-04-08 18:09:41,443 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:09:43,444 - __main__ - INFO - VR transport: websocket | input rate: 91.0 Hz
+2026-04-08 18:09:45,445 - __main__ - INFO - VR transport: websocket | input rate: 101.0 Hz
+2026-04-08 18:09:47,447 - __main__ - INFO - VR transport: websocket | input rate: 93.1 Hz
+2026-04-08 18:09:49,447 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:09:51,448 - __main__ - INFO - VR transport: websocket | input rate: 89.6 Hz
+2026-04-08 18:09:53,449 - __main__ - INFO - VR transport: websocket | input rate: 101.7 Hz
+2026-04-08 18:09:55,450 - __main__ - INFO - VR transport: websocket | input rate: 88.1 Hz
+2026-04-08 18:09:57,451 - __main__ - INFO - VR transport: websocket | input rate: 93.6 Hz
+2026-04-08 18:09:59,452 - __main__ - INFO - VR transport: websocket | input rate: 136.5 Hz
+2026-04-08 18:10:01,453 - __main__ - INFO - VR transport: websocket | input rate: 92.1 Hz
+2026-04-08 18:10:03,455 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:10:05,456 - __main__ - INFO - VR transport: websocket | input rate: 109.2 Hz
+2026-04-08 18:10:07,457 - __main__ - INFO - VR transport: websocket | input rate: 94.0 Hz
+2026-04-08 18:10:09,458 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
+2026-04-08 18:10:11,459 - __main__ - INFO - VR transport: websocket | input rate: 93.4 Hz
+2026-04-08 18:10:13,459 - __main__ - INFO - VR transport: websocket | input rate: 99.1 Hz
+2026-04-08 18:10:15,461 - __main__ - INFO - VR transport: websocket | input rate: 109.5 Hz
+2026-04-08 18:10:17,461 - __main__ - INFO - VR transport: websocket | input rate: 92.6 Hz
+2026-04-08 18:10:19,462 - __main__ - INFO - VR transport: websocket | input rate: 75.5 Hz
+2026-04-08 18:10:21,463 - __main__ - INFO - VR transport: websocket | input rate: 112.8 Hz
+2026-04-08 18:10:23,464 - __main__ - INFO - VR transport: websocket | input rate: 102.3 Hz
+2026-04-08 18:10:25,465 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:10:27,466 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
+2026-04-08 18:10:29,468 - __main__ - INFO - VR transport: websocket | input rate: 89.1 Hz
+2026-04-08 18:10:31,470 - __main__ - INFO - VR transport: websocket | input rate: 92.7 Hz
+2026-04-08 18:10:33,471 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:10:35,473 - __main__ - INFO - VR transport: websocket | input rate: 129.5 Hz
+2026-04-08 18:10:37,474 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
+2026-04-08 18:10:39,476 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:10:41,477 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
+2026-04-08 18:10:43,478 - __main__ - INFO - VR transport: websocket | input rate: 96.2 Hz
+2026-04-08 18:10:45,479 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:10:47,480 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:10:51,483 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
+2026-04-08 18:10:53,484 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:10:55,484 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:10:57,485 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
+2026-04-08 18:10:59,487 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:11:01,488 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
+2026-04-08 18:11:05,489 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:11:07,490 - __main__ - INFO - VR transport: websocket | input rate: 89.6 Hz
+2026-04-08 18:11:09,491 - __main__ - INFO - VR transport: websocket | input rate: 114.9 Hz
+2026-04-08 18:11:11,492 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:11:13,493 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:11:15,494 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
+2026-04-08 18:11:17,495 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:11:19,496 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:11:21,497 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:11:23,498 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
+2026-04-08 18:11:25,500 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:11:27,501 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:11:29,502 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:11:31,502 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:11:33,503 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:11:35,504 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:11:37,505 - __main__ - INFO - VR transport: websocket | input rate: 94.9 Hz
+2026-04-08 18:11:39,506 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:11:41,507 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:11:43,507 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:11:45,508 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:11:47,510 - __main__ - INFO - VR transport: websocket | input rate: 91.6 Hz
+2026-04-08 18:11:49,511 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:11:51,512 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:11:53,513 - __main__ - INFO - VR transport: websocket | input rate: 91.1 Hz
+2026-04-08 18:11:55,513 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:11:57,514 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:11:59,515 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:12:01,516 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:12:05,517 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:12:07,518 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:12:09,518 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:12:11,519 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:12:13,520 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
+2026-04-08 18:12:15,521 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:12:17,521 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:12:19,522 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:12:21,523 - __main__ - INFO - VR transport: websocket | input rate: 100.4 Hz
+2026-04-08 18:12:23,524 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:12:25,525 - __main__ - INFO - VR transport: websocket | input rate: 93.0 Hz
+2026-04-08 18:12:27,526 - __main__ - INFO - VR transport: websocket | input rate: 89.3 Hz
+2026-04-08 18:12:29,366 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:12:29,382 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:12:29,527 - __main__ - INFO - VR transport: websocket | input rate: 94.8 Hz
+2026-04-08 18:12:30,295 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [  0.    0.    0.  -97.8  -8.5   0. ]
+2026-04-08 18:12:31,310 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [   0.     0.     0.  -111.2   -5.2    0. ]
+2026-04-08 18:12:31,528 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:12:32,324 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [   0.     0.     0.  -107.8   -0.6    0. ]
+2026-04-08 18:12:33,335 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [  0.    0.    0.  -68.6  -6.3   0. ]
+2026-04-08 18:12:33,529 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:12:34,351 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [  0.    0.    0.  -66.2  -6.1   0. ]
+2026-04-08 18:12:35,369 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [  0.    0.    0.  -91.5  -8.5   0. ]
+2026-04-08 18:12:35,531 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:12:36,384 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [   0.     0.     0.  -113.8   -1.1    0. ]
+2026-04-08 18:12:37,396 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [   0.     0.     0.  -112.7   -3.8    0. ]
+2026-04-08 18:12:37,531 - __main__ - INFO - VR transport: websocket | input rate: 87.5 Hz
+2026-04-08 18:12:37,811 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:12:37,854 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:12:39,532 - __main__ - INFO - VR transport: websocket | input rate: 107.8 Hz
+2026-04-08 18:12:41,533 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:12:43,534 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:12:45,535 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:12:47,536 - __main__ - INFO - VR transport: websocket | input rate: 89.7 Hz
+2026-04-08 18:12:49,538 - __main__ - INFO - VR transport: websocket | input rate: 90.7 Hz
+2026-04-08 18:12:51,539 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:12:53,540 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:12:55,540 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:12:59,542 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
+2026-04-08 18:13:01,542 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:13:03,543 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
+2026-04-08 18:13:05,544 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:13:07,545 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:13:08,743 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:13:08,750 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:13:08,852 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [   0.     0.     0.  -121.9    4.7    0. ]
+2026-04-08 18:13:09,864 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [   0.     0.     0.  -131.8   16.     0. ]
+2026-04-08 18:13:10,071 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:13:10,117 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:13:10,448 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:13:10,470 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:13:10,876 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [   0.     0.     0.  -119.7   19.5    0. ]
+2026-04-08 18:13:11,546 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
+2026-04-08 18:13:11,868 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:13:11,894 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:13:13,547 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
+2026-04-08 18:13:15,547 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:13:17,548 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:13:19,550 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:13:21,552 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
+2026-04-08 18:13:23,552 - __main__ - INFO - VR transport: websocket | input rate: 92.0 Hz
+2026-04-08 18:13:25,553 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:13:27,553 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:13:29,555 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:13:31,555 - __main__ - INFO - VR transport: websocket | input rate: 90.9 Hz
+2026-04-08 18:13:33,557 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:13:37,558 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:13:39,560 - __main__ - INFO - VR transport: websocket | input rate: 89.5 Hz
+2026-04-08 18:13:41,561 - __main__ - INFO - VR transport: websocket | input rate: 100.8 Hz
+2026-04-08 18:13:43,562 - __main__ - INFO - VR transport: websocket | input rate: 96.4 Hz
+2026-04-08 18:13:45,562 - __main__ - INFO - VR transport: websocket | input rate: 90.2 Hz
+2026-04-08 18:13:47,562 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
+2026-04-08 18:13:49,563 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:13:51,564 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:13:53,564 - __main__ - INFO - VR transport: websocket | input rate: 89.9 Hz
+2026-04-08 18:13:55,565 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:13:57,565 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:13:59,567 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
+2026-04-08 18:14:01,568 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:14:03,569 - __main__ - INFO - VR transport: websocket | input rate: 89.8 Hz
+2026-04-08 18:14:05,570 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
+2026-04-08 18:14:07,571 - __main__ - INFO - VR transport: websocket | input rate: 90.1 Hz
+2026-04-08 18:14:09,572 - __main__ - INFO - VR transport: websocket | input rate: 90.4 Hz
+2026-04-08 18:14:10,580 - telegrip.inputs.vr_ws_server - INFO - 🔒 RIGHT grip activated - controlling right arm (target reset to current position)
+2026-04-08 18:14:10,600 - telegrip.control_loop - INFO - 🔒 RIGHT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:14:10,752 - telegrip.control_loop - INFO - 🤖 Active control: RIGHT | Left: [  0.    0.    0.  -20.2   0.3   0. ] | Right: [   0.     0.     0.  -137.6   11.6    0. ]
+2026-04-08 18:14:11,245 - telegrip.inputs.vr_ws_server - INFO - 🔓 RIGHT grip released - arm control stopped
+2026-04-08 18:14:11,260 - telegrip.control_loop - INFO - 🔓 RIGHT arm: Position control DEACTIVATED
+2026-04-08 18:14:11,573 - __main__ - INFO - VR transport: websocket | input rate: 90.8 Hz
+2026-04-08 18:14:12,235 - telegrip.inputs.vr_ws_server - INFO - 🔒 LEFT grip activated - controlling left arm (target reset to current position)
+2026-04-08 18:14:12,274 - telegrip.control_loop - INFO - 🔒 LEFT arm: Position control ACTIVATED (target reset to current position)
+2026-04-08 18:14:12,783 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -59.3  39.5   0. ] | Right: [   0.     0.     0.  -144.    18.4    0. ]
+2026-04-08 18:14:13,573 - __main__ - INFO - VR transport: websocket | input rate: 90.3 Hz
+2026-04-08 18:14:13,796 - telegrip.control_loop - INFO - 🤖 Active control: LEFT | Left: [  0.    0.    0.  -40.   38.4   0. ] | Right: [   0.     0.     0.  -144.    18.4    0. ]
+2026-04-08 18:14:13,876 - telegrip.inputs.vr_ws_server - INFO - 🔓 LEFT grip released - arm control stopped
+2026-04-08 18:14:13,898 - telegrip.control_loop - INFO - 🔓 LEFT arm: Position control DEACTIVATED
+2026-04-08 18:14:15,574 - __main__ - INFO - VR transport: websocket | input rate: 90.5 Hz
+2026-04-08 18:14:17,575 - __main__ - INFO - VR transport: websocket | input rate: 90.0 Hz
+2026-04-08 18:14:17,718 - telegrip.main - INFO - Received signal 2
+2026-04-08 18:14:17,719 - telegrip.main - INFO - Received signal 15
 
 Shutdown complete.
