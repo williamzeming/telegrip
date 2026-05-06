@@ -1,0 +1,70 @@
+[0.466s] Invoking command in '/home/andy/teleOp/telegrip/vr_input_bridge': PYTHONPATH=/home/andy/teleOp/telegrip/build/vr_input_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/vr_input_bridge build --build-base /home/andy/teleOp/telegrip/build/vr_input_bridge/build install --record /home/andy/teleOp/telegrip/build/vr_input_bridge/install.log --single-version-externally-managed install_data
+[0.636s] running egg_info
+[0.637s] creating ../build/vr_input_bridge/vr_input_bridge.egg-info
+[0.637s] writing ../build/vr_input_bridge/vr_input_bridge.egg-info/PKG-INFO
+[0.637s] writing dependency_links to ../build/vr_input_bridge/vr_input_bridge.egg-info/dependency_links.txt
+[0.637s] writing entry points to ../build/vr_input_bridge/vr_input_bridge.egg-info/entry_points.txt
+[0.637s] writing requirements to ../build/vr_input_bridge/vr_input_bridge.egg-info/requires.txt
+[0.637s] writing top-level names to ../build/vr_input_bridge/vr_input_bridge.egg-info/top_level.txt
+[0.637s] writing manifest file '../build/vr_input_bridge/vr_input_bridge.egg-info/SOURCES.txt'
+[0.638s] reading manifest file '../build/vr_input_bridge/vr_input_bridge.egg-info/SOURCES.txt'
+[0.639s] writing manifest file '../build/vr_input_bridge/vr_input_bridge.egg-info/SOURCES.txt'
+[0.639s] running build
+[0.639s] running build_py
+[0.639s] creating /home/andy/teleOp/telegrip/build/vr_input_bridge/build
+[0.639s] creating /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib
+[0.639s] creating /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge
+[0.639s] copying vr_input_bridge/heading_calibrator.py -> /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge
+[0.640s] copying vr_input_bridge/__init__.py -> /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge
+[0.640s] copying vr_input_bridge/https_server.py -> /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge
+[0.640s] copying vr_input_bridge/vr_ws_server.py -> /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge
+[0.640s] copying vr_input_bridge/input_adapter.py -> /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge
+[0.640s] copying vr_input_bridge/ros2_bridge.py -> /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge
+[0.640s] copying vr_input_bridge/main.py -> /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge
+[0.640s] copying vr_input_bridge/utils.py -> /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge
+[0.640s] copying vr_input_bridge/config.py -> /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge
+[0.640s] running install
+[0.640s] running install_lib
+[0.640s] creating /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge
+[0.640s] copying /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge/heading_calibrator.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge
+[0.640s] copying /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge/__init__.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge
+[0.641s] copying /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge/https_server.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge
+[0.641s] copying /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge/vr_ws_server.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge
+[0.641s] copying /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge/input_adapter.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge
+[0.641s] copying /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge/ros2_bridge.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge
+[0.641s] copying /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge/main.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge
+[0.641s] copying /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge/utils.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge
+[0.641s] copying /home/andy/teleOp/telegrip/build/vr_input_bridge/build/lib/vr_input_bridge/config.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge
+[0.641s] byte-compiling /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge/heading_calibrator.py to heading_calibrator.cpython-310.pyc
+[0.643s] byte-compiling /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge/__init__.py to __init__.cpython-310.pyc
+[0.643s] byte-compiling /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge/https_server.py to https_server.cpython-310.pyc
+[0.644s] byte-compiling /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge/vr_ws_server.py to vr_ws_server.cpython-310.pyc
+[0.645s] byte-compiling /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge/input_adapter.py to input_adapter.cpython-310.pyc
+[0.646s] byte-compiling /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge/ros2_bridge.py to ros2_bridge.cpython-310.pyc
+[0.647s] byte-compiling /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge/main.py to main.cpython-310.pyc
+[0.648s] byte-compiling /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge/utils.py to utils.cpython-310.pyc
+[0.649s] byte-compiling /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge/config.py to config.cpython-310.pyc
+[0.649s] running install_data
+[0.649s] creating /home/andy/teleOp/telegrip/install/vr_input_bridge/share/ament_index
+[0.649s] creating /home/andy/teleOp/telegrip/install/vr_input_bridge/share/ament_index/resource_index
+[0.649s] creating /home/andy/teleOp/telegrip/install/vr_input_bridge/share/ament_index/resource_index/packages
+[0.649s] copying resource/vr_input_bridge -> /home/andy/teleOp/telegrip/install/vr_input_bridge/share/ament_index/resource_index/packages
+[0.649s] copying package.xml -> /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge
+[0.649s] creating /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/launch
+[0.649s] copying launch/vr_input_bridge.launch.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/launch
+[0.649s] copying launch/vr_input_with_calibrator.launch.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/launch
+[0.649s] copying launch/vr_input_full.launch.py -> /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/launch
+[0.649s] creating /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/web-ui
+[0.649s] copying web-ui/index.html -> /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/web-ui
+[0.650s] copying web-ui/styles.css -> /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/web-ui
+[0.650s] copying web-ui/interface.js -> /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/web-ui
+[0.650s] copying web-ui/vr_app.js -> /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/web-ui
+[0.650s] copying web-ui/aframe.min.js -> /home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/web-ui
+[0.651s] running install_egg_info
+[0.653s] Copying ../build/vr_input_bridge/vr_input_bridge.egg-info to /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages/vr_input_bridge-0.1.0-py3.10.egg-info
+[0.653s] running install_scripts
+[0.668s] Installing vr_heading_calibrator script to /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/vr_input_bridge
+[0.668s] Installing vr_input_bridge script to /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/vr_input_bridge
+[0.668s] Installing vr_teleop_input_adapter script to /home/andy/teleOp/telegrip/install/vr_input_bridge/lib/vr_input_bridge
+[0.668s] writing list of installed files to '/home/andy/teleOp/telegrip/build/vr_input_bridge/install.log'
+[0.685s] Invoked command in '/home/andy/teleOp/telegrip/vr_input_bridge' returned '0': PYTHONPATH=/home/andy/teleOp/telegrip/build/vr_input_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/vr_input_bridge build --build-base /home/andy/teleOp/telegrip/build/vr_input_bridge/build install --record /home/andy/teleOp/telegrip/build/vr_input_bridge/install.log --single-version-externally-managed install_data

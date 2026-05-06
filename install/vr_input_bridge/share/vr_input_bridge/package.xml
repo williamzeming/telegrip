@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>vr_input_bridge</name>
+  <version>0.1.0</version>
+  <description>Standalone VR web input bridge for ROS 2 teleoperation pipelines.</description>
+
+  <maintainer email="andy@example.com">Andy</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <depend>launch</depend>
+  <depend>launch_ros</depend>
+  <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>tf2_ros</depend>
+
+  <exec_depend>python3-websockets</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

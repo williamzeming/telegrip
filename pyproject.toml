@@ -35,10 +35,13 @@ dev = [
 [project.scripts]
 telegrip = "telegrip.main:main_cli"
 telegrip-ros2-moveit-bridge = "telegrip.ros2_moveit_bridge:main"
+vr-input-bridge = "vr_input_bridge.main:main_cli"
+vr-heading-calibrator = "vr_input_bridge.heading_calibrator:main"
+vr-teleop-input-adapter = "vr_input_bridge.input_adapter:main"
 
 [project.urls]
 Homepage = "https://github.com/your-username/vr_so100_teleoperation"
 Repository = "https://github.com/your-username/vr_so100_teleoperation"
 
 [tool.setuptools]
-packages = ["telegrip"] 
+packages = ["telegrip", "vr_input_bridge"]

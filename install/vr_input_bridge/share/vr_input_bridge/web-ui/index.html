@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VR Input Bridge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone VR input bridge for ROS 2 teleoperation pipelines">
+    <script src="aframe.min.js" defer></script>
+    <script src="vr_app.js" defer></script>
+    <script src="interface.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="hero-card">
+        <h1>VR Input Bridge</h1>
+        <p class="subtitle">WebXR headset input to ROS 2 topics and TF.</p>
+
+        <div class="status-grid">
+          <div class="status-item">
+            <span class="label">Bridge status</span>
+            <span class="value" id="bridgeStatus">Starting...</span>
+          </div>
+          <div class="status-item">
+            <span class="label">VR transport</span>
+            <span class="value" id="transportMode">waiting-for-client</span>
+          </div>
+          <div class="status-item">
+            <span class="label">Input rate</span>
+            <span class="value" id="inputRateHz">0.0 Hz</span>
+          </div>
+        </div>
+
+        <div class="hint-list">
+          <div>1. Put on the headset and open this page from the same URL.</div>
+          <div>2. Click the browser's VR / immersive button to enter XR mode.</div>
+          <div>3. Controller and headset poses will publish to `/telegrip/*` and TF.</div>
+        </div>
+
+        <div class="topic-list">
+          <div class="topic-title">Published topics</div>
+          <code>/telegrip/left/pose</code>
+          <code>/telegrip/right/pose</code>
+          <code>/telegrip/headset/pose</code>
+          <code>/telegrip/left/enable</code>
+          <code>/telegrip/right/enable</code>
+          <code>/telegrip/left/gripper_input</code>
+          <code>/telegrip/right/gripper_input</code>
+        </div>
+      </div>
+    </div>
+
+    <a-scene vr-mode-ui="enabled: true;">
+      <a-entity webxr-passthrough="referenceSpaceType: local-floor"></a-entity>
+      <a-entity id="headset" camera look-controls wasd-controls-enabled="false" position="0 1.6 0"></a-entity>
+
+      <a-entity id="leftHand" oculus-touch-controls="hand: left">
+        <a-text
+          id="leftHandInfo"
+          value="Left\nPos: ...\nRot: ..."
+          position="0 0.04 -0.05"
+          rotation="0 0 0"
+          scale="0.05 0.05 0.05"
+          color="white"
+          align="center"></a-text>
+      </a-entity>
+
+      <a-entity id="rightHand" oculus-touch-controls="hand: right">
+        <a-text
+          id="rightHandInfo"
+          value="Right\nPos: ...\nRot: ..."
+          position="0 0.04 -0.05"
+          rotation="0 0 0"
+          scale="0.05 0.05 0.05"
+          color="white"
+          align="center"></a-text>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

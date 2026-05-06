@@ -1,0 +1,422 @@
+[0.110s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.111s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=32, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7b8aaf6ac100>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7b8aaf677bb0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7b8aaf677bb0>>, mixin_verb=('build',))
+[0.229s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.229s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.229s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.229s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.229s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.229s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.229s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/andy/teleOp/telegrip'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extensions ['ignore', 'ignore_ament_install']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extension 'ignore'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extension 'ignore_ament_install'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extensions ['colcon_pkg']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extension 'colcon_pkg'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extensions ['colcon_meta']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extension 'colcon_meta'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extensions ['ros']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extension 'ros'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extensions ['cmake', 'python']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extension 'cmake'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extension 'python'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extensions ['python_setup_py']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF) by extension 'python_setup_py'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extensions ['ignore', 'ignore_ament_install']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extension 'ignore'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extension 'ignore_ament_install'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extensions ['colcon_pkg']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extension 'colcon_pkg'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extensions ['colcon_meta']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extension 'colcon_meta'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extensions ['ros']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extension 'ros'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extensions ['cmake', 'python']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extension 'cmake'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extension 'python'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extensions ['python_setup_py']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100) by extension 'python_setup_py'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extensions ['ignore', 'ignore_ament_install']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extension 'ignore'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extension 'ignore_ament_install'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extensions ['colcon_pkg']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extension 'colcon_pkg'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extensions ['colcon_meta']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extension 'colcon_meta'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extensions ['ros']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extension 'ros'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extensions ['cmake', 'python']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extension 'cmake'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extension 'python'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extensions ['python_setup_py']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/SO100/assets) by extension 'python_setup_py'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_moveit_config) by extensions ['ignore', 'ignore_ament_install']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_moveit_config) by extension 'ignore'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_moveit_config) by extension 'ignore_ament_install'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_moveit_config) by extensions ['colcon_pkg']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_moveit_config) by extension 'colcon_pkg'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_moveit_config) by extensions ['colcon_meta']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_moveit_config) by extension 'colcon_meta'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_moveit_config) by extensions ['ros']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_moveit_config) by extension 'ros'
+[0.246s] DEBUG:colcon.colcon_core.package_identification:Package 'URDF/mega_robot_1st_moveit_config' with type 'ros.ament_cmake' and name 'mega_robot_1st_moveit_config'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_urdf) by extensions ['ignore', 'ignore_ament_install']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_urdf) by extension 'ignore'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_urdf) by extension 'ignore_ament_install'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_urdf) by extensions ['colcon_pkg']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_urdf) by extension 'colcon_pkg'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_urdf) by extensions ['colcon_meta']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_urdf) by extension 'colcon_meta'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_urdf) by extensions ['ros']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(URDF/mega_robot_1st_urdf) by extension 'ros'
+[0.247s] DEBUG:colcon.colcon_core.package_identification:Package 'URDF/mega_robot_1st_urdf' with type 'ros.ament_cmake' and name 'mega_robot_1st_urdf'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extension 'ignore_ament_install'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extensions ['colcon_pkg']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extension 'colcon_pkg'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extensions ['colcon_meta']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extension 'colcon_meta'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extensions ['ros']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extension 'ros'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extensions ['cmake', 'python']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extension 'cmake'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extension 'python'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extensions ['python_setup_py']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(logs) by extension 'python_setup_py'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extension 'ignore_ament_install'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extensions ['colcon_pkg']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extension 'colcon_pkg'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extensions ['colcon_meta']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extension 'colcon_meta'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extensions ['ros']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extension 'ros'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extensions ['cmake', 'python']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extension 'cmake'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extension 'python'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extensions ['python_setup_py']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip) by extension 'python_setup_py'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extension 'ignore_ament_install'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extensions ['colcon_pkg']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extension 'colcon_pkg'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extensions ['colcon_meta']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extension 'colcon_meta'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extensions ['ros']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extension 'ros'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extensions ['cmake', 'python']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extension 'cmake'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extension 'python'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extensions ['python_setup_py']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/__pycache__) by extension 'python_setup_py'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extensions ['ignore', 'ignore_ament_install']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extension 'ignore'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extension 'ignore_ament_install'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extensions ['colcon_pkg']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extension 'colcon_pkg'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extensions ['colcon_meta']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extension 'colcon_meta'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extensions ['ros']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extension 'ros'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extensions ['cmake', 'python']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extension 'cmake'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extension 'python'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extensions ['python_setup_py']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core) by extension 'python_setup_py'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extension 'ignore'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extension 'ignore_ament_install'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extensions ['colcon_pkg']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extension 'colcon_pkg'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extensions ['colcon_meta']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extension 'colcon_meta'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extensions ['ros']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extension 'ros'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extensions ['cmake', 'python']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extension 'cmake'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extension 'python'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extensions ['python_setup_py']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/core/__pycache__) by extension 'python_setup_py'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extensions ['ignore', 'ignore_ament_install']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extension 'ignore'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extension 'ignore_ament_install'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extensions ['colcon_pkg']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extension 'colcon_pkg'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extensions ['colcon_meta']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extension 'colcon_meta'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extensions ['ros']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extension 'ros'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extensions ['cmake', 'python']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extension 'cmake'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extension 'python'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extensions ['python_setup_py']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs) by extension 'python_setup_py'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extension 'ignore'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extension 'ignore_ament_install'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extensions ['colcon_pkg']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extension 'colcon_pkg'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extensions ['colcon_meta']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extension 'colcon_meta'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extensions ['ros']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extension 'ros'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extensions ['cmake', 'python']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extension 'cmake'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extension 'python'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extensions ['python_setup_py']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip/inputs/__pycache__) by extension 'python_setup_py'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extensions ['ignore', 'ignore_ament_install']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extension 'ignore'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extension 'ignore_ament_install'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extensions ['colcon_pkg']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extension 'colcon_pkg'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extensions ['colcon_meta']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extension 'colcon_meta'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extensions ['ros']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extension 'ros'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extensions ['cmake', 'python']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extension 'cmake'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extension 'python'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extensions ['python_setup_py']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(telegrip.egg-info) by extension 'python_setup_py'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(vr_input_bridge) by extensions ['ignore', 'ignore_ament_install']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(vr_input_bridge) by extension 'ignore'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(vr_input_bridge) by extension 'ignore_ament_install'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(vr_input_bridge) by extensions ['colcon_pkg']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(vr_input_bridge) by extension 'colcon_pkg'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(vr_input_bridge) by extensions ['colcon_meta']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(vr_input_bridge) by extension 'colcon_meta'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(vr_input_bridge) by extensions ['ros']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(vr_input_bridge) by extension 'ros'
+[0.251s] DEBUG:colcon.colcon_core.package_identification:Package 'vr_input_bridge' with type 'ros.ament_python' and name 'vr_input_bridge'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extensions ['ignore', 'ignore_ament_install']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extension 'ignore'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extension 'ignore_ament_install'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extensions ['colcon_pkg']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extension 'colcon_pkg'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extensions ['colcon_meta']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extension 'colcon_meta'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extensions ['ros']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extension 'ros'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extensions ['cmake', 'python']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extension 'cmake'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extension 'python'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extensions ['python_setup_py']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui) by extension 'python_setup_py'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extensions ['ignore', 'ignore_ament_install']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extension 'ignore'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extension 'ignore_ament_install'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extensions ['colcon_pkg']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extension 'colcon_pkg'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extensions ['colcon_meta']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extension 'colcon_meta'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extensions ['ros']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extension 'ros'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extensions ['cmake', 'python']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extension 'cmake'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extension 'python'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extensions ['python_setup_py']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(web-ui/media) by extension 'python_setup_py'
+[0.252s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.252s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.252s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.252s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.252s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.266s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.266s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.268s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 395 installed packages in /opt/ros/humble
+[0.270s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.299s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_urdf' build argument 'cmake_args' from command line to 'None'
+[0.299s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_urdf' build argument 'cmake_target' from command line to 'None'
+[0.299s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_urdf' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.299s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_urdf' build argument 'cmake_clean_cache' from command line to 'False'
+[0.299s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_urdf' build argument 'cmake_clean_first' from command line to 'False'
+[0.299s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_urdf' build argument 'cmake_force_configure' from command line to 'False'
+[0.299s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_urdf' build argument 'ament_cmake_args' from command line to 'None'
+[0.299s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_urdf' build argument 'catkin_cmake_args' from command line to 'None'
+[0.299s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_urdf' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.299s] DEBUG:colcon.colcon_core.verb:Building package 'mega_robot_1st_urdf' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf', 'merge_install': False, 'path': '/home/andy/teleOp/telegrip/URDF/mega_robot_1st_urdf', 'symlink_install': False, 'test_result_base': None}
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'vr_input_bridge' build argument 'cmake_args' from command line to 'None'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'vr_input_bridge' build argument 'cmake_target' from command line to 'None'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'vr_input_bridge' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'vr_input_bridge' build argument 'cmake_clean_cache' from command line to 'False'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'vr_input_bridge' build argument 'cmake_clean_first' from command line to 'False'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'vr_input_bridge' build argument 'cmake_force_configure' from command line to 'False'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'vr_input_bridge' build argument 'ament_cmake_args' from command line to 'None'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'vr_input_bridge' build argument 'catkin_cmake_args' from command line to 'None'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'vr_input_bridge' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.300s] DEBUG:colcon.colcon_core.verb:Building package 'vr_input_bridge' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/andy/teleOp/telegrip/build/vr_input_bridge', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/andy/teleOp/telegrip/install/vr_input_bridge', 'merge_install': False, 'path': '/home/andy/teleOp/telegrip/vr_input_bridge', 'symlink_install': False, 'test_result_base': None}
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_moveit_config' build argument 'cmake_args' from command line to 'None'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_moveit_config' build argument 'cmake_target' from command line to 'None'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_moveit_config' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_moveit_config' build argument 'cmake_clean_cache' from command line to 'False'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_moveit_config' build argument 'cmake_clean_first' from command line to 'False'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_moveit_config' build argument 'cmake_force_configure' from command line to 'False'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_moveit_config' build argument 'ament_cmake_args' from command line to 'None'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_moveit_config' build argument 'catkin_cmake_args' from command line to 'None'
+[0.300s] Level 5:colcon.colcon_core.verb:set package 'mega_robot_1st_moveit_config' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.300s] DEBUG:colcon.colcon_core.verb:Building package 'mega_robot_1st_moveit_config' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config', 'merge_install': False, 'path': '/home/andy/teleOp/telegrip/URDF/mega_robot_1st_moveit_config', 'symlink_install': False, 'test_result_base': None}
+[0.300s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.301s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.301s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/andy/teleOp/telegrip/URDF/mega_robot_1st_urdf' with build type 'ament_cmake'
+[0.301s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/andy/teleOp/telegrip/URDF/mega_robot_1st_urdf'
+[0.303s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.303s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.303s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.306s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/andy/teleOp/telegrip/vr_input_bridge' with build type 'ament_python'
+[0.306s] Level 1:colcon.colcon_core.shell:create_environment_hook('vr_input_bridge', 'ament_prefix_path')
+[0.306s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/hook/ament_prefix_path.ps1'
+[0.307s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/hook/ament_prefix_path.dsv'
+[0.307s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/hook/ament_prefix_path.sh'
+[0.307s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.307s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.313s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf': /usr/bin/cmake /home/andy/teleOp/telegrip/URDF/mega_robot_1st_urdf -DCMAKE_INSTALL_PREFIX=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf
+[0.502s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/andy/teleOp/telegrip/vr_input_bridge'
+[0.503s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.503s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.507s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf' returned '0': /usr/bin/cmake /home/andy/teleOp/telegrip/URDF/mega_robot_1st_urdf -DCMAKE_INSTALL_PREFIX=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf
+[0.508s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf': /usr/bin/cmake --build /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf -- -j32 -l32
+[0.542s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf' returned '0': /usr/bin/cmake --build /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf -- -j32 -l32
+[0.552s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf': /usr/bin/cmake --install /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf
+[0.568s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mega_robot_1st_urdf)
+[0.569s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_urdf' returned '0': /usr/bin/cmake --install /home/andy/teleOp/telegrip/build/mega_robot_1st_urdf
+[0.572s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf' for CMake module files
+[0.573s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf' for CMake config files
+[0.573s] Level 1:colcon.colcon_core.shell:create_environment_hook('mega_robot_1st_urdf', 'cmake_prefix_path')
+[0.573s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/hook/cmake_prefix_path.ps1'
+[0.573s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/hook/cmake_prefix_path.dsv'
+[0.574s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/hook/cmake_prefix_path.sh'
+[0.574s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/bin'
+[0.574s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/lib/pkgconfig/mega_robot_1st_urdf.pc'
+[0.574s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/lib/python3.10/site-packages'
+[0.574s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/bin'
+[0.575s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.ps1'
+[0.575s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.dsv'
+[0.576s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.sh'
+[0.576s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.bash'
+[0.577s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.zsh'
+[0.577s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/colcon-core/packages/mega_robot_1st_urdf)
+[0.578s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mega_robot_1st_urdf)
+[0.578s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf' for CMake module files
+[0.578s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf' for CMake config files
+[0.578s] Level 1:colcon.colcon_core.shell:create_environment_hook('mega_robot_1st_urdf', 'cmake_prefix_path')
+[0.578s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/hook/cmake_prefix_path.ps1'
+[0.578s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/hook/cmake_prefix_path.dsv'
+[0.579s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/hook/cmake_prefix_path.sh'
+[0.579s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/bin'
+[0.579s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/lib/pkgconfig/mega_robot_1st_urdf.pc'
+[0.579s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/lib/python3.10/site-packages'
+[0.579s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/bin'
+[0.579s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.ps1'
+[0.580s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.dsv'
+[0.580s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.sh'
+[0.580s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.bash'
+[0.580s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/mega_robot_1st_urdf/package.zsh'
+[0.580s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf/share/colcon-core/packages/mega_robot_1st_urdf)
+[0.581s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/andy/teleOp/telegrip/URDF/mega_robot_1st_moveit_config' with build type 'ament_cmake'
+[0.581s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/andy/teleOp/telegrip/URDF/mega_robot_1st_moveit_config'
+[0.581s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.581s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.588s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config': AMENT_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${CMAKE_PREFIX_PATH} /usr/bin/cmake /home/andy/teleOp/telegrip/URDF/mega_robot_1st_moveit_config -DCMAKE_INSTALL_PREFIX=/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config
+[0.756s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config' returned '0': AMENT_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${CMAKE_PREFIX_PATH} /usr/bin/cmake /home/andy/teleOp/telegrip/URDF/mega_robot_1st_moveit_config -DCMAKE_INSTALL_PREFIX=/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config
+[0.757s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config': AMENT_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${CMAKE_PREFIX_PATH} /usr/bin/cmake --build /home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config -- -j32 -l32
+[0.772s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/andy/teleOp/telegrip/vr_input_bridge': PYTHONPATH=/home/andy/teleOp/telegrip/build/vr_input_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/vr_input_bridge build --build-base /home/andy/teleOp/telegrip/build/vr_input_bridge/build install --record /home/andy/teleOp/telegrip/build/vr_input_bridge/install.log --single-version-externally-managed install_data
+[0.796s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config' returned '0': AMENT_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${CMAKE_PREFIX_PATH} /usr/bin/cmake --build /home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config -- -j32 -l32
+[0.799s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config': AMENT_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${CMAKE_PREFIX_PATH} /usr/bin/cmake --install /home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config
+[0.820s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mega_robot_1st_moveit_config)
+[0.820s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config' returned '0': AMENT_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/andy/teleOp/telegrip/install/mega_robot_1st_urdf:${CMAKE_PREFIX_PATH} /usr/bin/cmake --install /home/andy/teleOp/telegrip/build/mega_robot_1st_moveit_config
+[0.821s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config' for CMake module files
+[0.821s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config' for CMake config files
+[0.822s] Level 1:colcon.colcon_core.shell:create_environment_hook('mega_robot_1st_moveit_config', 'cmake_prefix_path')
+[0.822s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/hook/cmake_prefix_path.ps1'
+[0.822s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/hook/cmake_prefix_path.dsv'
+[0.823s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/hook/cmake_prefix_path.sh'
+[0.823s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/bin'
+[0.823s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/lib/pkgconfig/mega_robot_1st_moveit_config.pc'
+[0.824s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/lib/python3.10/site-packages'
+[0.824s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/bin'
+[0.824s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.ps1'
+[0.825s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.dsv'
+[0.825s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.sh'
+[0.825s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.bash'
+[0.826s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.zsh'
+[0.826s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/colcon-core/packages/mega_robot_1st_moveit_config)
+[0.827s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mega_robot_1st_moveit_config)
+[0.827s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config' for CMake module files
+[0.827s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config' for CMake config files
+[0.828s] Level 1:colcon.colcon_core.shell:create_environment_hook('mega_robot_1st_moveit_config', 'cmake_prefix_path')
+[0.828s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/hook/cmake_prefix_path.ps1'
+[0.828s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/hook/cmake_prefix_path.dsv'
+[0.829s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/hook/cmake_prefix_path.sh'
+[0.829s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/bin'
+[0.829s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/lib/pkgconfig/mega_robot_1st_moveit_config.pc'
+[0.829s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/lib/python3.10/site-packages'
+[0.830s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/bin'
+[0.830s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.ps1'
+[0.830s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.dsv'
+[0.831s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.sh'
+[0.831s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.bash'
+[0.831s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/mega_robot_1st_moveit_config/package.zsh'
+[0.832s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/andy/teleOp/telegrip/install/mega_robot_1st_moveit_config/share/colcon-core/packages/mega_robot_1st_moveit_config)
+[0.991s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/vr_input_bridge' for CMake module files
+[0.991s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/andy/teleOp/telegrip/vr_input_bridge' returned '0': PYTHONPATH=/home/andy/teleOp/telegrip/build/vr_input_bridge/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/vr_input_bridge build --build-base /home/andy/teleOp/telegrip/build/vr_input_bridge/build install --record /home/andy/teleOp/telegrip/build/vr_input_bridge/install.log --single-version-externally-managed install_data
+[0.992s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/vr_input_bridge' for CMake config files
+[0.992s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/vr_input_bridge/lib'
+[0.992s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/vr_input_bridge/bin'
+[0.992s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/vr_input_bridge/lib/pkgconfig/vr_input_bridge.pc'
+[0.992s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/vr_input_bridge/lib/python3.10/site-packages'
+[0.992s] Level 1:colcon.colcon_core.shell:create_environment_hook('vr_input_bridge', 'pythonpath')
+[0.993s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/hook/pythonpath.ps1'
+[0.993s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/hook/pythonpath.dsv'
+[0.993s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/hook/pythonpath.sh'
+[0.994s] Level 1:colcon.colcon_core.environment:checking '/home/andy/teleOp/telegrip/install/vr_input_bridge/bin'
+[0.994s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(vr_input_bridge)
+[0.994s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/package.ps1'
+[0.994s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/package.dsv'
+[0.994s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/package.sh'
+[0.995s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/package.bash'
+[0.995s] INFO:colcon.colcon_core.shell:Creating package script '/home/andy/teleOp/telegrip/install/vr_input_bridge/share/vr_input_bridge/package.zsh'
+[0.995s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/andy/teleOp/telegrip/install/vr_input_bridge/share/colcon-core/packages/vr_input_bridge)
+[0.995s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[0.996s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[0.996s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[0.996s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.000s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.000s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.018s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.018s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/andy/teleOp/telegrip/install/local_setup.ps1'
+[1.019s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/andy/teleOp/telegrip/install/_local_setup_util_ps1.py'
+[1.020s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/andy/teleOp/telegrip/install/setup.ps1'
+[1.021s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/andy/teleOp/telegrip/install/local_setup.sh'
+[1.022s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/andy/teleOp/telegrip/install/_local_setup_util_sh.py'
+[1.022s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/andy/teleOp/telegrip/install/setup.sh'
+[1.023s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/andy/teleOp/telegrip/install/local_setup.bash'
+[1.023s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/andy/teleOp/telegrip/install/setup.bash'
+[1.024s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/andy/teleOp/telegrip/install/local_setup.zsh'
+[1.024s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/andy/teleOp/telegrip/install/setup.zsh'
